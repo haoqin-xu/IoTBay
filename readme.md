@@ -10,9 +10,6 @@ Duc Le 13586413
 
 Daniel Creak 12890024
 
-
-
->>>>>>> 265b031b373b73ae23e33d7e8a27b3b5cf9cf271
 ISD Wrk05, group 29
 
 ## Install GlassFish
