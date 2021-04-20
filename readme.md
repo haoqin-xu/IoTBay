@@ -1,6 +1,8 @@
 # Deploying the IoTBay R0 Prototype
 
 test
+
+Briana Margetts 14057400
 Hao-qin Xu 13572641
 ISD Wrk05, group 29
 
