@@ -1,5 +1,6 @@
 # Deploying the IoTBay R0 Prototype
 
+test
 Hao-qin Xu 13572641
 ISD Wrk05, group 29
 
