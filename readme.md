@@ -13,11 +13,17 @@ Daniel Creak 12890024
 
 ISD Wrk05, group 29
 
-## Install GlassFish
+## Setup Database
+
+[Refer to the readme in the db folder](src/java/db/readme.md)
+
+## Setup Server
+
+### Install GlassFish
 
 The GlassFish server must be first installed. It can either be installed alongside netbeans IDE or independantly.
 
-## Configure GlassFish domain
+### Configure GlassFish domain
 
 locate the glassfish /bin folder containing executables for the glassfish server.
 
@@ -33,7 +39,7 @@ This creates a domain on port 5000 which the webapp will be deployed to.
 
 run `start-domain domain2`, which will start the newly created domain.
 
-## Deploy the .war file
+### Deploy the .war file
 
 Run the command `deploy --port 5000 -host localhost D:\path\to\war\file`
 
