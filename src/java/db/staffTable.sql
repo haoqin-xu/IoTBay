@@ -7,4 +7,10 @@
  * Author:  TED
  * Created: 21/04/2021
  */
-
+CREATE TABLE Staff (
+    "ROLE" INTEGER(10) NOT NULL,
+    HISTORY Log ARRAY  NOT NULL,
+    APPLICATION ACCESS LOG ARRAY NOT NULL,
+    Device List ARRAY  NOT NULL,
+    PRIMARY KEY("ROLE") 
+);
