@@ -6,11 +6,12 @@
 package uts.isd.model;
 
 import java.io.Serializable;
+
 /**
  *
- * @author TED
+ * @author 61452
  */
-public class Customer implements Serializable{
+public class Staff implements Serializable{
     private String email;
     private String name;
     private String password;
@@ -19,7 +20,7 @@ public class Customer implements Serializable{
     private String address;
     private String role;
 
-    public Customer(String email, String name, String password, String dob, String phone, String address, String role) {
+    public Staff(String email, String name, String password, String dob, String phone, String address, String role) {
         this.email = email;
         this.name = name;
         this.password = password;
