@@ -63,4 +63,25 @@ public class AdminManager {
         }
         return null;
     }
+    
+    /*
+        UPDATE OPERATION: Update all fields of admin user based on ID
+    */    
+    public void updateUser(int ID, String email, String name, String password, String dob, String phone, String address, String role) throws SQLException {       
+        //code for update-operation   
+        String update = "update iotdb.ADMIN set EMAIL='"+email+"', NAME='"+name+"', PASSWORD='"+password+"', DOB='"+dob+"', PHONE='"+phone+"', ADDRESS='"+address+"', ROLE='"+role+"'";
+        String where = "where ID='"+ID+"'";
+
+        st.executeUpdate(update+where); 
+    }       
+
+    /*
+        DELETE OPERATION: Delete admin user based on ID
+    */
+    public void deleteUser(int ID) throws SQLException{       
+       //code for delete-operation   
+       String delete = "delete from iotdb.ADMIN where ID='"+ID+"'";
+       
+       st.executeUpdate(delete);
+    }
 }
