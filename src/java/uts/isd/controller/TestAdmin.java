@@ -49,7 +49,7 @@ public class TestAdmin {
                     break;
                     
                 case "d":
-                    //delete(db); // delete function
+                    delete(db); // delete function
                     break;
                     
                 case "q":
@@ -141,10 +141,10 @@ public class TestAdmin {
     }
     
     private static void delete(AdminManager db) {
-        System.out.println("Deleting admin user from the database based on email: ");
+        System.out.println("Deleting admin user from the database based on ID: ");
         
         try {
-            System.out.print("User ID: ");
+            System.out.print("Admin user ID: ");
             int ID = Integer.parseInt(in.nextLine());
             
             db.deleteUser(ID);
