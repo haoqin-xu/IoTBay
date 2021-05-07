@@ -153,7 +153,7 @@ public class TestOrder {
     }
     
     private static void delete(OrderManager db) {
-        System.out.println("Deleting admin user from the database based on ID: ");
+        System.out.println("Deleting Order from the database based on OrderID: ");
         
         try {
             System.out.print("Order ID: ");
