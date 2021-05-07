@@ -5,6 +5,22 @@
  */
 package uts.isd.model;
 
+<<<<<<< HEAD
+import java.io.Serializable;
+
+/**
+ *
+ * @author 61452
+ */
+public class OrderLineItem implements Serializable{
+    private int deviceID;
+    private int orderID;
+    private int count;
+
+    public OrderLineItem(int deviceID, int orderID, int count) {
+        this.deviceID = deviceID;
+        this.orderID = orderID;
+=======
 /**
  *
  * @author Alec
@@ -17,10 +33,30 @@ public class OrderLineItem {
     public OrderLineItem(int DeviceID, int OrderID, int count) {
         this.DeviceID = DeviceID;
         this.OrderID = OrderID;
+>>>>>>> e87842fbae36e822a7bd3a4d7db7b8bb594fea70
         this.count = count;
     }
 
     public int getDeviceID() {
+<<<<<<< HEAD
+        return deviceID;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setDeviceID(int deviceID) {
+        this.deviceID = deviceID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+=======
         return DeviceID;
     }
 
@@ -38,6 +74,7 @@ public class OrderLineItem {
 
     public int getCount() {
         return count;
+>>>>>>> e87842fbae36e822a7bd3a4d7db7b8bb594fea70
     }
 
     public void setCount(int count) {
