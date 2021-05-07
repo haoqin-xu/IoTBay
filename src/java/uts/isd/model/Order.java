@@ -11,7 +11,7 @@ package uts.isd.model;
  */
 public class Order {
     private int OrderID;
-    private int StaffID;
+    private int CustomerID;
     private int PaymentID;
     private int DeviceID;
     private String Status;
@@ -19,8 +19,8 @@ public class Order {
     private String Date;
     
     //object creation
-    public Order(int StaffID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) {
-        this.StaffID = StaffID;
+    public Order(int CustomerID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) {
+        this.CustomerID = CustomerID;
         this.PaymentID = PaymentID;
         this.DeviceID = DeviceID;
         this.Status = Status;
@@ -28,9 +28,9 @@ public class Order {
         this.Date = Date;
     }
     //session storage
-    public Order(int OrderID, int StaffID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) {
+    public Order(int OrderID, int CustomerID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) {
         this.OrderID = OrderID;
-        this.StaffID = StaffID;
+        this.CustomerID = CustomerID;
         this.PaymentID = PaymentID;
         this.DeviceID = DeviceID;
         this.Status = Status;
@@ -46,12 +46,12 @@ public class Order {
         this.OrderID = OrderID;
     }
 
-    public int getStaffID() {
-        return StaffID;
+    public int getCustomerID() {
+        return CustomerID;
     }
 
-    public void setStaffID(int StaffID) {
-        this.StaffID = StaffID;
+    public void setCustomerID(int StaffID) {
+        this.CustomerID = CustomerID;
     }
 
     public int getPaymentID() {

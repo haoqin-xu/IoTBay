@@ -69,8 +69,8 @@ public class TestOrder {
         System.out.println("Creating Order in the database: ");
         
         try {
-            System.out.print("StaffID: ");
-            int StaffID = in.nextInt();
+            System.out.print("CustomerID: ");
+            int CustomerID = in.nextInt();
             
             System.out.print("PaymentID: ");
             int PaymentID = in.nextInt();
@@ -90,7 +90,7 @@ public class TestOrder {
             String Date = in.nextLine();
 
             
-            db.createOrder(StaffID, PaymentID, DeviceID, Status, InvoiceID, Date);
+            db.createOrder(CustomerID, PaymentID, DeviceID, Status, InvoiceID, Date);
             System.out.println("Order is added to the database.");
 
         } catch (SQLException ex) {
@@ -109,9 +109,9 @@ public class TestOrder {
             String date = in.nextLine();
             
             if (db.findOrder(orderid, date) == null) {
-                System.out.println("User not found. Incorrect orderid or date.");
+                System.out.println("Order not found. Incorrect orderid or date.");
             } else {
-                System.out.println("User found.");
+                System.out.println("Order found.");
             }
 
         } catch (SQLException ex) {
@@ -126,8 +126,8 @@ public class TestOrder {
             System.out.print("Order ID: ");
             int ID = Integer.parseInt(in.nextLine());
             
-            System.out.print("New StaffID: ");
-            int StaffID = in.nextInt();
+            System.out.print("New CustomerID: ");
+            int CustomerID = in.nextInt();
             System.out.print("New PaymentID: ");
             int PaymentID = in.nextInt();
             System.out.print("New DeviceID: ");
@@ -144,7 +144,7 @@ public class TestOrder {
             System.out.print("New Date: ");
             String Date = in.nextLine();
             
-            db.updateOrder(ID, StaffID, PaymentID, DeviceID, Status, InvoiceID, Date);
+            db.updateOrder(ID, CustomerID, PaymentID, DeviceID, Status, InvoiceID, Date);
             System.out.println("Order fields updated");
 
         } catch (SQLException ex) {
