@@ -9,9 +9,57 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Create order</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div>
+            <span>IoTBay <a href="index.jsp">Home</a></span>
+        </div>
+
+        <br>
+
+                <h2>Iot device list</h2>
+
+                <table>
+                  <tr>
+                    <th>Device ID</th>
+                    <th>Name</th>
+                    <th>Number in Stock</th>
+                  </tr>
+                  <tr>
+                    <td>Placeholder ID</td>
+                    <td>Placeholder Name</td>
+                    <td>Placeholder Stock</td>
+                  </tr>
+                  <tr>
+                    <td>Placeholder ID</td>
+                    <td>Placeholder Name</td>
+                    <td>Placeholder Stock</td>
+                  </tr>
+                  <tr>
+                    <td>Placeholder ID</td>
+                    <td>Placeholder Name</td>
+                    <td>Placeholder Stock</td>
+                  </tr>
+                  <tr>
+                    <td>Placeholder ID</td>
+                    <td>Placeholder Name</td>
+                    <td>Placeholder Stock</td>
+                  </tr>
+                  <tr>
+                    <td>Placeholder ID</td>
+                    <td>Placeholder Name</td>
+                    <td>Placeholder Stock</td>
+                  </tr>
+                  <tr>
+                    <td>Placeholder ID</td>
+                    <td>Placeholder Name</td>
+                    <td>Placeholder Stock</td>
+                  </tr>
+                </table>
+
+                <h2>Order</h2>
+
+                
     </body>
 </html>
