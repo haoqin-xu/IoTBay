@@ -23,8 +23,8 @@ public class OrderManager {
         ID is initialised from the SQL side. All other fields are filled in by the user or backend.
     */
     public void createOrder(int StaffID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) throws SQLException {
-        String columns = "INSERT INTO iotdb.\"ORDER\"(ORDERID,STAFFID,PAYMENTID,DEVICEID,STATUS,INVOICEID,\"DATE\")";
-        String values = "VALUES('"+StaffID+"', '"+PaymentID+"', '"+DeviceID+"', '"+Status+"', '"+InvoiceID+"', '"+Date+"')";
+        String columns = "INSERT INTO iotdb.\"ORDER\"(STAFFID,PAYMENTID,DEVICEID,STATUS,INVOICEID,\"DATE\")";
+        String values = "VALUES("+StaffID+", "+PaymentID+", "+DeviceID+", '"+Status+"', "+InvoiceID+", '"+Date+"')";
         
         st.executeUpdate(columns+values);
     }
@@ -36,16 +36,16 @@ public class OrderManager {
     */
     public Order findOrder(int OrderID, String Date) throws SQLException {
         //setup the select sql query string  
-        String fetch = "SELECT * FROM IOTDB.\"ORDER\" WHERE ORDERID='"+OrderID+"' AND DATE='"+Date+"'";
+        String fetch = "SELECT * FROM IOTDB.\"ORDER\" WHERE ORDERID="+OrderID+" AND \"DATE\"='"+Date+"'";
         //execute this query using the statement field      
         //add the results to a ResultSet      
         ResultSet rs = st.executeQuery(fetch);
         //search the ResultSet for a specific order using the parameters               
         while(rs.next()) {
-            String orderID = rs.getString(1);
+            int orderID = rs.getInt(1);
             String orderDate = rs.getString(7);
             
-            if (orderID.equals(OrderID) && orderDate.equals(Date)) {
+            if ((orderID == OrderID) && orderDate.equals(Date)) {
                 int StaffID = rs.getInt(2);
                 int PaymentID = rs.getInt(3);
                 int DeviceID = rs.getInt(4);
@@ -63,7 +63,7 @@ public class OrderManager {
     */    
     public void updateOrder(int OrderID, int StaffID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) throws SQLException {       
         //code for update-operation   
-        String update = "UPDATE iotdb.ORDER set STAFFID='"+StaffID+"', PAYMENTID='"+PaymentID+"', DEVICEID='"+DeviceID+"', STATUS='"+Status+"', INVOICEID='"+InvoiceID+"', DATE='"+Date+"'";
+        String update = "UPDATE iotdb.\"ORDER\" SET STAFFID="+StaffID+", PAYMENTID="+PaymentID+", DEVICEID="+DeviceID+", STATUS='"+Status+"', INVOICEID="+InvoiceID+", DATE='"+Date+"'";
         String where = "where ORDERID="+OrderID+"";
         st.executeUpdate(update+where); 
     }       
@@ -73,7 +73,7 @@ public class OrderManager {
     */
     public void deleteOrder(int OrderID) throws SQLException{       
        //code for delete-operation   
-       String delete = "DELETE FROM iotdb.ORDER where ORDERID="+OrderID+"";
+       String delete = "DELETE FROM iotdb.\"ORDER\" where ORDERID="+OrderID+"";
        st.executeUpdate(delete);
     }
 }
