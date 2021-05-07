@@ -16,7 +16,7 @@
         <div>IoTBay
             <div>
                 <% if (session.getAttribute("user") == null) { // if there are no users logged in %>
-                    <span>You are not logged in. <a href="login.jsp">Login</a> <a href="register.jsp">Register</a></span>
+                    <span>You are not logged in. <a href="login.jsp">Login</a> <a href="register.jsp">Register</a><a href="welcome.jsp">Guest login</a></span>
                 <% } else { // display user info if they are logged in
                     Customer user = (Customer) session.getAttribute("user");
                 %>
