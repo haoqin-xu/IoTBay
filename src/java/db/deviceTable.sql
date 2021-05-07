@@ -21,12 +21,12 @@ CREATE TABLE DEVICE(
 
 insert into IOTDB."DEVICE"("NAME",MANUFACTURER,ORIGIN,INSTOCK,STOCK_NUM)
 values ('item1','manu 1', 'Origin 1', TRUE, 10),
-       ('item2','manu 2', 'Origin 2', TRUE, 10);
+       ('item2','manu 2', 'Origin 2', TRUE, 10),
        ('item3','manu 3', 'Origin 3', TRUE, 10),
-       ('item4','manu 4', 'Origin 4', TRUE, 10);
+       ('item4','manu 4', 'Origin 4', TRUE, 10),
        ('item5','manu 5', 'Origin 5', TRUE, 10),
-       ('item6','manu 6', 'Origin 6', TRUE, 10);
+       ('item6','manu 6', 'Origin 6', TRUE, 10),
        ('item7','manu 7', 'Origin 7', TRUE, 10),
-       ('item8','manu 8', 'Origin 8', TRUE, 10);
+       ('item8','manu 8', 'Origin 8', TRUE, 10),
        ('item9','manu 9', 'Origin 9', TRUE, 10),
        ('item10','manu 10', 'Origin 10', TRUE, 10);
