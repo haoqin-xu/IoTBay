@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.logging.*;
 import uts.isd.model.dao.*;
 
-public class TestAdmin {
+public class TestDBAdmin {
     private static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -87,7 +87,7 @@ public class TestAdmin {
             System.out.println("Admin is added to the database.");
 
         } catch (SQLException ex) {
-            Logger.getLogger(TestAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -107,7 +107,7 @@ public class TestAdmin {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(TestAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -136,7 +136,7 @@ public class TestAdmin {
             System.out.println("Admin user fields updated");
 
         } catch (SQLException ex) {
-            Logger.getLogger(TestAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -151,7 +151,7 @@ public class TestAdmin {
             System.out.println("Admin user was deleted.");
             
         } catch (SQLException ex) {
-            Logger.getLogger(TestAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
