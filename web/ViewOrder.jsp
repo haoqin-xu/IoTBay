@@ -12,6 +12,25 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <table id="Orderlist">
+            <tr>
+                <th>Order ID</th>
+                <th>Customer ID</th>
+                <th>Payment ID</th>
+                <th>Device ID</th>
+                <th>Status</th>
+                <th>Invoice ID</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+                <th>1234</th>
+                <th>1234</th>
+                <th>1234</th>
+                <th>1234</th>
+                <th>asdf</th>
+                <th>1234</th>
+                <th>asdf</th>      
+            </tr>
+        </table>
     </body>
 </html>

@@ -59,7 +59,21 @@
                 </table>
 
                 <h2>Order</h2>
-
+                <form action="OrderController.java" method="POST">
+                    <table>
+                        <tr>
+                            <td>ProductID:</td>
+                            <td><input type="productid" id="productid" name="productid"></td>
+                        </tr>
+                        <tr>
+                            <td>Count:</td>
+                            <td><input type="Count" id="Count" name="Count"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="button" id="add" value="add"></td>
+                        </tr>
+                    </table>
+                </form>
                 
     </body>
 </html>
