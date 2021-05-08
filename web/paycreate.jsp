@@ -15,9 +15,9 @@
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
 
-        <div>Please enter your payment details</div>
+        <h1>Please enter your payment details</h1>
         <br>
-        <form action="payread.jsp" method="POST">
+        <form action="payview.jsp" method="POST">
             <table>
                 <tr>
                     <td>Payment Method:</td>
