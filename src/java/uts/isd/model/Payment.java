@@ -16,12 +16,16 @@ public class Payment implements Serializable{
     private String paymentmethod;
     private String accountnumber;
     private int ccv;
+    private double ammount;
+    private String date;
 
-    public Payment(int customerID, String paymentmethod, String accountnumber, int ccv) {
+    public Payment(int customerID, String paymentmethod, String accountnumber, int ccv, double ammount, String date) {
         this.customerID = customerID;
         this.paymentmethod = paymentmethod;
         this.accountnumber = accountnumber;
         this.ccv = ccv;
+        this.ammount = ammount;
+        this.date = date;
     }
 
     public int getCustomerID() {
@@ -55,5 +59,20 @@ public class Payment implements Serializable{
     public void setCcv(int ccv) {
         this.ccv = ccv;
     }
-    
+
+    public double getAmmount() {
+        return ammount;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setAmmount(double ammount) {
+        this.ammount = ammount;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }
