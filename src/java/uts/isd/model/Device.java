@@ -15,14 +15,18 @@ public class Device implements Serializable{
     private String name;
     private String manufacturer;
     private String origin;
+    private String type;
     private String instock;
+    private double priceperunit;
     private int numberinstock;
 
-    public Device(String name, String manufacturer, String origin, String instock, int numberinstock) {
+    public Device(String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.origin = origin;
+        this.type = type;
         this.instock = instock;
+        this.priceperunit = priceperunit;
         this.numberinstock = numberinstock;
     }
 
@@ -64,6 +68,22 @@ public class Device implements Serializable{
 
     public void setNumberinstock(int numberinstock) {
         this.numberinstock = numberinstock;
+    }
+
+    public double getPriceperunit() {
+        return priceperunit;
+    }
+
+    public void setPriceperunit(double priceperunit) {
+        this.priceperunit = priceperunit;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
     
 }

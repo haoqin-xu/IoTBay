@@ -13,20 +13,22 @@ CREATE TABLE DEVICE(
     "NAME" VARCHAR(20) NOT NULL,
     MANUFACTURER VARCHAR(20),
     ORIGIN VARCHAR(20),
+    "TYPE" VARCHAR(20),
     INSTOCK BOOLEAN, /* when inserting values 1 = instock and 0 = not instock*/
+    PRICEPERUNIT DOUBLE NOT NULL,
     STOCK_NUM INTEGER NOT NULL,
     PRIMARY KEY(DEVICEID)
 );
 
 
-insert into IOTDB."DEVICE"("NAME",MANUFACTURER,ORIGIN,INSTOCK,STOCK_NUM)
-values ('item1','manu 1', 'Origin 1', TRUE, 10),
-       ('item2','manu 2', 'Origin 2', TRUE, 10),
-       ('item3','manu 3', 'Origin 3', TRUE, 10),
-       ('item4','manu 4', 'Origin 4', TRUE, 10),
-       ('item5','manu 5', 'Origin 5', TRUE, 10),
-       ('item6','manu 6', 'Origin 6', TRUE, 10),
-       ('item7','manu 7', 'Origin 7', TRUE, 10),
-       ('item8','manu 8', 'Origin 8', TRUE, 10),
-       ('item9','manu 9', 'Origin 9', TRUE, 10),
-       ('item10','manu 10', 'Origin 10', TRUE, 10);
+insert into IOTDB."DEVICE"("NAME",MANUFACTURER,ORIGIN,"TYPE",INSTOCK,PRICEPERUNIT,STOCK_NUM)
+values ('item1','manu 1', 'Origin 1', 'Screws', TRUE, 5.5, 10),
+       ('item2','manu 2', 'Origin 2', 'Tools', TRUE, 6.5, 10),
+       ('item3','manu 3', 'Origin 3', 'Saws', TRUE, 5.0, 10),
+       ('item4','manu 4', 'Origin 4', 'Nails', TRUE, 8.0, 10),
+       ('item5','manu 5', 'Origin 5', 'Monitor', TRUE, 7.8, 10),
+       ('item6','manu 6', 'Origin 6', 'GPU', TRUE, 6.5, 10),
+       ('item7','manu 7', 'Origin 7', 'CPU', TRUE, 5.5, 10),
+       ('item8','manu 8', 'Origin 8', 'Spade', TRUE, 5.6, 10),
+       ('item9','manu 9', 'Origin 9', 'Hammer', TRUE, 7.6, 10),
+       ('item10','manu 10', 'Origin 10', 'Driver', TRUE, 9.5, 10);
