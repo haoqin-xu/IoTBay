@@ -11,8 +11,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IoTBay - Payment read Page</title>
     </head>
-    <body>
-        <div>Your saved payment details</div>
+    <body> 
+        <div>
+            <span>IoTBay <a href="index.jsp">Home</a></span>
+        </div>
+        <h1>Your saved payment details</h1>
         </br>
         <table id="paymentdetail">
             <tr>
@@ -28,12 +31,12 @@
             </tr>
             <tr>
                 <td></td>
-                <td><a href="index.jsp">Update</a>
+                <td><a href="paycreate.jsp">Update</a>
                 <a href="index.jsp">Delete</a></td>
             </tr>    
         </table>
         <br>
-       <div>Payment History &#9;&#9;&#9;&#9; Search bar here</div> <!--SEARCH BAR HERE-->
+       <h1>Payment History &#9;&#9;&#9;&#9; Search bar here</h1> <!--SEARCH BAR HERE-->
        <br>        
        <table id="paymentdetail">
             <tr>
