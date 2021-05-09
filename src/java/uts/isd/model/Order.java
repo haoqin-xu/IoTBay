@@ -5,11 +5,13 @@
  */
 package uts.isd.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Alec
  */
-public class Order {
+public class Order implements Serializable{
     private int OrderID;
     private int CustomerID;
     private int PaymentID;
