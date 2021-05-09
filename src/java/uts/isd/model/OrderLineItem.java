@@ -5,11 +5,13 @@
  */
 package uts.isd.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Alec
  */
-public class OrderLineItem {
+public class OrderLineItem implements Serializable{
     private int DeviceID;
     private int OrderID;
     private int count;
