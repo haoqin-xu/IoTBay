@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : login
     Author     : TED
 --%>
@@ -14,12 +14,22 @@
         <div>
             <span>IoTBay <a href="index.jsp">Home</a><a href="register.jsp">Register</a></span>
         </div>
-        
-        <form action="welcome.jsp" method="POST">
-            <input type="hidden" id="tos" name="tos" value="login"> 
-            <!-- need to differentiate data from login and register when they 
+        <%
+            String emailErr = (String) session.getAttribute("emailErr");
+            String passErr = (String) session.getAttribute("passErr");
+            String existErr = (String) session.getAttribute("existErr");
+        %>
+        <form action="LoginController" method="POST">
+            <!-- need to differentiate data from login and register when they
             are posted to welcome page since there is no database yet -->
             <table>
+                <tr>
+                <div>
+                    <%= emailErr != null ? emailErr : "" %><br>
+                    <%= passErr != null ? passErr : "" %><br>
+                    <%= existErr != null ? existErr : "" %><br>
+                </div>
+                </tr>
                 <tr>
                     <td>Email:</td>
                     <td><input type="email" id="email" name="email"></td>
@@ -28,6 +38,14 @@
                     <td>Password:</td>
                     <td><input type="password" id="password" name="password"></td>
                 </tr>
+                <td>Role</td>
+                    <td>
+                        <select class="select" name="Role">
+                            <option value="Customer">Customer</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Admin">Admin</option>                                                                
+                        </select>
+                    </td>
                 <tr>
                     <td><input type="submit" value="Login"></td>
                 </tr>
