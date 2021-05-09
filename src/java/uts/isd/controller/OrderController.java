@@ -40,7 +40,7 @@ public class OrderController extends HttpServlet {
         //1- retrieve the current session
         HttpSession session = request.getSession();
         
-        OrderManager manager = (OrderManager) session.getAttribute("orderManager");
+        OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
         //2- create an instance of the Validator class 
         Validator validator = new Validator();
         Order order = null;

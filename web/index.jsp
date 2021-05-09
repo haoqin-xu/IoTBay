@@ -30,6 +30,6 @@
         <div>Footer
             
         </div>
-                <jsp:include page="/ConnServlet" flush="true" />
+            <jsp:include page="/ConnServlet" flush="true" />
     </body>
 </html>
