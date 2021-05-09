@@ -59,18 +59,34 @@
                 </table>
 
                 <h2>Order</h2>
-                <form action="OrderController.java" method="POST">
+                <form action="OrderController" method="POST">
                     <table>
                         <tr>
-                            <td>ProductID:</td>
-                            <td><input type="productid" id="productid" name="productid"></td>
+                            <td>CustomerID:</td>
+                            <td><input type="number" name="customerid"></td>
                         </tr>
                         <tr>
-                            <td>Count:</td>
-                            <td><input type="Count" id="Count" name="Count"></td>
+                            <td>PaymentID:</td>
+                            <td><input type="number" name="paymentid"></td>
                         </tr>
                         <tr>
-                            <td><input type="button" id="add" value="add"></td>
+                            <td>DeviceID:</td>
+                            <td><input type="number" name="deviceid"></td>
+                        </tr>
+                        <tr>
+                            <td>Status:</td>
+                            <td><input type="text" name="status"></td>
+                        </tr>
+                        <tr>
+                            <td>InvoiceID:</td>
+                            <td><input type="number" name="invoiceid"></td>
+                        </tr>
+                        <tr>
+                            <td>Date:</td>
+                            <td><input type="text" name="date"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Submit"></td>
                         </tr>
                     </table>
                 </form>
