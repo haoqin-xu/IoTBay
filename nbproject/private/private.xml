@@ -3,9 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alec/Desktop/ISD%20iotbay/IoTBay/src/java/uts/isd/controller/ConnServlet.java</file>
-            <file>file:/C:/Users/Alec/Desktop/ISD%20iotbay/IoTBay/src/java/uts/isd/model/Order.java</file>
-            <file>file:/C:/Users/Alec/Desktop/ISD%20iotbay/IoTBay/src/java/uts/isd/model/Payment.java</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/uts/isd/model/dao/StaffManager.java</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/uts/isd/model/dao/CustomerManager.java</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/uts/isd/controller/LoginController.java</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/iotbay/web/index.jsp</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/uts/isd/controller/Validator.java</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/db/customerTable.sql</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/uts/isd/controller/ConnServlet.java</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/db/adminTable.sql</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/uts/isd/model/dao/AdminManager.java</file>
+            <file>file:/D:/UTS%202021%20Autumn/41025%20Introduction%20to%20Software%20Development/assignment2/IoTBay/src/java/db/staffTable.sql</file>
         </group>
     </open-files>
 </project-private>
