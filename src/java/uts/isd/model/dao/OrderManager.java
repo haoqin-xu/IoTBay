@@ -96,7 +96,8 @@ public class OrderManager {
     */
     public void deleteOrder(int OrderID) throws SQLException{       
        //code for delete-operation   
-       String delete = "DELETE FROM iotdb.\"ORDER\" where ORDERID="+OrderID+"";
-       st.executeUpdate(delete);
+       String delete = "UPDATE iotdb.\"ORDER\" SET STATUS='Cancelled'";
+        String where = "where ORDERID="+OrderID+"";
+        st.executeUpdate(delete+where); 
     }
 }
