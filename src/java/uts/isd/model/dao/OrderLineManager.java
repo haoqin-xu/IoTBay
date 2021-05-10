@@ -23,11 +23,11 @@ public class OrderLineManager {
     
         ID is initialised from the SQL side. All other fields are filled in by the user or backend.
     */
-    public void addOrderline(int deviceid,int orderid,int count) throws SQLException {
+    public void addOrderline(int count) throws SQLException {
         String fetch = "SELECT \"ORDER\".ORDERID, DEVICE.DEVICEID\n" +"FROM \"ORDER\", DEVICE WHERE \"ORDER\".DEVICEID = DEVICE.DEVICEID";
         ResultSet rs = st.executeQuery(fetch); 
         String columns = "INSERT INTO ORDERLINEITEM(ORDERID, DEVICEID)";
-        String values = "VALUES("+rs.getInt(1)+", "+rs.getInt(2)+", '"+rs.getString(3)+"')";
+        String values = "VALUES("+rs.getInt(1)+", "+rs.getInt(2)+", '"+count+"')";
         st.executeUpdate(columns+values);
     }
    
