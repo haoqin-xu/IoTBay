@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/PayController" flush="true" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IoTBay - Payment read Page</title>
     </head>
@@ -36,7 +37,7 @@
             </tr>    
         </table>
         <br>
-       <h1>Payment History &#9;&#9;&#9;&#9; Search bar here</h1> <!--SEARCH BAR HERE-->
+       <h1>Payment History <input type="text" placeholder="Search..."> </h1>
        <br>        
        <table id="paymentdetail">
             <tr>
