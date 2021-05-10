@@ -20,6 +20,14 @@
         <servlet-name>ListOrderController</servlet-name>
         <servlet-class>uts.isd.controller.ListOrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateDevice</servlet-name>
+        <servlet-class>uts.isd.controller.CreateDevice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateDeviceServlet</servlet-name>
+        <servlet-class>uts.isd.controller.CreateDeviceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>ListOrderController</servlet-name>
         <url-pattern>/ListOrderController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateDevice</servlet-name>
+        <url-pattern>/CreateDevice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateDeviceServlet</servlet-name>
+        <url-pattern>/CreateDeviceServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
