@@ -66,17 +66,17 @@ public class OrderController extends HttpServlet {
      //   ps.print(date);
      
         try {
-          //  if(manager == null){
+         
             manager.createOrder(customerid, paymentid, deviceid, status, invoiceid, date);
             session.setAttribute("order", order);
-            response.sendRedirect("CreateOrder.jsp");
+        //    response.sendRedirect("CreateOrder.jsp");
             ps.print(customerid);
             ps.print(paymentid);
             ps.print(deviceid);
             ps.print(status);
             ps.print(invoiceid);
             ps.print(date);
-          //  }
+         
             
         } catch (SQLException ex) {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);

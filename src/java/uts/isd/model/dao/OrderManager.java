@@ -5,6 +5,7 @@
  */
 package uts.isd.model.dao;
 import java.sql.*;
+import java.util.ArrayList;
 import uts.isd.model.Order;
 /**
  *
@@ -57,7 +58,29 @@ public class OrderManager {
         }
         return null;
     }
-    
+    public ArrayList<Order> listOrder(int customerid) throws SQLException{
+            String fetch = "SELECT * FROM IOTDB.\"ORDER\" WHERE CUSTOMERID="+customerid+"";
+            ResultSet rs = st.executeQuery(fetch);
+            ArrayList<Order> list = new ArrayList<Order>();
+            while(rs.next()){
+                int CustomerID = customerid;
+                
+                if ((CustomerID == customerid)){
+                    int OrderID = rs.getInt(1);
+                    int PaymentID = rs.getInt(3);
+                    int DeviceID = rs.getInt(4);
+                    String Status = rs.getString(5);
+                    int InvoiceID = rs.getInt(6);
+                    String date = rs.getString(7);
+                    Order order = new Order(OrderID,CustomerID,PaymentID,DeviceID,Status,InvoiceID,date);
+                    list.add(order);
+                    
+                }
+                
+                
+            }
+            return list;
+    }
     /*
         UPDATE OPERATION: Update all fields of ORDER based on ID
     */    
