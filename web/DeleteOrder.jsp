@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div>
+            <span>IoTBay <a href="index.jsp">Home</a></span>
+        </div>
     </body>
 </html>

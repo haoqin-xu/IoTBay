@@ -14,21 +14,24 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <div>
+            <span>IoTBay <a href="index.jsp">Home</a></span>
+        </div>
         <form action ="ListOrderController" method ="POST">
              <tr>
-                            <td>CustomerID:</td>
-                            <td><input type="number" name="customerid"></td>
+                <td>CustomerID:</td>
+                <td><input type="number" name="customerid"></td>
              </tr>
              <tr>
-                            <td><input type="submit" value="Submit"></td>
+                <td><input type="submit" value="Submit"></td>
              </tr>
         <%
             
             ArrayList<Order> orderlist = (ArrayList<Order>)session.getAttribute("orderlist");
             
-            
         %>
         <table id="Orderlist">
+            <h2>List of orders</h2>
             <tr>
                 <th>Order ID</th>
                 <th>Customer ID</th>
@@ -54,5 +57,18 @@
             
         </table>
         </form>
+            <br>
+            <br>
+            
+            <form action ="UpdateOrder.jsp" method ="POST">
+                <tr>
+                            <td>Enter orderid to update:</td>
+                            <td><input type="number" name="orderid"></td>
+             </tr>
+             <tr>
+                            <td><input type="submit" value="Submit"></td>
+             </tr>
+            </form>
+                  
     </body>
 </html>
