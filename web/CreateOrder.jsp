@@ -31,31 +31,6 @@
                     <td>Placeholder Name</td>
                     <td>Placeholder Stock</td>
                   </tr>
-                  <tr>
-                    <td>Placeholder ID</td>
-                    <td>Placeholder Name</td>
-                    <td>Placeholder Stock</td>
-                  </tr>
-                  <tr>
-                    <td>Placeholder ID</td>
-                    <td>Placeholder Name</td>
-                    <td>Placeholder Stock</td>
-                  </tr>
-                  <tr>
-                    <td>Placeholder ID</td>
-                    <td>Placeholder Name</td>
-                    <td>Placeholder Stock</td>
-                  </tr>
-                  <tr>
-                    <td>Placeholder ID</td>
-                    <td>Placeholder Name</td>
-                    <td>Placeholder Stock</td>
-                  </tr>
-                  <tr>
-                    <td>Placeholder ID</td>
-                    <td>Placeholder Name</td>
-                    <td>Placeholder Stock</td>
-                  </tr>
                 </table>
 
                 <h2>Order</h2>
