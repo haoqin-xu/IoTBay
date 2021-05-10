@@ -19,7 +19,7 @@
             <span><a href="CreateOrder.jsp">Create Order</a></span>
         </div>
         <div>
-            <span><a href="ViewOrderCustomer.jsp">View Order</a></span>
+            <span><a href="ViewOrder.jsp">View Order</a></span>
         </div>
     </body>
 </html>

@@ -38,7 +38,8 @@
                 <th>Invoice ID</th>
                 <th>Date</th>
             </tr>
-            <%for(Order element : orderlist){%>
+            <%if(orderlist!=null){
+                for(Order element : orderlist){%>
             <tr>
                 <th><%=element.getOrderID()%></th>
                 <th><%=element.getCustomerID()%></th>
@@ -49,7 +50,7 @@
                 <th><%=element.getDate()%></th>
             </tr>
             
-            <%}%>
+            <%}}%>
             
         </table>
         </form>
