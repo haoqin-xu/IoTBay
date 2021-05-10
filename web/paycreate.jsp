@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/PayController" flush="true" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IoTBay - Payment Management Page</title>
     </head>
