@@ -39,7 +39,7 @@ public class OrderController extends HttpServlet {
         
         //1- retrieve the current session
         HttpSession session = request.getSession();
-        
+        OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
         //2- create an instance of the Validator class 
         Validator validator = new Validator();
@@ -52,7 +52,7 @@ public class OrderController extends HttpServlet {
         String status = request.getParameter("status");
         int invoiceid = Integer.parseInt(request.getParameter("invoiceid"));
         String date = request.getParameter("date");
-        
+        int count = Integer.parseInt(request.getParameter("count"));
         validator.clear(session);
         //5- retrieve the manager instance from session
        
@@ -68,14 +68,9 @@ public class OrderController extends HttpServlet {
         try {
          
             manager.createOrder(customerid, paymentid, deviceid, status, invoiceid, date);
-            session.setAttribute("order", order);
-        //    response.sendRedirect("CreateOrder.jsp");
-            ps.print(customerid);
-            ps.print(paymentid);
-            ps.print(deviceid);
-            ps.print(status);
-            ps.print(invoiceid);
-            ps.print(date);
+            orderlinemanager.addOrderline(count);
+       
+           
          
             
         } catch (SQLException ex) {
