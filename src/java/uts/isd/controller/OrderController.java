@@ -41,6 +41,7 @@ public class OrderController extends HttpServlet {
         HttpSession session = request.getSession();
         OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
+        DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
         //2- create an instance of the Validator class 
         Validator validator = new Validator();
         Order order = null;
@@ -65,7 +66,7 @@ public class OrderController extends HttpServlet {
          
             manager.createOrder(customerid, paymentid, deviceid, status, invoiceid, date);
             orderlinemanager.addOrderline(deviceid,count);
-       
+            devicemanager.updateDeviceCount(deviceid, count);
            
          
             
