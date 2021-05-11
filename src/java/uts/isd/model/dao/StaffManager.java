@@ -91,10 +91,12 @@ public class StaffManager {
     */
     public ArrayList<Staff> searchUser(String name, String role) throws SQLException {
         //setup the select sql query string  
-        String fetch = "SELECT * FROM IOTDB.STAFF WHERE NAME LIKE '%"+name+"%' AND ROLE LIKE '%"+role+"'%";// read from where email = and password =
+        String fetch = "SELECT * FROM IOTDB.STAFF WHERE NAME LIKE '%";// read from where email = and password =
+        String fetch2 = "%' AND ROLE LIKE '%";
+        String fetch3 = "%'";
         //execute this query using the statement field      
         //add the results to a ResultSet      
-        ResultSet rs = st.executeQuery(fetch);
+        ResultSet rs = st.executeQuery(fetch+name+fetch2+role+fetch3);
         
         // init arraylist of staff objects to store results returned by sql search
         // arraylist is used instead of linkedlist as the results shouldn't be modified, only read
