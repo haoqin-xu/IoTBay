@@ -6,6 +6,7 @@
 package uts.isd.model.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import uts.isd.model.Staff;
 
 /**
@@ -83,5 +84,39 @@ public class StaffManager {
        String delete = "delete from iotdb.STAFF where ID="+ID+"";
        
        st.executeUpdate(delete);
+    }
+    
+    /*
+        SEARCH OPERATION: Search staff users based on ID and return it as arraylist
+    */
+    public ArrayList<Staff> searchUser(String name, String role) throws SQLException {
+        //setup the select sql query string; the statements are split into three parts, otherwise a string format error occurs
+        String fetch = "SELECT * FROM IOTDB.STAFF WHERE NAME LIKE '%";
+        String fetch2 = "%' AND ROLE LIKE '%";
+        String fetch3 = "%'";   
+        //add the results to a ResultSet      
+        ResultSet rs = st.executeQuery(fetch+name+fetch2+role+fetch3); // function params are added between sql statement strings
+        
+        // init arraylist of staff objects to store results returned by sql search
+        // arraylist is used instead of linkedlist as the results shouldn't be modified, only read
+        ArrayList<Staff> resultArr = new ArrayList<Staff>(); 
+        
+        while(rs.next()) { // for each result obtained by the search...
+            int ID = rs.getInt(1);
+            String email = rs.getString(2);
+            String userName = rs.getString(3);
+            String pass = rs.getString(4);
+            String phone = rs.getString(5);
+            String address = rs.getString(6);
+            String dob = rs.getString(7);
+            String userRole = rs.getString(8);
+            
+            resultArr.add(new Staff(ID, email, userName, pass, dob, phone, address, userRole)); // push the staff object into the results arraylist.
+        }
+        
+        if (resultArr.size() > 0) // if results are not empty, return them
+            return resultArr;
+        else // otherwise return nothing
+            return null;
     }
 }

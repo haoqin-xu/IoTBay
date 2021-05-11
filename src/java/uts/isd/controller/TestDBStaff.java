@@ -32,6 +32,7 @@ public class TestDBStaff {
                     System.out.println("R - retrieve user from the db using email and password");
                     System.out.println("U - update all of a user's fields in the db");
                     System.out.println("D - delete a user from the db");
+                    System.out.println("S - Search for a user from the db based on name and role");
                     System.out.println("H - displays this help message");
                     System.out.println("Q - terminates the test program");
                     break;
@@ -50,6 +51,10 @@ public class TestDBStaff {
                     
                 case "d":
                     delete(db); // delete function
+                    break;
+                    
+                case "s":
+                    search(db);
                     break;
                     
                 case "q":
@@ -154,5 +159,25 @@ public class TestDBStaff {
             Logger.getLogger(TestDBStaff.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    
+    private static void search(StaffManager db) {
+        System.out.println("Searching for staff users based on name and role: ");
+        
+        try {
+            System.out.print("User name - leave empty to not use: ");
+            String name = in.nextLine();
+            System.out.print("User role - leave empty to not use: ");
+            String role = in.nextLine();
+            
+            if (db.searchUser(name, role) == null) {
+                System.out.println("No users found with specified parameters.");
+            } else {
+                System.out.println("Users found.");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TestDBStaff.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
