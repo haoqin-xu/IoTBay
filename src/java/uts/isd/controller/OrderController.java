@@ -56,14 +56,9 @@ public class OrderController extends HttpServlet {
         validator.clear(session);
         //5- retrieve the manager instance from session
        
-    //    Order order = null;
         PrintWriter ps = response.getWriter();
         ps.print(customerid);
-     //   ps.print(paymentid);
-     //   ps.print(deviceid);
-     //   ps.print(status);
-     //   ps.print(invoiceid);
-     //   ps.print(date);
+        
      
         try {
          
