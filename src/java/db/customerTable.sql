@@ -22,6 +22,6 @@ CREATE TABLE CUSTOMER (
 
 insert into IOTDB.CUSTOMER(ID,EMAIL,"NAME",PASSWORD,PHONE,ADDRESS,DOB,"ROLE")
 values ('100','steve@mail.com', 'steve', '1234', '12345678', 'steve ADDRESS', 'steve DOB','Customer'),
-       ('100','jim@mail.com', 'jim', 'qwerty', '87654321', 'jim ADDRESS', 'jim DOB','Customer'),
-       ('100','bob@mail.com', 'bob', 'asdf', '14253647', 'bob ADDRESS', 'bob DOB','Customer');
+       ('101','jim@mail.com', 'jim', 'qwerty', '87654321', 'jim ADDRESS', 'jim DOB','Customer'),
+       ('102','bob@mail.com', 'bob', 'asdf', '14253647', 'bob ADDRESS', 'bob DOB','Customer');
       
