@@ -4,6 +4,10 @@
  */
 package uts.isd.controller;
 
+import uts.isd.model.Payment;
+
+import uts.isd.model.dao.PaymentManager;
+
 import java.io.IOException;
 
 import java.sql.SQLException;
@@ -22,44 +26,64 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
-import uts.isd.model.Payment;
 
-import uts.isd.model.dao.PaymentManager;
 
 public class PayController extends HttpServlet {
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) 
+                                       throws ServletException, java.io.IOException {
+
+        try
+        {	    
+
+             int CustomerID = Integer.parseInt(request.getParameter("un"));
+             String Paymentmethod = (request.getParameter("un"));
+             String Accountnumber = (request.getParameter("un"));
+             int Ccv= Integer.parseInt(request.getParameter("un"));
+             double Ammount= Double.parseDouble(request.getParameter(""));
+             String Date = (request.getParameter("un"));
+             
+             Payment payment = new Payment(CustomerID,Paymentmethod,Accountnumber,Ccv,Ammount,Date);
+
+
+             if (payment.isValid())
+             {
+
+                  HttpSession session = request.getSession(true);	    
+                  session.setAttribute("currentSessionPayment",payment); 
+                  response.sendRedirect("payview.jsp");       		
+             }
+
+             else 
+                 // an error messgage saying "incorrect information" pops up for paycreate.jsp
+                  request.setAttribute("error","error"); 
+
+        } 
+
+
+        catch (Throwable theException) 	    
+        {
+             System.out.println(theException);     
+        }
+    }
 
     @Override
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //1- retrieve the current session
+        // retrieve the current session
         HttpSession session = request.getSession();
         
-        //2- create an instance of the Validator class
-        Validator validator = new Validator();
-                
-        //3 - capture the customer id
-        int customerID = Integer.parseInt(request.getParameter("customerID"));
+             int CustomerID = Integer.parseInt(request.getParameter("un"));
+             String Paymentmethod = (request.getParameter("un"));
+             String Accountnumber = (request.getParameter("un"));
+             int Ccv= Integer.parseInt(request.getParameter("un"));
+             double Ammount= Double.parseDouble(request.getParameter(""));
+             String Date = (request.getParameter("un"));
+             
         
-        //4 - capture the payment method
-        String paymentmethod = request.getParameter("paymentmethod");
-        
-        //5 - capture the account number       
-        String accountnumber = request.getParameter("accountnumber");
-        
-        //6 - capture the cvv number
-        int ccv = Integer.parseInt(request.getParameter("ccv"));
-
-        //7 - capture the ammount      
-        double ammount = Integer.parseInt(request.getParameter("ammount"));
-
-        //8 - capture the payment date     
-        String date = request.getParameter("date");
-        
-        //9 - retrieve the manager instance from session
         PaymentManager manager = (PaymentManager) session.getAttribute("manager");
 
-        validator.clear(session); //clears previous error mesages
 
         Payment payment = null; 
     }
