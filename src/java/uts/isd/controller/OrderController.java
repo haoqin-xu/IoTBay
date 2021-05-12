@@ -41,10 +41,12 @@ public class OrderController extends HttpServlet {
         HttpSession session = request.getSession();
         OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
+        DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
         //2- create an instance of the Validator class 
         Validator validator = new Validator();
         Order order = null;
         //3- capture the posted email
+        
         int customerid = Integer.parseInt(request.getParameter("customerid"));
         int paymentid = Integer.parseInt(request.getParameter("paymentid"));
         int deviceid = Integer.parseInt(request.getParameter("deviceid"));
@@ -56,20 +58,15 @@ public class OrderController extends HttpServlet {
         validator.clear(session);
         //5- retrieve the manager instance from session
        
-    //    Order order = null;
         PrintWriter ps = response.getWriter();
         ps.print(customerid);
-     //   ps.print(paymentid);
-     //   ps.print(deviceid);
-     //   ps.print(status);
-     //   ps.print(invoiceid);
-     //   ps.print(date);
+        
      
         try {
          
             manager.createOrder(customerid, paymentid, deviceid, status, invoiceid, date);
-            orderlinemanager.addOrderline(count);
-       
+            orderlinemanager.addOrderline(deviceid,count);
+            devicemanager.updateDeviceCount(deviceid, count);
            
          
             

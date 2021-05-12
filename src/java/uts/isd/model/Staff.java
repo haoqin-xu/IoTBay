@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author 61452
  */
 public class Staff implements Serializable{
+    private int ID;
     private String email;
     private String name;
     private String password;
@@ -20,7 +21,20 @@ public class Staff implements Serializable{
     private String address;
     private String role;
 
+    // constructor without ID (for object creation)
     public Staff(String email, String name, String password, String dob, String phone, String address, String role) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.dob = dob;
+        this.phone = phone;
+        this.address = address;
+        this.role = role;
+    }
+
+    // constructor with ID (for session storage)
+    public Staff(int ID, String email, String name, String password, String dob, String phone, String address, String role) {
+        this.ID = ID;
         this.email = email;
         this.name = name;
         this.password = password;

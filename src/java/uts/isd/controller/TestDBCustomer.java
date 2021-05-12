@@ -11,15 +11,15 @@ import java.util.*;
 import java.util.logging.*;
 import uts.isd.model.dao.*;
 
-public class TestDBStaff {
+public class TestDBCustomer {
     private static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         DBConnector connector = new DBConnector();
         Connection conn = connector.openConnection();
-        StaffManager db = new StaffManager(conn);
+        CustomerManager db = new CustomerManager(conn);
         
-        System.out.println("DAO Tester for Staff object");
+        System.out.println("DAO Tester for Customer object");
         
         while (true) {
             System.out.print("Enter Command (Type 'H' for help): ");
@@ -32,7 +32,6 @@ public class TestDBStaff {
                     System.out.println("R - retrieve user from the db using email and password");
                     System.out.println("U - update all of a user's fields in the db");
                     System.out.println("D - delete a user from the db");
-                    System.out.println("S - Search for a user from the db based on name and role");
                     System.out.println("H - displays this help message");
                     System.out.println("Q - terminates the test program");
                     break;
@@ -53,10 +52,6 @@ public class TestDBStaff {
                     delete(db); // delete function
                     break;
                     
-                case "s":
-                    search(db);
-                    break;
-                    
                 case "q":
                     System.out.println("Test program shutting down...");
                     System.exit(0);
@@ -69,8 +64,8 @@ public class TestDBStaff {
          
     }
     
-    private static void create(StaffManager db) {
-        System.out.println("Creating staff user in the database: ");
+    private static void create(CustomerManager db) {
+        System.out.println("Creating customer user in the database: ");
         
         try {
             System.out.print("User email: ");
@@ -89,15 +84,15 @@ public class TestDBStaff {
             String role = in.nextLine();
             
             db.addUser(email, name, password, dob, phone, address, role);
-            System.out.println("Staff is added to the database.");
+            System.out.println("Customer is added to the database.");
 
         } catch (SQLException ex) {
-            Logger.getLogger(TestDBStaff.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private static void retrieve(StaffManager db) {
-        System.out.println("Retrieving a staff user from the database: ");
+    private static void retrieve(CustomerManager db) {
+        System.out.println("Retrieving a customer user from the database: ");
         
         try {
             System.out.print("User email: ");
@@ -112,12 +107,12 @@ public class TestDBStaff {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(TestDBStaff.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private static void update(StaffManager db) {
-        System.out.println("Updating all of a staff user's fields in the database based on their ID: ");
+    private static void update(CustomerManager db) {
+        System.out.println("Updating all of a customer user's fields in the database based on their ID: ");
         
         try {
             System.out.print("User ID: ");
@@ -138,46 +133,26 @@ public class TestDBStaff {
             String role = in.nextLine();
             
             db.updateUser(ID, email, name, password, dob, phone, address, role);
-            System.out.println("Staff user fields updated");
+            System.out.println("Customer user fields updated");
 
         } catch (SQLException ex) {
-            Logger.getLogger(TestDBStaff.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private static void delete(StaffManager db) {
-        System.out.println("Deleting staff user from the database based on ID: ");
+    private static void delete(CustomerManager db) {
+        System.out.println("Deleting customer user from the database based on ID: ");
         
         try {
-            System.out.print("Staff user ID: ");
+            System.out.print("Customer user ID: ");
             int ID = Integer.parseInt(in.nextLine());
             
             db.deleteUser(ID);
-            System.out.println("Staff user was deleted.");
+            System.out.println("Customer user was deleted.");
             
         } catch (SQLException ex) {
-            Logger.getLogger(TestDBStaff.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDBCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }
-    
-    private static void search(StaffManager db) {
-        System.out.println("Searching for staff users based on name and role: ");
-        
-        try {
-            System.out.print("User name - leave empty to not use: ");
-            String name = in.nextLine();
-            System.out.print("User role - leave empty to not use: ");
-            String role = in.nextLine();
-            
-            if (db.searchUser(name, role) == null) {
-                System.out.println("No users found with specified parameters.");
-            } else {
-                System.out.println("Users found.");
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(TestDBStaff.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
