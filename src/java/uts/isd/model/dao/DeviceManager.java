@@ -68,7 +68,14 @@ public class DeviceManager {
         String where = "where DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
     }       
-
+    public void updateDeviceCount(int deviceID, int count) throws SQLException {       
+        //code for update-operation   
+        String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = 5";
+        String where = "WHERE DEVICEID="+deviceID+"";
+        st.executeUpdate(update+where); 
+    }   
+    
+    
     /*
         DELETE OPERATION: Delete DEVICE based on DEVICEID
     */
