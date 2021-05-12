@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package uts.isd.model.dao;
-import java.sql.*;
-import uts.isd.model.Device;
-
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import uts.isd.model.*;
 /**
  *
  * @author 61452

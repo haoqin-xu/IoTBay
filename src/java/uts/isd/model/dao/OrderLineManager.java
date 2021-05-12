@@ -39,12 +39,7 @@ public class OrderLineManager {
             }
         }
     }  
-    public void updateDeviceCount(int deviceID, int count) throws SQLException {       
-        //code for update-operation   
-        String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = "+count+"";
-        String where = "WHERE DEVICEID="+deviceID+"";
-        st.executeUpdate(update+where); 
-    }
+    
    
 
 }
