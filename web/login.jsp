@@ -18,17 +18,19 @@
             String emailErr = (String) session.getAttribute("emailErr");
             String passErr = (String) session.getAttribute("passErr");
             String existErr = (String) session.getAttribute("existErr");
+            String disableErr = (String) session.getAttribute("disableErr");
         %>
         <form action="LoginController" method="POST">
             <!-- need to differentiate data from login and register when they
             are posted to welcome page since there is no database yet -->
             <table>
                 <tr>
-                <div>
-                    <%= emailErr != null ? emailErr : "" %><br>
-                    <%= passErr != null ? passErr : "" %><br>
-                    <%= existErr != null ? existErr : "" %><br>
-                </div>
+                    <div>
+                        <%= emailErr != null ? emailErr : "" %><br>
+                        <%= passErr != null ? passErr : "" %><br>
+                        <%= existErr != null ? existErr : "" %><br>
+                        <%= disableErr != null ? disableErr : "" %><br>
+                    </div>
                 </tr>
                 <tr>
                     <td>Email:</td>
