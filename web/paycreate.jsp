@@ -3,11 +3,11 @@
     Created on : 06/05/2021, 4:48:39 PM
     Author     : Briana Margetts
 --%>
+<%@page import="uts.isd.model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-       <!-- <//jsp:include page="/PayController" flush="true" />-->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IoTBay - Payment Management Page</title>
     </head>
@@ -45,6 +45,9 @@
                     <td><input type="submit" value="Save Details"></td>
                 </tr>
             </table>
+                   <% if(request.getAttribute("error")!=null){ %>
+                       <script>alert("incorrect information");</script>
+                       <% } %> 
         </form>
     </body>
 </html>
