@@ -38,7 +38,7 @@ public class CreateDeviceServlet extends HttpServlet {
         int stockNum = Integer.parseInt(request.getParameter("stockNum"));
         //Retrieve the manager instance from session
         DeviceManager manager;
-        manager = (DeviceManager) session.getAttribute("manager");
+        manager = (DeviceManager) session.getAttribute("devicemanager");
         
         try {
             manager.createDevice(deviceName, manufacturer, origin, type, inStock, pricePerUnit, stockNum);
