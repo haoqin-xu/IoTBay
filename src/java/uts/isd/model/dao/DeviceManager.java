@@ -70,14 +70,35 @@ public class DeviceManager {
         String where = "where DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
     }       
+    
     public void updateDeviceCount(int deviceID, int stocknum) throws SQLException {       
-        //code for update-operation   
+        //code for ORDER MANAGEMENT
         String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = STOCK_NUM - "+stocknum+"";
         String where = "WHERE DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
         
     }  
-    
+    public void updateDeleteOrder(int orderid) throws SQLException {       
+        //code for ORDER MANAGEMENT
+        String delete = "SELECT \"ORDER\".ORDERID, DEVICE.DEVICEID, ORDERLINEITEM.\"COUNT\"\n" +
+        "FROM \"ORDER\", DEVICE, ORDERLINEITEM\n" +
+        "WHERE \"ORDER\".DEVICEID = DEVICE.DEVICEID \n" +
+        "AND \"ORDER\".STATUS = 'Cancelled'\n" +
+        "AND \"ORDER\".ORDERID = ORDERLINEITEM.ORDERID";
+        
+        ResultSet rs = st.executeQuery(delete); 
+        
+        while(rs.next()) { 
+            
+            if ((rs.getInt(1) == orderid)) {
+                String columns = "UPDATE IOTDB.DEVICE SET STOCK_NUM = STOCK_NUM + "+rs.getInt(3)+"";
+                String values = "WHERE DEVICEID = "+rs.getInt(2)+"";
+                st.executeUpdate(columns+values);
+                
+            }
+        }
+        
+    }  
     
     /*
         DELETE OPERATION: Delete DEVICE based on DEVICEID
