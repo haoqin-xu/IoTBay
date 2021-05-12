@@ -49,9 +49,9 @@ public class DeleteOrderController extends HttpServlet {
         
      
         try {
-         
+            
             manager.deleteOrder(orderid);
-           
+            
          
             
         } catch (SQLException ex) {

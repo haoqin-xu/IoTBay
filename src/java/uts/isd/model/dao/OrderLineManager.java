@@ -13,7 +13,6 @@ import uts.isd.model.*;
  
 public class OrderLineManager {
     private Statement st;
-    
     public OrderLineManager(Connection conn) throws SQLException {
         st = conn.createStatement();
     }
@@ -24,12 +23,11 @@ public class OrderLineManager {
         ID is initialised from the SQL side. All other fields are filled in by the user or backend.
     */
     public void addOrderline(int deviceid, int count) throws SQLException {
-        String fetch = "SELECT \"ORDER\".ORDERID, DEVICE.DEVICEID\n" +"FROM \"ORDER\", DEVICE WHERE \"ORDER\".DEVICEID = DEVICE.DEVICEID";
+        String fetch = "SELECT \"ORDER\".ORDERID, DEVICE.DEVICEID\n" +"FROM \"ORDER\", DEVICE WHERE \"ORDER\".DEVICEID = DEVICE.DEVICEID\n" + "ORDER BY ORDERID DESC";
         ResultSet rs = st.executeQuery(fetch); 
         
         while(rs.next()) {
-
-            
+                
             
             if ((rs.getInt(2) == deviceid)) {
                 String columns = "INSERT INTO ORDERLINEITEM(DEVICEID, ORDERID,\"COUNT\")";
@@ -40,7 +38,7 @@ public class OrderLineManager {
         }
     }  
     
-   
+    
 
 }
 

@@ -65,6 +65,9 @@
                         </tr>
                     </table>
                 </form>
-                
+                <br>
+                <div>
+                    <span><a href="ViewOrder.jsp">ViewOrder</a></span>
+                </div>
     </body>
 </html>

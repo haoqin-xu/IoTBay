@@ -19,6 +19,7 @@
             <%
             int orderid = Integer.parseInt(request.getParameter("orderid"));
             session.setAttribute("orderid", orderid);
+            
                  %>
                  
                     <h2>Update order: <%=orderid%></h2>
