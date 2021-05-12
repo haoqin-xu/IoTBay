@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package uts.isd.model.dao;
-import java.sql.*;
-import uts.isd.model.Device;
-
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import uts.isd.model.*;
 /**
  *
  * @author 61452
@@ -70,10 +72,10 @@ public class DeviceManager {
     }       
     public void updateDeviceCount(int deviceID, int count) throws SQLException {       
         //code for update-operation   
-        String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = 5";
+        String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = STOCK_NUM - "+count+"";
         String where = "WHERE DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
-    }   
+    }  
     
     
     /*

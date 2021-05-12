@@ -9,9 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>IoTBay - Admin Homepage</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div>IoTBay - Admin Management Portal
+            <div>
+                Header
+            </div>
+            
+            <div>
+                <a href="viewStaff.jsp">View and Edit Staff List</a>
+                <a href="createStaff.jsp">Create New Staff</a>
+            </div>
+        </div>
     </body>
 </html>

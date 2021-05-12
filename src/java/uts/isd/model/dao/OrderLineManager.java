@@ -29,16 +29,17 @@ public class OrderLineManager {
         
         while(rs.next()) {
 
-            int deviceID = deviceid;
             
-            if ((deviceID == deviceid)) {
+            
+            if ((rs.getInt(2) == deviceid)) {
                 String columns = "INSERT INTO ORDERLINEITEM(DEVICEID, ORDERID,\"COUNT\")";
-                String values = "VALUES("+deviceID+", "+rs.getInt(2)+", "+count+")";
+                String values = "VALUES("+rs.getInt(2)+", "+rs.getInt(1)+", "+count+")";
                 st.executeUpdate(columns+values);
                 
             }
         }
     }  
+    
    
 
 }

@@ -23,9 +23,9 @@ public class OrderManager {
     
         ID is initialised from the SQL side. All other fields are filled in by the user or backend.
     */
-    public void createOrder(int CustomerID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) throws SQLException {
+    public void createOrder(int CustomerID, int PaymentID, int DeviceID, int InvoiceID, String Date) throws SQLException {
         String columns = "INSERT INTO iotdb.\"ORDER\"(CUSTOMERID,PAYMENTID,DEVICEID,STATUS,INVOICEID,\"DATE\")";
-        String values = "VALUES("+CustomerID+", "+PaymentID+", "+DeviceID+", '"+Status+"', "+InvoiceID+", '"+Date+"')";
+        String values = "VALUES("+CustomerID+", "+PaymentID+", "+DeviceID+", 'Pending', "+InvoiceID+", '"+Date+"')";
         
         st.executeUpdate(columns+values);
     }
@@ -84,9 +84,9 @@ public class OrderManager {
     /*
         UPDATE OPERATION: Update all fields of ORDER based on ID
     */    
-    public void updateOrder(int OrderID, int CustomerID, int PaymentID, int DeviceID, String Status, int InvoiceID, String Date) throws SQLException {       
+    public void updateOrder(int OrderID, int CustomerID, int PaymentID, int DeviceID, int InvoiceID, String Date) throws SQLException {       
         //code for update-operation   
-        String update = "UPDATE iotdb.\"ORDER\" SET CUSTOMERID="+CustomerID+", PAYMENTID="+PaymentID+", DEVICEID="+DeviceID+", STATUS='"+Status+"', INVOICEID="+InvoiceID+", DATE='"+Date+"'";
+        String update = "UPDATE iotdb.\"ORDER\" SET CUSTOMERID="+CustomerID+", PAYMENTID="+PaymentID+", DEVICEID="+DeviceID+", INVOICEID="+InvoiceID+", DATE='"+Date+"'";
         String where = "where ORDERID="+OrderID+"";
         st.executeUpdate(update+where); 
     }       
