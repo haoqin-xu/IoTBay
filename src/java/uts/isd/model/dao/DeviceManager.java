@@ -70,11 +70,12 @@ public class DeviceManager {
         String where = "where DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
     }       
-    public void updateDeviceCount(int deviceID, int count) throws SQLException {       
+    public void updateDeviceCount(int deviceID, int stocknum) throws SQLException {       
         //code for update-operation   
-        String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = STOCK_NUM - "+count+"";
+        String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = STOCK_NUM - "+stocknum+"";
         String where = "WHERE DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
+        
     }  
     
     

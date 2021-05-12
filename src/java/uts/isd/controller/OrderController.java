@@ -44,7 +44,7 @@ public class OrderController extends HttpServlet {
         DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
         //2- create an instance of the Validator class 
         Validator validator = new Validator();
-        Order order = null;
+        
         //3- capture the posted email
         
         int customerid = Integer.parseInt(request.getParameter("customerid"));
@@ -62,7 +62,7 @@ public class OrderController extends HttpServlet {
         ps.print(customerid);
      
         try {
-         
+            
             manager.createOrder(customerid, paymentid, deviceid, invoiceid, date);
             orderlinemanager.addOrderline(deviceid,count);
             
