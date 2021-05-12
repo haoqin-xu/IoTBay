@@ -60,13 +60,13 @@ public class OrderController extends HttpServlet {
        
         PrintWriter ps = response.getWriter();
         ps.print(customerid);
-        
      
         try {
          
             manager.createOrder(customerid, paymentid, deviceid, status, invoiceid, date);
             orderlinemanager.addOrderline(deviceid,count);
-          //  devicemanager.updateDeviceCount(deviceid, count);
+            
+            devicemanager.updateDeviceCount(deviceid,count);
            
          
             
