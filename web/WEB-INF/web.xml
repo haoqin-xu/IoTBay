@@ -30,7 +30,7 @@
     </servlet>
     <servlet>
         <servlet-name>ViewStaff</servlet-name>
-        <servlet-class>uts.isd.controller.ViewStaffController</servlet-class>
+        <servlet-class>uts.isd.controller.ViewStaffController1</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateStaffController</servlet-name>
@@ -43,6 +43,10 @@
     <servlet>
         <servlet-name>DeleteOrderController</servlet-name>
         <servlet-class>uts.isd.controller.DeleteOrderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewStaffController</servlet-name>
+        <servlet-class>uts.isd.controller.ViewStaffController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>DeleteOrderController</servlet-name>
         <url-pattern>/DeleteOrderController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewStaffController</servlet-name>
+        <url-pattern>/ViewStaffController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
