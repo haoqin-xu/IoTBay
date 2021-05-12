@@ -40,6 +40,10 @@
         <servlet-name>AdminViewController</servlet-name>
         <servlet-class>uts.isd.controller.AdminViewController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteOrderController</servlet-name>
+        <servlet-class>uts.isd.controller.DeleteOrderController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>AdminViewController</servlet-name>
         <url-pattern>/AdminViewController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteOrderController</servlet-name>
+        <url-pattern>/DeleteOrderController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

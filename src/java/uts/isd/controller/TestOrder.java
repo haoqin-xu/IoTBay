@@ -77,10 +77,9 @@ public class TestOrder {
             
             System.out.print("DeviceID: ");
             int DeviceID = in.nextInt();
-            in.nextLine();
+           
                     
-            System.out.print("Status: ");
-            String Status = in.nextLine();
+            
             
             System.out.print("InvoiceID: ");
             int InvoiceID = in.nextInt();
@@ -90,7 +89,7 @@ public class TestOrder {
             String Date = in.nextLine();
 
             
-            db.createOrder(CustomerID, PaymentID, DeviceID, Status, InvoiceID, Date);
+            db.createOrder(CustomerID, PaymentID, DeviceID, InvoiceID, Date);
             System.out.println("Order is added to the database.");
 
         } catch (SQLException ex) {
@@ -132,10 +131,9 @@ public class TestOrder {
             int PaymentID = in.nextInt();
             System.out.print("New DeviceID: ");
             int DeviceID = in.nextInt();
-            in.nextLine();
             
-            System.out.print("New Status: ");
-            String Status = in.nextLine();
+            
+            
             
             System.out.print("New InvoiceID: ");
             int InvoiceID = in.nextInt();
@@ -144,7 +142,7 @@ public class TestOrder {
             System.out.print("New Date: ");
             String Date = in.nextLine();
             
-            db.updateOrder(ID, CustomerID, PaymentID, DeviceID, Status, InvoiceID, Date);
+            db.updateOrder(ID, CustomerID, PaymentID, DeviceID, InvoiceID, Date);
             System.out.println("Order fields updated");
 
         } catch (SQLException ex) {

@@ -69,6 +69,14 @@
                             <td><input type="submit" value="Submit"></td>
              </tr>
             </form>
-                  
+            <form action ="DeleteOrderController" method ="POST">
+                <tr>
+                            <td>Enter orderid to delete:</td>
+                            <td><input type="number" name="orderid"></td>
+             </tr>
+             <tr>
+                            <td><input type="submit" value="Submit"></td>
+             </tr>
+            </form>  
     </body>
 </html>
