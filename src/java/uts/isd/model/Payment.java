@@ -7,10 +7,6 @@ package uts.isd.model;
 
 import java.io.Serializable;
 
-/**
- *
- * @author 61452
- */
 public class Payment implements Serializable{
     private int customerID;
     private String paymentmethod;
