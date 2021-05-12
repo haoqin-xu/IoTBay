@@ -17,26 +17,19 @@
         </div>
 
         <h1>Please enter your payment details</h1>
-         <%
-            String paymentmethod = (String) session.getAttribute("paymentmethod");
-            String accountnumber = (String) session.getAttribute("accountnumber");
-            String ccv = (String) session.getAttribute("ccv");
-        %>
+
         <br>
-        <form action="payview.jsp" method="POST">
+        <form action="PayController" method="POST">
             <table>
                 <tr>
-                    <%= paymentmethod != null ? paymentmethod : "" %>
                     <td>Payment Method:</td>
                     <td><input type="text" id="paymentmethod" name="paymentmethod"></td>
                 </tr>
                 <tr>
-                    <%= accountnumber != null ? accountnumber : "" %>
                     <td>Account Number:</td>
                     <td><input type="text" id="accountnumber" name="accountnumber"></td>
                 </tr>
                 <tr>
-                    <%= ccv != null ? ccv : "" %>
                     <td>CVV Number:</td>
                     <td><input type="password" id="ccv" name="ccv"></td>
                 </tr>
