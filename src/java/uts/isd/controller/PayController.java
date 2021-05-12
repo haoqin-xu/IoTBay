@@ -33,7 +33,7 @@ public class PayController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
                                        throws ServletException, java.io.IOException {
 
-        try
+      /*  try
         {	    
 
              int CustomerID = Integer.parseInt(request.getParameter("un"));
@@ -64,7 +64,7 @@ public class PayController extends HttpServlet {
         catch (Throwable theException) 	    
         {
              System.out.println(theException);     
-        }
+        }*/
     }
 
     @Override
@@ -82,10 +82,18 @@ public class PayController extends HttpServlet {
              String Date = (request.getParameter("un"));
              
         
-        PaymentManager manager = (PaymentManager) session.getAttribute("manager");
+        PaymentManager payment = (PaymentManager) session.getAttribute("manager");
 
+        try{
+            //Payment payment = new Payment(CustomerID,Paymentmethod,Accountnumber,Ccv,Ammount,Date);
 
-        Payment payment = null; 
+        }
+        
+        catch (Throwable theException) 	    
+        {
+             System.out.println(theException);     
+        }
+         payment = null; 
     }
 }
 
