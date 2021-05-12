@@ -51,7 +51,7 @@ public class OrderController extends HttpServlet {
         int paymentid = Integer.parseInt(request.getParameter("paymentid"));
         int deviceid = Integer.parseInt(request.getParameter("deviceid"));
         
-        String status = request.getParameter("status");
+        
         int invoiceid = Integer.parseInt(request.getParameter("invoiceid"));
         String date = request.getParameter("date");
         int count = Integer.parseInt(request.getParameter("count"));
@@ -63,7 +63,7 @@ public class OrderController extends HttpServlet {
      
         try {
          
-            manager.createOrder(customerid, paymentid, deviceid, status, invoiceid, date);
+            manager.createOrder(customerid, paymentid, deviceid, invoiceid, date);
             orderlinemanager.addOrderline(deviceid,count);
             
             devicemanager.updateDeviceCount(deviceid,count);
