@@ -7,6 +7,8 @@ package uts.isd.model.dao;
 
 import java.sql.*;
 import uts.isd.model.Payment;
+import java.util.ArrayList;
+import java.sql.Statement;
 
 /**
  *
@@ -78,4 +80,38 @@ public class PaymentManager {
        String delete = "DELETE FROM iotdb.PAYMENT where PAYMENTID="+PaymentID+"";
        st.executeUpdate(delete);
     }
+    
+    /*
+    /* fetch all payments. fetch all payments in array
+    public int getPaymentArray(){
+        //code to make payment array 
+        ResultSet rs=stmt.exevuteQuery("se");
+        ArrayList<Payment> PaymentList = new ArrayList<Payment>();
+        while(rs.next()){
+            Payment pay = new Payment();
+            
+            pay.setPaymentmethod(rs.getInt(1));
+            pay.setAccountnumber(rs.getInt(2));
+            pay.setCcv(rs.getInt(3));
+            pay.setAmmount(rs.getInt(4));
+            pay.setDate(rs.getInt(5));
+                    
+            PaymentList.add(pay);
+            
+        }
+        
+        try{
+        
+        
+        } 
+    
+    
+    
+    catch(Exception e){
+        System.out.println(e);
+
+    }
+   }
+    
+    */
 }
