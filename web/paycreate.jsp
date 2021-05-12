@@ -12,6 +12,16 @@
         <title>IoTBay - Payment Management Page</title>
     </head>
     <body>
+        <%/*
+             int customerID =  (int) session.getAttribute("customerID");
+             String paymentmethod = (String) session.getAttribute("paymentmethod");
+             String accountnumber = (String) session.getAttribute("accountnumber");
+             int ccv = (int) session.getAttribute("ccv");
+             double ammount= (Double) session.getAttribute("ammount");
+             String date = (String) session.getAttribute("date");
+             Payment payment = (Payment) request.getAttribute("payment");
+        */%>
+        
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
@@ -23,14 +33,14 @@
             <table>
                 <tr>
                     <td>Payment Method:</td>
-                    <td><input type="text" id="paymentmethod" name="paymentmethod"></td>
+                    <td><%//payment.getCustomerID();%></td>
                 </tr>
                 <tr>
                     <td>Account Number:</td>
                     <td><input type="text" id="accountnumber" name="accountnumber"></td>
                 </tr>
                 <tr>
-                    <td>CVV Number:</td>
+                    <td>CCV Number:</td>
                     <td><input type="password" id="ccv" name="ccv"></td>
                 </tr>
                 <tr>
@@ -39,6 +49,7 @@
                 </tr>
             </table>
                    <% if(request.getAttribute("error")!=null){ %>
+                   <!--do not use client side script-->
                        <script>alert("incorrect information");</script>
                        <% } %> 
         </form>
