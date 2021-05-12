@@ -66,7 +66,7 @@ public class OrderController extends HttpServlet {
          
             manager.createOrder(customerid, paymentid, deviceid, status, invoiceid, date);
             orderlinemanager.addOrderline(deviceid,count);
-            devicemanager.updateDeviceCount(deviceid, count);
+          //  devicemanager.updateDeviceCount(deviceid, count);
            
          
             
