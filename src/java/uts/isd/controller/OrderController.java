@@ -62,11 +62,11 @@ public class OrderController extends HttpServlet {
         ps.print(customerid);
      
         try {
-            
+            devicemanager.updateDeviceCount(deviceid,count);
             manager.createOrder(customerid, paymentid, deviceid, invoiceid, date);
             orderlinemanager.addOrderline(deviceid,count);
             
-            devicemanager.updateDeviceCount(deviceid,count);
+           
            
          
             
