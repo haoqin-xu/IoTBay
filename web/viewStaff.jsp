@@ -26,10 +26,14 @@
                 <tr>
                     <td>
                         <!-- 
-                        This form is used to view a list of all staff. The DAO for searching
-                        staff members based on part of their name and role will fetch all
-                        staff members if the search parameter is an empty string. This
-                        allows reusage of the function and avoids code redundancy.
+                        This form is used to view a list of all staff. The DAO 
+                        for searching staff members based on part of their name 
+                        and role will fetch all staff members if the search 
+                        parameter is an empty string. This allows reusage of the 
+                        function and avoids code redundancy.
+                        
+                        The empty value field ensures that the value that is
+                        sent to the DAO is an empty string. 
                         -->
                         <form action="ViewStaffController" method="POST">
                             <input type="hidden" id="name" name="name" value="">
@@ -42,14 +46,16 @@
 
                 <tr>
                     <td>
-
                         Search staff based on part of name and role (leave fields empty to not use that parameter for the search)
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <!-- 
-                        This form is used to search staff based on part of their name
+                        This form is used to search staff based on part of their 
+                        name and role using the % wildcard. Users can leave 
+                        either of the fields blank if they do not wish to use
+                        it to filter results during the query.
                         -->
                         <form action="ViewStaffController" method="POST">
                             Name:
