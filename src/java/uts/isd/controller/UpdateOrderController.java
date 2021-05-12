@@ -40,13 +40,13 @@ public class UpdateOrderController extends HttpServlet {
         int paymentid = Integer.parseInt(request.getParameter("paymentid"));
         int deviceid = Integer.parseInt(request.getParameter("deviceid"));
         
-        String status = request.getParameter("status");
+        
         int invoiceid = Integer.parseInt(request.getParameter("invoiceid"));
         String date = request.getParameter("date");
         
         try {
             
-            manager.updateOrder(orderid,customerid,paymentid,deviceid,status,invoiceid,date);
+            manager.updateOrder(orderid,customerid,paymentid,deviceid,invoiceid,date);
             
             
         } catch (SQLException ex) {

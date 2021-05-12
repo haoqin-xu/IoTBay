@@ -37,10 +37,6 @@
                             <td><input type="number" name="deviceid"></td>
                         </tr>
                         <tr>
-                            <td>Status:</td>
-                            <td><input type="text" name="status"></td>
-                        </tr>
-                        <tr>
                             <td>InvoiceID:</td>
                             <td><input type="number" name="invoiceid"></td>
                         </tr>
