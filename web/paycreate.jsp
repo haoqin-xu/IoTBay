@@ -14,28 +14,28 @@
     </head>
     <body>
         <%
-             String customerIDErr =  (String) session.getAttribute("customerIDErr");
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
              String accountnumberErr = (String) session.getAttribute("accountnumberErr");
              String ccvErr = (String) session.getAttribute("ccvErr");
-             String ammountErr= (String) session.getAttribute("ammountErr");
-             String dateErr = (String) session.getAttribute("dateErr");
-             Payment paymentErr = (Payment) request.getAttribute("paymentErr");
         %>
-        
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
-
         <h1>Please enter your payment details</h1>
-
         <br>
         <form action="payview.jsp" method="post" method="get">
             <table>
                 <tr>
                     <td>Payment Method:</td>
                      <%=(paymentmethodErr !=null ? paymentmethodErr:"")%>
-                    <td><input type="text" id="paymentmethod" name="paymentmethod"></td>
+                    <td><select class="select" id="paymentmethod" name="paymentmethod">
+                            <option value="">select payment method</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Gift Card">Gift Card</option>
+                            <option value="Prepaid Card">Pre-paid Card</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>Account Number:</td>
@@ -46,15 +46,12 @@
                     <td>CCV Number:</td>
                     <%=(ccvErr !=null ? ccvErr:"")%>
                     <td><input type="password" id="ccv" name="ccv"></td>
-                    <!--<td><%//=payment.getCcv()%></td>-->
-
                 </tr>
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Save Details"></td>
                 </tr>
             </table>
- 
         </form>
     </body>
 </html>
