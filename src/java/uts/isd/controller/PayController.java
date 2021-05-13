@@ -43,14 +43,18 @@ public class PayController extends HttpServlet {
              int ccv= Integer.parseInt(request.getParameter("ccv"));
              double ammount= Double.parseDouble(request.getParameter("ammount"));
              String date = (request.getParameter("date"));
- 
-             //Payment  Payment = null;
              
-             PaymentManager payment = (PaymentManager) session.getAttribute("manager");
+             PaymentValidator validator = new PaymentValidator();
+             //Payment Payment = null;
+             PaymentManager manager = (PaymentManager) session.getAttribute("manager");
+             validator.clear(session);
 
         try{
            
-            payment.createPayment(customerID,paymentmethod,accountnumber,ccv,ammount,date);
+            manager.createPayment(customerID,paymentmethod,accountnumber,ccv,ammount,date);
+            Payment payment = new Payment(customerID,paymentmethod,accountnumber,ccv,ammount,date);
+            session.setAttribute("payment", payment);
+            request.getRequestDispatcher("paycreate.jsp").include(request, response);
 
         }
         
