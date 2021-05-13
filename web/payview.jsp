@@ -16,23 +16,23 @@
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
         <h1>Your saved payment details</h1>
-        <% /*if (request.getParameter("tos") != null && request.getParameter("tos").equals("yes")) {
+        <%
             String paymentmethod = request.getParameter("paymentmethod");
             String accountnumber = request.getParameter("accountnumber");
             String ccv = request.getParameter("ccv");
-         */%>
+         %>
         </br>
         <table id="paymentdetail">
             <tr>
                 <th>Method</th>
-                <td>${payment.paymentmethod}</td>
+                <td><%= paymentmethod%></td>
             </tr>
                 <th>Account Number</th>
-                <td>${payment.accountnumber}</td>
+                <td><%= accountnumber%></td>
             </tr>
             <tr>
                 <th>CCV Number</th> <!--CCV SHOUD NOT BE VISIBLE-->
-                <td>${payment.ccv}</td>
+                <td><%= ccv%></td>
             </tr>
             <tr>
                 <td></td>
@@ -63,9 +63,7 @@
             </tr>
        </table>
        </form>
-            
-       <input type="text" placeholder="Search..."> <input type="text" placeholder="Search..."> 
-       
+         
        
        
        <br>
