@@ -46,7 +46,7 @@
             
                  %>
                  
-                    <h2>Update order: <%=orderid%></h2>
+                    <h2>Update order:</h2>
                     <table>
                         
                         <tr>

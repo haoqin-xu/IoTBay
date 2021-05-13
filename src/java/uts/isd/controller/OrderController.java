@@ -42,12 +42,13 @@ public class OrderController extends HttpServlet {
         OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
         DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
-        //2- create an instance of the Validator class 
+         
         Validator validator = new Validator();
         
-        //3- capture the posted email
         
-        int customerid = Integer.parseInt(request.getParameter("customerid"));
+        // retrieving anonymous user
+        int customerid = Integer.parseInt(session.getAttribute("anonymouscustomer").toString());
+       // int customerid = Integer.parseInt(request.getParameter("customerid"));
         int paymentid = Integer.parseInt(request.getParameter("paymentid"));
         int deviceid = Integer.parseInt(request.getParameter("deviceid"));
         
