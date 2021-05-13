@@ -4,6 +4,7 @@
     Author     : Briana Margetts
 --%>
 <%@page import="uts.isd.model.*"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,15 +13,15 @@
         <title>IoTBay - Payment Management Page</title>
     </head>
     <body>
-        <%/*
-             int customerID =  (int) session.getAttribute("customerID");
-             String paymentmethod = (String) session.getAttribute("paymentmethod");
-             String accountnumber = (String) session.getAttribute("accountnumber");
-             int ccv = (int) session.getAttribute("ccv");
-             double ammount= (Double) session.getAttribute("ammount");
-             String date = (String) session.getAttribute("date");
-             Payment payment = (Payment) request.getAttribute("payment");
-        */%>
+        <%
+             String customerIDErr =  (String) session.getAttribute("customerIDErr");
+             String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
+             String accountnumberErr = (String) session.getAttribute("accountnumberErr");
+             String ccvErr = (String) session.getAttribute("ccvErr");
+             String ammountErr= (String) session.getAttribute("ammountErr");
+             String dateErr = (String) session.getAttribute("dateErr");
+             Payment paymentErr = (Payment) request.getAttribute("paymentErr");
+        %>
         
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
@@ -29,29 +30,31 @@
         <h1>Please enter your payment details</h1>
 
         <br>
-        <form action="PayController" method="POST">
+        <form action="payview.jsp" method="post" method="get">
             <table>
                 <tr>
                     <td>Payment Method:</td>
-                    <td><%//payment.getCustomerID();%></td>
+                     <%=(paymentmethodErr !=null ? paymentmethodErr:"")%>
+                    <td><input type="text" id="paymentmethod" name="paymentmethod"></td>
                 </tr>
                 <tr>
                     <td>Account Number:</td>
+                     <%=(accountnumberErr !=null ? accountnumberErr:"")%>
                     <td><input type="text" id="accountnumber" name="accountnumber"></td>
                 </tr>
                 <tr>
                     <td>CCV Number:</td>
+                    <%=(ccvErr !=null ? ccvErr:"")%>
                     <td><input type="password" id="ccv" name="ccv"></td>
+                    <!--<td><%//=payment.getCcv()%></td>-->
+
                 </tr>
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Save Details"></td>
                 </tr>
             </table>
-                   <% if(request.getAttribute("error")!=null){ %>
-                   <!--do not use client side script-->
-                       <script>alert("incorrect information");</script>
-                       <% } %> 
+ 
         </form>
     </body>
 </html>
