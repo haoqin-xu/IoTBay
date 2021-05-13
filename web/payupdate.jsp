@@ -4,6 +4,7 @@
     Author     : Briana Margetts
 --%>
 <%@page import="uts.isd.model.*"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,45 +13,42 @@
         <title>IoTBay - Payment Management Page</title>
     </head>
     <body>
-        <%
-             int customerID =  (int) session.getAttribute("customerID");
-             String paymentmethod = (String) session.getAttribute("paymentmethod");
-             String accountnumber = (String) session.getAttribute("accountnumber");
-             int ccv = (int) session.getAttribute("ccv");
-             double ammount= (Double) session.getAttribute("ammount");
-             String date = (String) session.getAttribute("date");
-        %>
-        
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
-
-        <h1>Please enter your payment details</h1>
-
+        <h1>Update your payment details</h1>
         <br>
-        <form action="PayController" method="POST">
+         <%
+            String paymentmethod = request.getParameter("paymentmethod");
+            String accountnumber = request.getParameter("accountnumber");
+            String ccv = request.getParameter("ccv");
+         %>
+        <form action="payview.jsp" method="post" method="get">
             <table>
                 <tr>
                     <td>Payment Method:</td>
-                    <td><input type="text" id="paymentmethod" name="paymentmethod"></td>
+                    <td><select class="select" id="paymentmethod" name="paymentmethod">
+                            <option value="<%= paymentmethod%>"><%= paymentmethod%></option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Gift Card">Gift Card</option>
+                            <option value="Prepaid Card">Pre-paid Card</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>Account Number:</td>
-                    <td><input type="text" id="accountnumber" name="accountnumber"></td>
+                    <td><input type="text" id="accountnumber" name="accountnumber" value="<%= accountnumber%>"></td>
                 </tr>
                 <tr>
                     <td>CCV Number:</td>
-                    <td><input type="password" id="ccv" name="ccv"></td>
+                    <td><input type="password" id="ccv" name="ccv" value="<%= ccv%>"></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Save Details"></td>
+                    <td><input type="submit" value="Update Details"></td>
+                    <!--put cancel button?-->
                 </tr>
             </table>
-                   <% if(request.getAttribute("error")!=null){ %>
-                   <!--do not use client side script-->
-                       <script>alert("incorrect information");</script>
-                       <% } %> 
         </form>
     </body>
-</html>
