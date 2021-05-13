@@ -44,7 +44,10 @@
           //  int orderid = Integer.parseInt(request.getParameter("orderid"));
             int orderid = detailedorder.getOrderID();
             session.setAttribute("orderid", orderid);
-            
+            int deviceid = detailedorder.getDeviceID();
+            session.setAttribute("deviceid", deviceid);
+            int countp = detailedorder.getCount();
+            session.setAttribute("countp", countp);
                  %>
                  
                     <h2>Update order:<%=detailedorder.getOrderID()%></h2>

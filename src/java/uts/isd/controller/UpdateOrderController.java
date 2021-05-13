@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.isd.model.Order;
+import uts.isd.model.dao.DeviceManager;
 import uts.isd.model.dao.OrderLineManager;
 import uts.isd.model.dao.OrderManager;
 
@@ -34,16 +35,16 @@ public class UpdateOrderController extends HttpServlet {
         HttpSession session = request.getSession();
         
         OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");;
-       
+        DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
         PrintWriter ps = response.getWriter();
         int orderid = Integer.parseInt(session.getAttribute("orderid").toString());
         int count = Integer.parseInt(request.getParameter("count"));
-        
-        
+        int deviceid = Integer.parseInt(session.getAttribute("deviceid").toString());
+        int countp = Integer.parseInt(session.getAttribute("countp").toString());
         try {
-            
+            devicemanager.updateDeviceCountP(deviceid, countp);
             orderlinemanager.updateOrderLine(orderid,count);
-            
+            devicemanager.updateDeviceCount(deviceid, count);
             
         } catch (SQLException ex) {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);

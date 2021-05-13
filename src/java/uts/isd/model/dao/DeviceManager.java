@@ -77,7 +77,14 @@ public class DeviceManager {
         String where = "WHERE DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
         
-    }  
+    }
+    public void updateDeviceCountP(int deviceID, int stocknum) throws SQLException {       
+        //code for ORDER MANAGEMENT
+        String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = STOCK_NUM + "+stocknum+"";
+        String where = "WHERE DEVICEID="+deviceID+"";
+        st.executeUpdate(update+where); 
+        
+    }
     public void updateDeleteOrder(int orderid) throws SQLException {       
         //code for ORDER MANAGEMENT
         String delete = "SELECT \"ORDER\".ORDERID, DEVICE.DEVICEID, ORDERLINEITEM.\"COUNT\"\n" +
