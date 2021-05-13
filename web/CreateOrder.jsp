@@ -45,10 +45,6 @@
                             <td><input type="number" name="invoiceid"></td>
                         </tr>
                         <tr>
-                            <td>Date:</td>
-                            <td><input type="text" name="date"></td>
-                        </tr>
-                        <tr>
                             <td>Count: </td>
                             <td><input type="number" name="count"></td>
                         </tr>

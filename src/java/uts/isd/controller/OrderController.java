@@ -60,7 +60,7 @@ public class OrderController extends HttpServlet {
         
         
         int invoiceid = Integer.parseInt(request.getParameter("invoiceid"));
-        String date = request.getParameter("date");
+        String date = session.getAttribute("date").toString();
         int count = Integer.parseInt(request.getParameter("count"));
         validator.clear(session);
         //5- retrieve the manager instance from session
