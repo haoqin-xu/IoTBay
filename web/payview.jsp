@@ -22,25 +22,28 @@
             String ccv = request.getParameter("ccv");
          %>
         </br>
+        <form action="payupdate.jsp" method="post" method="get">
         <table id="paymentdetail">
             <tr>
-                <th>Method</th>
-                <td><%= paymentmethod%></td>
+                <th>Payment Method</th>
+                <td><%= paymentmethod%>
+                </td>
             </tr>
                 <th>Account Number</th>
-                <td><%= accountnumber%></td>
+                <td><%= accountnumber%>
+               </td>
             </tr>
             <tr>
-                <th>CCV Number</th> <!--CCV SHOUD NOT BE VISIBLE-->
+                <th>CCV Number</th>
                 <td><%= ccv%></td>
             </tr>
             <tr>
                 <td></td>
-                <td><a href="paycreate.jsp">Update</a>
+                <td><input type="submit" value="Update">
                 <a href="index.jsp">Delete</a></td>
             </tr>    
         </table>
-            
+        </form>    
         <br>
         
         
@@ -71,9 +74,9 @@
             <tr>
                 <th>Payment ID</th>
                 <th>Date</th>
-                <th>Method</th>
+                <th>Payment Method</th>
                 <th>Account Number</th>
-                <th>CVV Number</th>
+                <th>CCV Number</th>
 
             </tr>
             
@@ -84,7 +87,7 @@
                 <td>${payment.date}</td>         
                 <td>${payment.paymentmethod}</td>         
                 <td>${payment.accountnumber}</td>         
-                <td>${payment.ccv}</td>  <!--CVV SHOUD NOT BE VISIBLE-->      
+                <td>${payment.ccv}</td>      
             </tr>
             <%//}%>
         </table>
