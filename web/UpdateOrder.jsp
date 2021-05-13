@@ -23,9 +23,12 @@
             
                  %>
                  
-                    <h2>Current ordernumber: <%=detailedorder.getOrderID()%></h2>
+                    <h2>Current Order</h2>
                     <table>
-                        
+                        <tr>
+                            <td>Order number:</td>
+                            <td><%=detailedorder.getOrderID()%></td>
+                        </tr>
                         <tr>
                             <td>DeviceID:</td>
                             <td><%=detailedorder.getDeviceID()%></td>
