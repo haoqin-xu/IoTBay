@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.isd.model.Order;
+import uts.isd.model.dao.OrderLineManager;
 import uts.isd.model.dao.OrderManager;
 
 /**
@@ -32,21 +33,16 @@ public class UpdateOrderController extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
+        OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");;
        
         PrintWriter ps = response.getWriter();
         int orderid = Integer.parseInt(session.getAttribute("orderid").toString());
-        int customerid = Integer.parseInt(request.getParameter("customerid"));
-        int paymentid = Integer.parseInt(request.getParameter("paymentid"));
-        int deviceid = Integer.parseInt(request.getParameter("deviceid"));
+        int count = Integer.parseInt(request.getParameter("count"));
         
-        
-        int invoiceid = Integer.parseInt(request.getParameter("invoiceid"));
-        String date = request.getParameter("date");
         
         try {
             
-            manager.updateOrder(orderid,customerid,paymentid,deviceid,invoiceid,date);
+            orderlinemanager.updateOrderLine(orderid,count);
             
             
         } catch (SQLException ex) {

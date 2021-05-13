@@ -17,7 +17,7 @@
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
-        <form action="ViewDetailedOrderController" method="POST">
+        <form action="ViewOrderController" method="POST">
             <%
                 OrderLineItem detailedorder = (OrderLineItem)session.getAttribute("detailedorder");
             
@@ -41,34 +41,20 @@
                 </form>
         <form action="UpdateOrderController" method="POST">
             <%
-            int orderid = Integer.parseInt(request.getParameter("orderid"));
+          //  int orderid = Integer.parseInt(request.getParameter("orderid"));
+            int orderid = detailedorder.getOrderID();
             session.setAttribute("orderid", orderid);
             
                  %>
                  
-                    <h2>Update order:</h2>
+                    <h2>Update order:<%=detailedorder.getOrderID()%></h2>
                     <table>
                         
                         <tr>
-                            <td>CustomerID:</td>
-                            <td><input type="number" name="customerid"></td>
+                            <td>count:</td>
+                            <td><input type="number" name="count"></td>
                         </tr>
-                        <tr>
-                            <td>PaymentID:</td>
-                            <td><input type="number" name="paymentid"></td>
-                        </tr>
-                        <tr>
-                            <td>DeviceID:</td>
-                            <td><input type="number" name="deviceid"></td>
-                        </tr>
-                        <tr>
-                            <td>InvoiceID:</td>
-                            <td><input type="number" name="invoiceid"></td>
-                        </tr>
-                        <tr>
-                            <td>Date:</td>
-                            <td><input type="text" name="date"></td>
-                        </tr>
+ 
                         <tr>
                             <td><input type="submit" value="Submit"></td>
                         </tr>

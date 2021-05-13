@@ -56,6 +56,13 @@ public class OrderLineManager {
         }
         return null;
     }
+    public void updateOrderLine(int orderid, int count) throws SQLException {       
+        //code for update-operation   
+        String update = "UPDATE iotdb.ORDERLINEITEM SET \"COUNT\" = "+count+"";
+        String where = "where ORDERID="+orderid+"";
+        st.executeUpdate(update+where); 
+    }   
+    
 
 }
 
