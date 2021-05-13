@@ -111,7 +111,9 @@ public class StaffManager {
             String dob = rs.getString(7);
             String userRole = rs.getString(8);
             
-            resultArr.add(new Staff(ID, email, userName, pass, dob, phone, address, userRole)); // push the staff object into the results arraylist.
+            Staff s = new Staff(ID, email, userName, pass, dob, phone, address, userRole);
+            
+            resultArr.add(s); // push the staff object into the results arraylist.
         }
         
         if (resultArr.size() > 0) // if results are not empty, return them

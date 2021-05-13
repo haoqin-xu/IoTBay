@@ -73,10 +73,34 @@
             <!-- the results of fetching staff is shown here!-->
             <%= notFoundErr != null ? notFoundErr : "" %>
             <%
-                if (resultArr != null) {
-                
+            if (resultArr != null) { // if the search returns at least 1 staff user 
+                System.out.println(resultArr);
             %>
-            <div> Results found, put table here </div>
+                <table id="staffSearchResult">
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>Password</th>
+                        <th>Date of Birth</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                    </tr>
+                <% for (Staff s : resultArr) { %>
+                    <tr>
+                        <td><%= s.getID()%></td>
+                        <td><%= s.getEmail()%></td>
+                        <td><%= s.getName()%></td>
+                        <td><%= s.getPassword()%></td>
+                        <td><%= s.getDob()%></td>
+                        <td><%= s.getPhone()%></td>
+                        <td><%= s.getAddress()%></td>
+                        <td><%= s.getRole()%></td>
+                        <!-- There should also be links to edit the users or delete them here -->
+                    </tr>
+                <% } %>
+                </table>
             <% } %>
             
         </div>
