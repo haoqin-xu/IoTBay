@@ -4,6 +4,8 @@
     Author     : Alec
 --%>
 
+<%@page import="uts.isd.model.OrderLineItem"%>
+<%@page import="uts.isd.model.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,25 @@
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
+        <form action="ViewDetailedOrderController" method="POST">
+            <%
+                OrderLineItem detailedorder = (OrderLineItem)session.getAttribute("detailedorder");
+            
+                 %>
+                 
+                    <h2>Current ordernumber: <%=detailedorder.getOrderID()%></h2>
+                    <table>
+                        
+                        <tr>
+                            <td>DeviceID:</td>
+                            <td><%=detailedorder.getDeviceID()%></td>
+                        </tr>
+                        <tr>
+                            <td>Count:</td>
+                            <td><%=detailedorder.getCount()%></td>
+                        </tr>
+                    </table>
+                </form>
         <form action="UpdateOrderController" method="POST">
             <%
             int orderid = Integer.parseInt(request.getParameter("orderid"));

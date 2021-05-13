@@ -60,7 +60,7 @@
             <br>
             <br>
             
-            <form action ="UpdateOrder.jsp" method ="POST">
+            <form action ="ViewOrderController" method ="POST">
                 <tr>
                             <td>Enter orderid to update:</td>
                             <td><input type="number" name="orderid"></td>

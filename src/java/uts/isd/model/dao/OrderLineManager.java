@@ -38,7 +38,24 @@ public class OrderLineManager {
         }
     }  
     
-    
+    public OrderLineItem findOrderLine(int OrderID) throws SQLException {
+        //setup the select sql query string  
+        String fetch = "SELECT * FROM IOTDB.ORDERLINEITEM WHERE ORDERID="+OrderID+"";
+        //execute this query using the statement field      
+        //add the results to a ResultSet      
+        ResultSet rs = st.executeQuery(fetch);
+        //search the ResultSet for a specific order using the parameters               
+        while(rs.next()) {
+            int orderID = rs.getInt(2);
+            
+            if ((orderID == OrderID)) {
+                int deviceid = rs.getInt(1);
+                int count = rs.getInt(3);
+                return new OrderLineItem(deviceid,orderID,count); // return admin user object to view (to be stored in session)
+            }
+        }
+        return null;
+    }
 
 }
 
