@@ -17,13 +17,10 @@
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
+        <br>
         <form action ="ListOrderController" method ="POST">
              <tr>
-                <td>CustomerID:</td>
-                <td><input type="number" name="customerid"></td>
-             </tr>
-             <tr>
-                <td><input type="submit" value="Submit"></td>
+                <td><input type="submit" value="View order list"></td>
              </tr>
         <%
             

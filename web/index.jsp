@@ -20,6 +20,7 @@
                     //set anonymous customer
                     Random rand = new Random();
                     session.setAttribute("anonymouscustomer",rand.nextInt(1000));
+                    session.setAttribute("randompaymentid",rand.nextInt(1000));
                 %>
                 <% if (session.getAttribute("user") == null) { // if there are no users logged in %>
                     <span>You are not logged in. <a href="login.jsp">Login</a> <a href="register.jsp">Register</a></span>

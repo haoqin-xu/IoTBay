@@ -37,14 +37,6 @@
                 <form action="OrderController" method="POST">
                     <table>
                         <tr>
-                            <td>CustomerID:</td>
-                            <td><input type="number" name="customerid"></td>
-                        </tr>
-                        <tr>
-                            <td>PaymentID:</td>
-                            <td><input type="number" name="paymentid"></td>
-                        </tr>
-                        <tr>
                             <td>DeviceID:</td>
                             <td><input type="number" name="deviceid"></td>
                         </tr>

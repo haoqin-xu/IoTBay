@@ -34,8 +34,12 @@ public class ListOrderController extends HttpServlet {
         
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
        
-     //   PrintWriter ps = response.getWriter();
-        int customerid = Integer.parseInt(request.getParameter("customerid"));
+    
+        // retrieving anonymous user
+        int customerid = Integer.parseInt(session.getAttribute("anonymouscustomer").toString());
+        
+        //line below is standard version
+     //   int customerid = Integer.parseInt(request.getParameter("customerid"));
         ArrayList<Order> list = null;
         try {
             
