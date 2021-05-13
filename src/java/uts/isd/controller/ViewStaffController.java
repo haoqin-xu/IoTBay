@@ -95,7 +95,7 @@ public class ViewStaffController extends HttpServlet {
         ArrayList<Staff> resultArr = new ArrayList<Staff>();
         
         try { // use the staff manager to search for staff users
-            resultArr.addAll(manager.searchUser(name, role));
+            resultArr = manager.searchUser(name, role);
         } catch (SQLException ex) {
             Logger.getLogger(ViewStaffController.class.getName()).log(Level.SEVERE, null, ex);
         }
