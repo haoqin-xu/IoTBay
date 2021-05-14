@@ -38,7 +38,7 @@
                 /*
                     Customer Object is stored to session here.
                 */
-                Customer user = new Customer(email, name, password, dob, phone, address);
+                Customer user = new Customer(email, name, password, dob, phone, address, role);
                 session.setAttribute("user", user); // save user object to session as "user"
             %>
         <% } else if (request.getParameter("tos") != null && request.getParameter("tos").equals("login")) {
