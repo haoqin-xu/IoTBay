@@ -26,57 +26,49 @@ import uts.isd.model.dao.StaffManager;
  */
 public class ViewStaffController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    /*
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            //TODO output your page here. You may use following sample code.
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ViewStaff</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ViewStaff at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-    */
-
     // HttpServlet methods
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * This is called upon loading the page from the admin home view.
      */
-    /*
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }*/
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // This is called from the admin home page
+        
+        HttpSession session = request.getSession();
+        // retrieve the Staff DAO manager from the session (it was initialised by the ConnServlet at index.jsp)
+        StaffManager manager = (StaffManager) session.getAttribute("staffmanager");
+        // clear existing data/error messages stored in the session
+        session.setAttribute("resultArr", null);
+        session.setAttribute("notFoundErr", "");
+        
+        // create array to store search results
+        ArrayList<Staff> resultArr = new ArrayList<Staff>();
+        
+        /* 
+            The staff list should display all staff when it is opened from the 
+            admin home page. Empty strings are used in the query to ensure all
+            staff users are fetched from the database.
+        */
+        try {
+            resultArr = manager.searchUser("", ""); // empty strings
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewStaffController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        // check if there are any results from the search
+        if (resultArr != null) { // if there are results
+            session.setAttribute("resultArr", resultArr);
+        } else { // if no results found, set an error message instead
+            session.setAttribute("notFoundErr", "No staff users with the specified details were found.");
+        }
+        
+        // redirect the user back to the viewStaff page, but now with results or errors stored in the session
+        request.getRequestDispatcher("viewStaff.jsp").include(request, response);
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
