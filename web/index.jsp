@@ -24,8 +24,8 @@
                     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
                     //set anonymous customer
                     Random rand = new Random();
-                    session.setAttribute("anonymouscustomer",rand.nextInt(1000)+200);
-                    session.setAttribute("randompaymentid",rand.nextInt(1000)+200);
+                    session.setAttribute("anonymouscustomer",0);
+                    session.setAttribute("randompaymentid",0);
                     session.setAttribute("date", date);
                 %>
                 <% if (session.getAttribute("user") == null) { // if there are no users logged in %>
