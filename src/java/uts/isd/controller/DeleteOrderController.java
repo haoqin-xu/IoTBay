@@ -39,21 +39,27 @@ public class DeleteOrderController extends HttpServlet {
         
         
        
-        int orderid = Integer.parseInt(request.getParameter("orderid"));
-        
+        int orderid;
         
         
      
         try {
+            orderid = Integer.parseInt(request.getParameter("orderid"));
             
             manager.deleteOrder(orderid);
             devicemanager.updateDeleteOrder(orderid);
-         
             
-        } catch (SQLException ex) {
+            
+        } catch(NumberFormatException exd){
+            //catch numberformat exception when user inputs string or blank
+            session.setAttribute("notint", "Error: orderid format incorrect");
+            request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
+        }
+        catch (SQLException ex) {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
+        request.getRequestDispatcher("ViewOrder.jsp").forward(request, response);
+        
         
         
         
