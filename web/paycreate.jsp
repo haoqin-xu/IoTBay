@@ -14,7 +14,7 @@
     </head>
     <body>
         <%
-             PaymentMethod pay = (PaymentMethod) session.getAttribute("pay");
+            // PaymentMethod pay = (PaymentMethod) session.getAttribute("pay");
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
              String accountnumberErr = (String) session.getAttribute("accountnumberErr");
              String ccvErr = (String) session.getAttribute("ccvErr");
@@ -55,5 +55,6 @@
                 </tr>
             </table>
         </form>
+            <jsp:include page="/ConnServlet" flush="true"/>
     </body>
 </html>

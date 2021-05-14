@@ -29,6 +29,7 @@ public class ConnServlet extends HttpServlet {
     private OrderLineManager orderlinemanager;
     private DeviceManager devicemanager;
     private PaymentManager paymentmanager;
+    private PaymentMethodManager paymentmethodmanager;
     private StaffManager staffmanager;
     private AdminManager adminmanager;
     private Connection conn;
@@ -55,6 +56,7 @@ public class ConnServlet extends HttpServlet {
             orderlinemanager = new OrderLineManager(conn);
             devicemanager = new DeviceManager(conn);
             paymentmanager = new PaymentManager(conn);
+            paymentmethodmanager = new PaymentMethodManager(conn);
             staffmanager = new StaffManager(conn);
             adminmanager = new AdminManager(conn);
         } catch (SQLException ex) {
@@ -66,6 +68,7 @@ public class ConnServlet extends HttpServlet {
         session.setAttribute("orderlinemanager", orderlinemanager);
         session.setAttribute("devicemanager", devicemanager);
         session.setAttribute("paymentmanager", paymentmanager);
+        session.setAttribute("paymentmethodmanager", paymentmethodmanager);
         session.setAttribute("staffmanager", staffmanager);
         session.setAttribute("adminmanager", adminmanager);
     }
