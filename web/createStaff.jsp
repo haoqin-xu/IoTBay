@@ -21,18 +21,11 @@
         <%
             String emailErr = (String) session.getAttribute("emailErr");
             String passErr = (String) session.getAttribute("passErr");
-            String existErr = (String) session.getAttribute("existErr");
+            String successMsg = (String) session.getAttribute("successMsg");
         %>
         
         <form action="CreateStaffController" method="POST">
             <table>
-                <tr>
-                    <div>
-                        <%= emailErr != null ? emailErr : "" %><br>
-                        <%= passErr != null ? passErr : "" %><br>
-                        <%= existErr != null ? existErr : "" %><br>
-                    </div>
-                </tr>
                 <tr>
                     <td>Email:</td>
                     <td><input type="email" id="email" name="email"></td>
@@ -56,9 +49,21 @@
                 <tr>
                     <td>Address:</td>
                     <td><input type="text" id="address" name="address"></td>
-                </tr>    
+                </tr>
                 <tr>
-                    <td><input type="submit" value="Sign Up"></td>
+                    <td>Role:</td>
+                    <td><input type="text" id="role" name="role"></td>
+                </tr>  
+                <tr>
+                    <td><input type="submit" value="Create Staff User"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <%= emailErr != null ? emailErr : "" %>
+                        <%= passErr != null ? passErr : "" %>
+                        <%= successMsg != null ? successMsg : "" %>
+                    </td>
                 </tr>
             </table>
         </form>   
