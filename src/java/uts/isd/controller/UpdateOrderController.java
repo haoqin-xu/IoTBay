@@ -36,20 +36,28 @@ public class UpdateOrderController extends HttpServlet {
         
         OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");;
         DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
-        PrintWriter ps = response.getWriter();
+        OrderValidator validator = new OrderValidator();
+        validator.clear(session);
         int orderid = Integer.parseInt(session.getAttribute("orderid").toString());
-        int count = Integer.parseInt(request.getParameter("count"));
+        int count;
         int deviceid = Integer.parseInt(session.getAttribute("deviceid").toString());
         int countp = Integer.parseInt(session.getAttribute("countp").toString());
         try {
+            count = Integer.parseInt(request.getParameter("count"));
             devicemanager.updateDeviceCountP(deviceid, countp);
             orderlinemanager.updateOrderLine(orderid,count);
             devicemanager.updateDeviceCount(deviceid, count);
+            request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
             
-        } catch (SQLException ex) {
+        } catch(NumberFormatException exd){
+            //catch numberformat exception when user inputs string or blank
+            session.setAttribute("notint", "Error: count format incorrect");
+            request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
+        }
+        catch (SQLException ex) {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
+        
         
     
     }
