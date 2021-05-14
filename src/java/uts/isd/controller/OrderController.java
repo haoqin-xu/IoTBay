@@ -47,7 +47,7 @@ public class OrderController extends HttpServlet {
         
         
         // retrieving anonymous user
-        int customerid = Integer.parseInt(session.getAttribute("anonymouscustomer").toString());
+        int customerid = Integer.parseInt(session.getAttribute("user").toString());
        // int customerid = Integer.parseInt(request.getParameter("customerid"));
         
        // retrieving anonymous payment
