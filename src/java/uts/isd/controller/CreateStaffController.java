@@ -84,7 +84,7 @@ public class CreateStaffController extends HttpServlet {
         } else { // if both the email and password is validated
             try {
                 manager.addUser(email, name, password, dob, phone, address, role); // add the staff user to the database
-                session.setAttribute("successMsg", "SUCCESS: Staff user "+name+" added to the database." ); // set success msg
+                session.setAttribute("successMsg", "SUCCESS: Staff user "+name+" has been added to the database." ); // set success msg
                 request.getRequestDispatcher("createStaff.jsp").include(request, response); // redirect to page
             } catch (SQLException ex) {
                 Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
