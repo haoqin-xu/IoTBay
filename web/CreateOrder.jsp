@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Random"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,14 +36,15 @@
 
                 <h2>Order</h2>
                 <form action="OrderController" method="POST">
+                    <%
+                        Random rand = new Random();
+                        int invoiceid = rand.nextInt(999);
+                        session.setAttribute("invoiceid",invoiceid);
+                    %>
                     <table>
                         <tr>
                             <td>DeviceID:</td>
                             <td><input type="number" name="deviceid"></td>
-                        </tr>
-                        <tr>
-                            <td>InvoiceID:</td>
-                            <td><input type="number" name="invoiceid"></td>
                         </tr>
                         <tr>
                             <td>Count: </td>

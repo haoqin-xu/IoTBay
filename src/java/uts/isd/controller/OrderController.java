@@ -60,8 +60,8 @@ public class OrderController extends HttpServlet {
         
         int deviceid = Integer.parseInt(request.getParameter("deviceid"));
         
+        int invoiceid = Integer.parseInt(session.getAttribute("invoiceid").toString());
         
-        int invoiceid = Integer.parseInt(request.getParameter("invoiceid"));
         String date = session.getAttribute("date").toString();
         int count = Integer.parseInt(request.getParameter("count"));
         validator.clear(session);
