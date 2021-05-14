@@ -50,7 +50,7 @@ public class LoginController extends HttpServlet {
 
         validator.clear(session); //clears previous error mesages
 
-        Customer user = null;
+        Customer customerUser = null;
         Staff staffUser = null;
         Admin adminUser = null;
 
@@ -72,9 +72,10 @@ public class LoginController extends HttpServlet {
                     
                     case "customer":
                         //6- find customer by email and password
-                        user = manager.findUser(email, password);
-                        if (user != null) {
-                            session.setAttribute("user", user);
+                        customerUser = manager.findUser(email, password);
+                        if (customerUser != null) { // a user was found
+                            session.setAttribute("user", customerUser);
+                            session.setAttribute("usertype", "customer"); // set the type, it will be used when later accessing the user obj from session, so we know what to cast it as
                             //13-save the logged in user object to the session
                             request.getRequestDispatcher("main.jsp").include(request, response);
                             //14- redirect user to the main.jsp
@@ -91,6 +92,7 @@ public class LoginController extends HttpServlet {
                         staffUser = staffManager.findUser(email, password);
                         if (staffUser != null) {
                             session.setAttribute("user", staffUser);
+                            session.setAttribute("usertype", "staff"); // set the type, it will be used when later accessing the user obj from session, so we know what to cast it as
                             //13-save the logged in staff object to the session
                             request.getRequestDispatcher("main.jsp").include(request, response);
                             //14- redirect user to the main.jsp
@@ -107,6 +109,7 @@ public class LoginController extends HttpServlet {
                         adminUser = adminManager.findUser(email, password);
                         if (adminUser != null) {
                             session.setAttribute("user", adminUser);
+                            session.setAttribute("usertype", "admin"); // set the type, it will be used when later accessing the user obj from session, so we know what to cast it as
                             //13-save the logged in user object to the session
                             request.getRequestDispatcher("adminView.jsp").include(request, response);
                             //14- redirect user to the main.jsp
