@@ -5,25 +5,44 @@
  */
 package uts.isd.controller;
 
-/**
- *
- * @author TED
- */
-import java.io.Serializable;
-import java.util.HashSet;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import uts.isd.model.Order;
 
-public class Validator implements Serializable {
+/**
+ *
+ * @author Alec
+ */
+public class OrderValidator extends HttpServlet {
 
     private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";
     private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";
     private String passwordPattern = "[a-z0-9]{4,}";
+    private String numberPattern = "[0-9]+";
 
-    public Validator() {
+    public OrderValidator() {
     }
     
+    public boolean inlist(ArrayList<Order> listorder,int orderid){
+        for (Order elements: listorder)
+        {
+            if (elements.getOrderID() == orderid){
+                return true;
+            } 
+        }
+        return false;
+    }
+    public boolean isNumber(String number){
+    
+    }
     public boolean validate(String pattern, String input) {
         Pattern regEx = Pattern.compile(pattern);
         Matcher match = regEx.matcher(input);
@@ -31,7 +50,7 @@ public class Validator implements Serializable {
         return match.matches();
 
     }
-    
+
     public boolean checkEmpty(String email, String password) {
 
         return email.isEmpty() || password.isEmpty();
@@ -61,4 +80,5 @@ public class Validator implements Serializable {
         session.setAttribute("passErr", "");
         session.setAttribute("existErr", "");
     }
+
 }
