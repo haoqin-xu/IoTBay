@@ -58,13 +58,21 @@
             <br>
             
             <form action ="ViewOrderController" method ="POST">
+                <%
+                    session.setAttribute("validateorder",orderlist);
+                    
+                    String outoflist = (String) session.getAttribute("outoflist");
+  
+        
+                %>
+                
                 <tr>
                             <td>Enter orderid to update:</td>
                             <td><input type="number" name="orderid"></td>
-             </tr>
-             <tr>
+                </tr>
+                <tr>
                             <td><input type="submit" value="Submit"></td>
-             </tr>
+                </tr>
             </form>
             <form action ="DeleteOrderController" method ="POST">
                 <tr>
@@ -74,6 +82,10 @@
              <tr>
                             <td><input type="submit" value="Submit"></td>
              </tr>
-            </form>  
+            </form> 
+                <br>
+                <div>
+                    <%=outoflist!=null ? outoflist : ""%>
+                </div>
     </body>
 </html>

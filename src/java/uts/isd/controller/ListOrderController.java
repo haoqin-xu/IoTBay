@@ -29,23 +29,21 @@ public class ListOrderController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
+        //get the session from the request
         HttpSession session = request.getSession();
-        
+        //get connection with OrderManager DAO
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
+        //Obtain customer object from user login
+        Customer customerObj = (Customer) session.getAttribute("user");
+        //get the id from the customer object and store into customerid
+        int customerid = customerObj.getID();
        
-        
-        // retrieving anonymous user
-        int customerid = Integer.parseInt(session.getAttribute("userid").toString());
-        
-        //line below is standard version
-     //   int customerid = Integer.parseInt(request.getParameter("customerid"));
         ArrayList<Order> list = null;
         try {
             
             list = manager.listOrder(customerid);
             if(list!=null){
-            session.setAttribute("orderlist", list);
+                session.setAttribute("orderlist", list);
             }
         } catch (SQLException ex) {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);

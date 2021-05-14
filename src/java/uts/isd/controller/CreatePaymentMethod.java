@@ -37,7 +37,7 @@ public class CreatePaymentMethod extends HttpServlet {
 
         // retrieve the current session
         HttpSession session = request.getSession();
-            //int methodid, int customerid, String paymenttype, int accountnumber, int ccv
+             PaymentValidator validator = new PaymentValidator();
              int methodid = Integer.parseInt(request.getParameter("methodid"));
              int customerid = Integer.parseInt(request.getParameter("customerid"));
              String paymenttype = (request.getParameter("paymenttype"));
@@ -45,15 +45,15 @@ public class CreatePaymentMethod extends HttpServlet {
              int ccv = Integer.parseInt(request.getParameter("ccv"));
 
              
-             PaymentValidator validator = new PaymentValidator();
-             //Payment Payment = null;
+             PaymentMethod paymentMethod = null;
              PaymentMethodManager manager = (PaymentMethodManager) session.getAttribute("manager");
              validator.clear(session);
 
         try{
            //paymentid, int methodid, double ammount, String date)
             manager.createPaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
-            PaymentMethod paymentMethod = new PaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
+            //PaymentMethod paymentMethod = new PaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
+            
             session.setAttribute("paymentMethod", paymentMethod);
             request.getRequestDispatcher("paycreate.jsp").include(request, response);
 
