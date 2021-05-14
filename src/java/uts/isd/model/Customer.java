@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @author TED
  */
 public class Customer implements Serializable{
+    private int ID;
     private String email;
     private String name;
     private String password;
@@ -28,7 +29,26 @@ public class Customer implements Serializable{
         this.address = address;
         this.role = role;
     }
+    public Customer(int ID,String email, String name, String password, String dob, String phone, String address, String role) {
+        this.ID = ID;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.dob = dob;
+        this.phone = phone;
+        this.address = address;
+        this.role = role;
+    }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    
+    
     public String getEmail() {
         return email;
     }

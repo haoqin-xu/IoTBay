@@ -36,7 +36,7 @@ public class ListOrderController extends HttpServlet {
        
     
         // retrieving anonymous user
-        int customerid = Integer.parseInt(session.getAttribute("anonymouscustomer").toString());
+        int customerid = Integer.parseInt(session.getAttribute("userid").toString());
         
         //line below is standard version
      //   int customerid = Integer.parseInt(request.getParameter("customerid"));
