@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>IoTBay Admin - Create Staff User</title>
     </head>
+    
     <body>
-        <h1>Hello World!</h1>
+        <div>IotBay Admin - Create New Staff</div>
+        
+        <div>
+            <span>Header <a href="adminView.jsp">Admin Home</a> <a href="logout.jsp">Logout</a></span>
+        </div>
     </body>
 </html>
