@@ -47,9 +47,9 @@ public class OrderController extends HttpServlet {
         Validator validator = new Validator();
         
         
-        
+        Customer customerObj = (Customer) session.getAttribute("user");
         // retrieving anonymous user
-        int customerid = Integer.parseInt(session.getAttribute("userid").toString());
+        int customerid = customerObj.getID();
        // int customerid = Integer.parseInt(request.getParameter("customerid"));
         
        // retrieving anonymous payment

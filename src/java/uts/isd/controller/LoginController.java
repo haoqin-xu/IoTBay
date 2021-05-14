@@ -74,9 +74,6 @@ public class LoginController extends HttpServlet {
                         customerUser = manager.findUser(email, password);
                         if (customerUser != null) { // a user was found
                             session.setAttribute("user", customerUser);
-                            int userid = customerUser.getID();
-                            session.removeAttribute("userid"); 
-                            session.setAttribute("userid", userid);
                             session.setAttribute("usertype", "customer"); // set the type, it will be used when later accessing the user obj from session, so we know what to cast it as
                             //13-save the logged in user object to the session
                             request.getRequestDispatcher("index.jsp").include(request, response);
