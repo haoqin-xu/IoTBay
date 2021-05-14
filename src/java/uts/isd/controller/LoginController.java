@@ -23,9 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
-import uts.isd.model.Customer;
+import uts.isd.model.*;
 
-import uts.isd.model.dao.CustomerManager;
+import uts.isd.model.dao.*;
 
 public class LoginController extends HttpServlet {
 
@@ -41,8 +41,12 @@ public class LoginController extends HttpServlet {
         String email = request.getParameter("email");
         //4- capture the posted password
         String password = request.getParameter("password");
-        //5- retrieve the manager instance from session
+        // obtain type of user that is logging in
+        String usertype = request.getParameter("usertype");
+        //5- retrieve all 3 manager instances from session (there could be 3 types of users)
         CustomerManager manager = (CustomerManager) session.getAttribute("manager");
+        StaffManager staffManager = (StaffManager) session.getAttribute("staffmanager");
+        AdminManager adminManager = (AdminManager) session.getAttribute("adminmanager");
 
         validator.clear(session); //clears previous error mesages
 
