@@ -13,11 +13,10 @@
     </head>
     
     <body>
-        <div>IoTBay Admin - Admin Management Portal</div>
-        
         <div>
-            <span>Header <a href="logout.jsp">Logout</a></span>
+            <span>IoTBay Admin <a href="logout.jsp">Logout</a></span>
         </div>
+        <div>IoTBay Admin - Admin Management Portal</div>
 
         <div>
             <!-- A form is used here with a get request; this allows the view

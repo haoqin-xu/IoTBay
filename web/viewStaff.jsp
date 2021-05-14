@@ -15,11 +15,10 @@
     </head>
     
     <body>
-        <div>IotBay Admin - View/Search/Modify/Delete Staff information</div>
-        
         <div>
-            <span>Header <a href="adminView.jsp">Home</a> <a href="logout.jsp">Logout</a></span>
+            <span>IoTBay Admin <a href="adminView.jsp">Home</a> <a href="logout.jsp">Logout</a></span>
         </div>
+        <div>IotBay Admin - View/Search/Modify/Delete Staff information</div>\
         
         <%
             ArrayList<Staff> resultArr = (ArrayList<Staff>) session.getAttribute("resultArr");
