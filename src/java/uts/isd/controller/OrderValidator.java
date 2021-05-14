@@ -76,9 +76,9 @@ public class OrderValidator extends HttpServlet {
     }
     
     public void clear(HttpSession session) {
-        session.setAttribute("emailErr", "");
-        session.setAttribute("passErr", "");
-        session.setAttribute("existErr", "");
+        session.setAttribute("outoflist", "");
+        session.setAttribute("notint", "");
+      //  session.setAttribute("existErr", "");
     }
 
 }

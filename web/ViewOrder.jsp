@@ -62,7 +62,7 @@
                     session.setAttribute("validateorder",orderlist);
                     
                     String outoflist = (String) session.getAttribute("outoflist");
-  
+                    String notint = (String) session.getAttribute("notint");
         
                 %>
                 
@@ -86,6 +86,7 @@
                 <br>
                 <div>
                     <%=outoflist!=null ? outoflist : ""%>
+                    <%=notint!=null ? notint : ""%>
                 </div>
     </body>
 </html>

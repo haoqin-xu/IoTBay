@@ -30,41 +30,46 @@ public class ViewOrderController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
+        //get current session
         HttpSession session = request.getSession();
-        
+        //initialise connection to DAO for ordervalidator and orderlinemanager
         OrderValidator ordervalidator = new OrderValidator();
         OrderLineManager manager = (OrderLineManager) session.getAttribute("orderlinemanager");
-       
-        int orderid = Integer.parseInt(request.getParameter("orderid"));
-        
+        //get the stored listorder from session to check if orderid is in order list
         ArrayList<Order> listorder = (ArrayList<Order>) session.getAttribute("validateorder");
-        
+        // initialise order as null
         OrderLineItem order = null;
-     //   if (!ordervalidator.isNumber(Integer.toString(orderid))){
-            // set error if input was not an integer
-      //      session.setAttribute("notint", "Error: orderid format incorrect");
-            // redirect user back to the vieworder.jsp
-      //      request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
-      //  }
-       // else{
-            try {
-                order = manager.findOrderLine(orderid);
-                if(order!=null && ordervalidator.inlist(listorder,orderid)){
-                session.setAttribute("detailedorder", order);
-                request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
-                }
-                else{
-                    session.setAttribute("outoflist", "Error: Orderid not found on list of orders");
-                    request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
+        
+        // create orderid variable   
+        int orderid;
+        
+        try {
+            //parse orderid in try and catch to catch if orderid is string or miss input
+            orderid = Integer.parseInt(request.getParameter("orderid"));
+            // clear the current validation
+            ordervalidator.clear(session);
+            // user findorderline to find the specific order to update
+            order = manager.findOrderLine(orderid);
+            if(order!=null && ordervalidator.inlist(listorder,orderid)){
+            session.setAttribute("detailedorder", order);
+            request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
             }
-      //  request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
+            else{
+                session.setAttribute("outoflist", "Error: Orderid not found on list of orders");
+                request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch(NumberFormatException exd){
+
+            session.setAttribute("notint", "Error: orderid format incorrect");
+            request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
+        }
+      
         }
     
     }
 
-}
+

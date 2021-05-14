@@ -67,7 +67,6 @@
     <servlet>
         <servlet-name>OrderValidator</servlet-name>
         <servlet-class>uts.isd.controller.OrderValidator</servlet-class>
-
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
