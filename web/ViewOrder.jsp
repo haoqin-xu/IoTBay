@@ -67,7 +67,7 @@
                 %>
                 
                 <tr>
-                            <td>Enter orderid to update:</td>
+                            <td>Enter orderid to update/view:</td>
                             <td><input type="text" name="orderid"></td>
                 </tr>
                 <tr>
