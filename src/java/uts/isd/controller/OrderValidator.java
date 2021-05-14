@@ -41,7 +41,7 @@ public class OrderValidator extends HttpServlet {
         return false;
     }
     public boolean isNumber(String number){
-    
+        return number.matches("[0-9]+");
     }
     public boolean validate(String pattern, String input) {
         Pattern regEx = Pattern.compile(pattern);

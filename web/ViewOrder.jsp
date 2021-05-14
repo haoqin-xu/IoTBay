@@ -68,7 +68,7 @@
                 
                 <tr>
                             <td>Enter orderid to update:</td>
-                            <td><input type="number" name="orderid"></td>
+                            <td><input type="text" name="orderid"></td>
                 </tr>
                 <tr>
                             <td><input type="submit" value="Submit"></td>

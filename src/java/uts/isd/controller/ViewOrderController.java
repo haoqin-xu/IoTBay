@@ -41,22 +41,29 @@ public class ViewOrderController extends HttpServlet {
         ArrayList<Order> listorder = (ArrayList<Order>) session.getAttribute("validateorder");
         
         OrderLineItem order = null;
-        try {
-            order = manager.findOrderLine(orderid);
-            if(order!=null && ordervalidator.inlist(listorder,orderid)){
-            session.setAttribute("detailedorder", order);
-            request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
-            }
-            else{
-                session.setAttribute("outoflist", "Error: Orderid not found on list of orders");
-                request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
+        if (!ordervalidator.isNumber(Integer.toString(orderid))){
+            // set error if input was not an integer
+            session.setAttribute("notint", "Error: orderid format incorrect");
+            // redirect user back to the vieworder.jsp
+            request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
         }
+        else{
+            try {
+                order = manager.findOrderLine(orderid);
+                if(order!=null && ordervalidator.inlist(listorder,orderid)){
+                session.setAttribute("detailedorder", order);
+                request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
+                }
+                else{
+                    session.setAttribute("outoflist", "Error: Orderid not found on list of orders");
+                    request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
+            }
       //  request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
-        
+        }
     
     }
 
