@@ -42,10 +42,10 @@
                 </tr>
                 <td>Role</td>
                     <td>
-                        <select class="select" name="Role">
-                            <option value="Customer">Customer</option>
-                            <option value="Staff">Staff</option>
-                            <option value="Admin">Admin</option>                                                                
+                        <select id="usertype" name="usertype">
+                            <option value="customer">Customer</option>
+                            <option value="staff">Staff</option>
+                            <option value="admin">Admin</option>                                                                
                         </select>
                     </td>
                 <tr>

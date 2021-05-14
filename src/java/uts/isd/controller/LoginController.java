@@ -51,6 +51,8 @@ public class LoginController extends HttpServlet {
         validator.clear(session); //clears previous error mesages
 
         Customer user = null;
+        Staff staffUser = null;
+        Admin adminUser = null;
 
         if (!validator.validateEmail(email)) {
             //8-set incorrect email error to the session
@@ -66,19 +68,64 @@ public class LoginController extends HttpServlet {
 
         } else {
             try {
-                //6- find user by email and password
-                user = manager.findUser(email, password);
-                if (user != null) {
-                    session.setAttribute("user", user);
-                    //13-save the logged in user object to the session
-                    request.getRequestDispatcher("main.jsp").include(request, response);
-                    //14- redirect user to the main.jsp
-                } else {
-                    //15-set user does not exist error to the session
-                    session.setAttribute("existErr", "Error: User does not exist");
-                    //16- redirect user back to the login.jsp
-                    request.getRequestDispatcher("login.jsp").include(request, response);
+                switch (usertype) { // what is the type of user logging in?
+                    
+                    case "customer":
+                        //6- find customer by email and password
+                        user = manager.findUser(email, password);
+                        if (user != null) {
+                            session.setAttribute("user", user);
+                            //13-save the logged in user object to the session
+                            request.getRequestDispatcher("main.jsp").include(request, response);
+                            //14- redirect user to the main.jsp
+                        } else {
+                            //15-set user does not exist error to the session
+                            session.setAttribute("existErr", "Error: User does not exist");
+                            //16- redirect user back to the login.jsp
+                            request.getRequestDispatcher("login.jsp").include(request, response);
+                        }
+                        break;
+                        
+                    case "staff":
+                        //6- find staff by email and password
+                        staffUser = staffManager.findUser(email, password);
+                        if (staffUser != null) {
+                            session.setAttribute("user", staffUser);
+                            //13-save the logged in staff object to the session
+                            request.getRequestDispatcher("main.jsp").include(request, response);
+                            //14- redirect user to the main.jsp
+                        } else {
+                            //15-set user does not exist error to the session
+                            session.setAttribute("existErr", "Error: User does not exist");
+                            //16- redirect user back to the login.jsp
+                            request.getRequestDispatcher("login.jsp").include(request, response);
+                        }
+                        break;
+                        
+                    case "admin":
+                        //6- find user by email and password
+                        adminUser = adminManager.findUser(email, password);
+                        if (adminUser != null) {
+                            session.setAttribute("user", adminUser);
+                            //13-save the logged in user object to the session
+                            request.getRequestDispatcher("adminView.jsp").include(request, response);
+                            //14- redirect user to the main.jsp
+                        } else {
+                            //15-set user does not exist error to the session
+                            session.setAttribute("existErr", "Error: User does not exist");
+                            //16- redirect user back to the login.jsp
+                            request.getRequestDispatcher("login.jsp").include(request, response);
+                        }
+                        break;
+                        
+                    default:
+                        //15-set user type does not exist error to the session
+                        session.setAttribute("existErr", "Error: User type does not exist");
+                        //16- redirect user back to the login.jsp
+                        request.getRequestDispatcher("login.jsp").include(request, response);
+                       
                 }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }

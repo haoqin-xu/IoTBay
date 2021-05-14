@@ -5,6 +5,10 @@
         <servlet-class>uts.isd.controller.ConnServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>uts.isd.controller.LoginController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>uts.isd.controller.RegisterController</servlet-class>
     </servlet>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
