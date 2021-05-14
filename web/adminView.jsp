@@ -20,8 +20,16 @@
         </div>
 
         <div>
-            <a href="viewStaff.jsp">View and Edit Staff List</a>
-            <a href="createStaff.jsp">Create New Staff</a>
+            <!-- A form is used here with a get request; this allows the view
+            staff controller to handle the page being opened from the admin
+            menu and immediately fetch a list of all staff upon the page
+            being opened. -->
+            <form action="ViewStaffController" method="GET">
+                <input type="submit" value="View and Edit Staff List">
+            </form>
+            <form action="CreateStaffController" method="GET">
+                <input type="submit" value="Create New Staff">
+            </form>
         </div>
 
         <!-- init connservlet at admin home for testing purposes. 

@@ -18,7 +18,7 @@
         <div>IotBay Admin - View/Search/Modify/Delete Staff information</div>
         
         <div>
-            <span>Header <a href="adminView.jsp">Admin Home</a> <a href="logout.jsp">Logout</a></span>
+            <span>Header <a href="adminView.jsp">Home</a> <a href="logout.jsp">Logout</a></span>
         </div>
         
         <%
