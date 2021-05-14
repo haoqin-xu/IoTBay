@@ -42,12 +42,14 @@ public class OrderController extends HttpServlet {
         OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
         DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
+        
          
         Validator validator = new Validator();
         
         
+        
         // retrieving anonymous user
-        int customerid = Integer.parseInt(session.getAttribute("user").toString());
+        int customerid = Integer.parseInt(session.getAttribute("userid").toString());
        // int customerid = Integer.parseInt(request.getParameter("customerid"));
         
        // retrieving anonymous payment
