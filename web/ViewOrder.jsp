@@ -75,9 +75,16 @@
                 </tr>
             </form>
             <form action ="DeleteOrderController" method ="POST">
+                <%
+                    session.setAttribute("validateorder",orderlist);
+                    
+                    outoflist = (String) session.getAttribute("outoflist");
+                    notint = (String) session.getAttribute("notint");
+        
+                %>
                 <tr>
                             <td>Enter orderid to delete:</td>
-                            <td><input type="number" name="orderid"></td>
+                            <td><input type="text" name="orderid"></td>
              </tr>
              <tr>
                             <td><input type="submit" value="Submit"></td>

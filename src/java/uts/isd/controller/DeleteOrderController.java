@@ -36,16 +36,12 @@ public class DeleteOrderController extends HttpServlet {
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
         DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
         //2- create an instance of the Validator class 
-        Validator validator = new Validator();
         
-        //3- capture the posted email
         
        
         int orderid = Integer.parseInt(request.getParameter("orderid"));
-        validator.clear(session);
-        //5- retrieve the manager instance from session
-       
-        PrintWriter ps = response.getWriter();
+        
+        
         
      
         try {

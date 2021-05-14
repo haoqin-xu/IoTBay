@@ -51,10 +51,12 @@ public class ViewOrderController extends HttpServlet {
             // user findorderline to find the specific order to update
             order = manager.findOrderLine(orderid);
             if(order!=null && ordervalidator.inlist(listorder,orderid)){
-            session.setAttribute("detailedorder", order);
-            request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
+                // if order is not null and is in the customer's list then allow update
+                session.setAttribute("detailedorder", order);
+                request.getRequestDispatcher("UpdateOrder.jsp").include(request, response);
             }
             else{
+                //put error message to indicate that there is no such order in the list of orders
                 session.setAttribute("outoflist", "Error: Orderid not found on list of orders");
                 request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
             }
@@ -63,7 +65,7 @@ public class ViewOrderController extends HttpServlet {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
         }
         catch(NumberFormatException exd){
-
+            //catch numberformat exception when user inputs string or blank
             session.setAttribute("notint", "Error: orderid format incorrect");
             request.getRequestDispatcher("ViewOrder.jsp").include(request, response);
         }
