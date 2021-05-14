@@ -11,12 +11,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>IoTBay Admin - View/Search Staff List</title>
+        <title>IoTBay Admin - Staff List</title>
     </head>
+    
     <body>
+        <div>IotBay Admin - View/Search/Modify/Delete Staff information</div>
+        
         <div>
-            IotBay Admin - View/Search/Modify/Delete Staff information
+            <span>Header <a href="adminView.jsp">Admin Home</a> <a href="logout.jsp">Logout</a></span>
         </div>
+        
         <%
             ArrayList<Staff> resultArr = (ArrayList<Staff>) session.getAttribute("resultArr");
             String notFoundErr = (String) session.getAttribute("notFoundErr");
