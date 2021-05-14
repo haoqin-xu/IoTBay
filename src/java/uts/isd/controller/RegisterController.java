@@ -33,15 +33,15 @@ public class RegisterController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //1- retrieve the current session
         HttpSession session = request.getSession();
-        //2- create an instance of the Validator class
         Validator validator = new Validator();
-        //3- capture the posted email
         String email = request.getParameter("email");
-        //4- capture the posted password
+        String name = request.getParameter("name");
         String password = request.getParameter("password");
-        //5- retrieve the manager instance from session
+        String dob = request.getParameter("dob");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String role = request.getParameter("role");
         CustomerManager manager = (CustomerManager) session.getAttribute("manager");
 
         validator.clear(session); //clears previous error mesages
@@ -51,28 +51,27 @@ public class RegisterController extends HttpServlet {
         if (!validator.validateEmail(email)) {
             //8-set incorrect email error to the session
             session.setAttribute("emailErr", "Error: Email format incorrect");
-            //9- redirect user back to the login.jsp
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            //9- redirect user back to the Register.jsp
+            request.getRequestDispatcher("register.jsp").include(request, response);
 
-        } else if (!validator.validatePassword(password)) {
+        } 
+        else if (!validator.validatePassword(password)) {
             //11-set incorrect password error to the session
             session.setAttribute("passErr", "Error: Password format incorrect");
-            //12- redirect user back to the login.jsp
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            //12- redirect user back to the Register.jsp
+            request.getRequestDispatcher("register.jsp").include(request, response);
 
-        } else {
+        } 
+        else {
             try {
                 //6- find user by email and password
                 user = manager.findUser(email, password);
                 if (user != null) {
                     session.setAttribute("existErr", "Error: User already exist");
-                    //13-save the logged in user object to the session
                     request.getRequestDispatcher("register.jsp").include(request, response);
-                    //14- redirect user to the main.jsp
                 } else {
-                    //15-set user does not exist error to the session
+                    manager.addUser(email, name, password, dob, phone, address, role); 
                     session.setAttribute("user", user);
-                    //16- redirect user back to the login.jsp
                     request.getRequestDispatcher("welcome.jsp").include(request, response);
                 }
             } catch (SQLException ex) {
