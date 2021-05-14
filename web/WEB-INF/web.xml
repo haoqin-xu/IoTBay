@@ -57,17 +57,17 @@
         <servlet-class>uts.isd.controller.ViewOrderController</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>uts.isd.controller.LogoutController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateProfileController</servlet-name>
         <servlet-class>uts.isd.controller.UpdateProfileController</servlet-class>
-=======
+    </servlet>
+    <servlet>
         <servlet-name>OrderValidator</servlet-name>
         <servlet-class>uts.isd.controller.OrderValidator</servlet-class>
->>>>>>> 19ea1e001ef7a97bb06d7ec2503358e1106babc2
+
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -118,17 +118,16 @@
         <url-pattern>/ViewOrderController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/LogoutController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateProfileController</servlet-name>
         <url-pattern>/UpdateProfileController</url-pattern>
-=======
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>OrderValidator</servlet-name>
         <url-pattern>/OrderValidator</url-pattern>
->>>>>>> 19ea1e001ef7a97bb06d7ec2503358e1106babc2
     </servlet-mapping>
     <session-config>
         <session-timeout>
