@@ -14,16 +14,18 @@
     </head>
     <body>
         <%
+             PaymentMethod pay = (PaymentMethod) session.getAttribute("pay");
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
              String accountnumberErr = (String) session.getAttribute("accountnumberErr");
              String ccvErr = (String) session.getAttribute("ccvErr");
+             
         %>
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
         <h1>Please enter your payment details</h1>
         <br>
-        <form action="payview.jsp" method="post" method="get">
+        <form action="CreatePaymentMethod" method="post">
             <table>
                 <tr>
                     <td>Payment Method:</td>
@@ -44,12 +46,12 @@
                 </tr>
                 <tr>
                     <td>CCV Number:</td>
-                    <%=(ccvErr !=null ? ccvErr:"")%>
+                    <%=(ccvErr !=null ? ccvErr:"")%> 
                     <td><input type="password" id="ccv" name="ccv"></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Save Details"></td>
+                    <td><input type="submit" value="Save Details" href="payview.jsp"></td>
                 </tr>
             </table>
         </form>

@@ -12,9 +12,10 @@ import java.sql.Statement;
 
 /**
  *
- * @author 61452
+ * @author Briana Margetts
  */
 public class PaymentManager {
+    
     private Statement st;
     
     public PaymentManager(Connection conn) throws SQLException {
@@ -26,9 +27,9 @@ public class PaymentManager {
     
         ID is initialised from the SQL side. All other fields are filled in by the user or backend.
     */
-    public void createPayment(int customerID, String paymentmethod, String accountnumber, int ccv, double ammount, String date) throws SQLException {
-        String columns = "INSERT INTO iotdb.PAYMENT(CUSTOMERID,PAYMENTMETHOD,ACCOUNTNUMBER,CCVNUMBER,AMMOUNT,PAYMENTDATE)";
-        String values = "VALUES("+customerID+", "+paymentmethod+", "+accountnumber+", "+ccv+", "+ammount+", '"+date+"')";
+    public void createPayment(int paymentid, int methodid, double ammount, String date) throws SQLException {
+        String columns = "INSERT INTO iotdb.PAYMENT(METHODID,AMMOUNT,PAYMENTDATE)";
+        String values = "VALUES("+methodid+", "+ammount+", '"+date+"')";
         
         st.executeUpdate(columns+values);
     }
@@ -38,25 +39,41 @@ public class PaymentManager {
   
         Assignment suggests using PaymentID and date of the payment to find payments in the database
     */
-    public Payment findPayment(int PaymentID, String Date) throws SQLException {
+    public Payment findPaymentID(int paymentid) throws SQLException {
         //setup the select sql query string  
-        String fetch = "SELECT * FROM IOTDB.PAYMENT WHERE PAYMENTID="+PaymentID+" AND PAYMENTDATE='"+Date+"'";
+        String fetch = "SELECT * FROM IOTDB.PAYMENT WHERE PAYMENTID="+paymentid+"";
         //execute this query using the statement field      
         //add the results to a ResultSet      
         ResultSet rs = st.executeQuery(fetch);
         //search the ResultSet for a specific payment using the parameters               
         while(rs.next()) {
-            int paymentID = rs.getInt(1);
-            String paymentDate = rs.getString(7);
-            
-            if ((paymentID == PaymentID) && paymentDate.equals(Date)) {
-                int CustomerID = rs.getInt(2);
-                String PaymentMethod = rs.getString(3);
-                String AccountNumber = rs.getString(4);
-                int CCV = rs.getInt(5);
-                double Ammount = rs.getDouble(6);
+            int Paymentid = rs.getInt(1);            
+            if ((Paymentid == paymentid)) {
+                int Methodid = rs.getInt(2);
+                double Ammount = rs.getDouble(3);
+                String Date = rs.getString(4);
                 
-                return new Payment(CustomerID, PaymentMethod, AccountNumber, CCV, Ammount, Date); // return admin user object to view (to be stored in session)
+                return new Payment(Paymentid, Methodid, Ammount, Date); // return admin user object to view (to be stored in session)
+            }
+        }
+        return null;
+    }
+    
+        public Payment findPaymentDate(String date) throws SQLException {
+        //setup the select sql query string  
+        String fetch = "SELECT * FROM IOTDB.PAYMENT WHERE PAYMENTDATE="+date+"";
+        //execute this query using the statement field      
+        //add the results to a ResultSet      
+        ResultSet rs = st.executeQuery(fetch);
+        //search the ResultSet for a specific payment using the parameters               
+             while(rs.next()) {
+            String Date = rs.getString(4);
+            if ((Date == date)) {
+                int Paymentid = rs.getInt(1);            
+                int Methodid = rs.getInt(2);
+                double Ammount = rs.getDouble(3);
+                
+                return new Payment(Paymentid, Methodid, Ammount, Date); // return admin user object to view (to be stored in session)
             }
         }
         return null;
@@ -65,53 +82,42 @@ public class PaymentManager {
     /*
         UPDATE OPERATION: Update all fields of PAYMENT based on ID
     */    
-    public void updatePayment(int paymentID, int customerID, String paymentmethod, String accountnumber, int ccv, double ammount, String paymentdate) throws SQLException {       
+    public void updatePayment(int paymentid, int methodid, double ammount, String date) throws SQLException {       
         //code for update-operation   
-        String update = "UPDATE iotdb.PAYMENT SET CUSTOMERID="+customerID+", PAYMENTMETHOD="+paymentmethod+", ACCOUNTNUMBER="+accountnumber+", CCVNUMBER="+ccv+", AMMOUNT="+ammount+", PAYMENTDATE="+paymentdate+"";
-        String where = "where PAYMENTID="+paymentID+"";
+        String update = "UPDATE IOTDB.PAYMENT SET PAYMENTID="+paymentid+", METHODID="+methodid+", AMMOUNT="+ammount+", DATE="+date+"";
+        String where = "where PAYMENTID="+paymentid+"";
         st.executeUpdate(update+where); 
     }       
 
     /*
         DELETE OPERATION: Delete PAYMENT based on PAYMENTID
     */
-    public void deletePayment(int PaymentID) throws SQLException{       
+    public void deletePayment(int paymentid) throws SQLException{       
        //code for delete-operation   
-       String delete = "DELETE FROM iotdb.PAYMENT where PAYMENTID="+PaymentID+"";
+       String delete = "DELETE FROM iotdb.PAYMENT where PAYMENTID="+paymentid+"";
        st.executeUpdate(delete);
     }
     
-    /*
-    /* fetch all payments. fetch all payments in array
-    public int getPaymentArray(){
+    
+    /* fetch all payments. fetch all payments in array */
+    public ArrayList<Payment> getPaymentArray() throws SQLException{
         //code to make payment array 
-        ResultSet rs=stmt.exevuteQuery("se");
+        String list = "SELECT * FROM IOTDB.PAYMENT";
+        ResultSet rs = st.executeQuery(list);
         ArrayList<Payment> PaymentList = new ArrayList<Payment>();
+       
         while(rs.next()){
-            Payment pay = new Payment();
             
-            pay.setPaymentmethod(rs.getInt(1));
-            pay.setAccountnumber(rs.getInt(2));
-            pay.setCcv(rs.getInt(3));
-            pay.setAmmount(rs.getInt(4));
-            pay.setDate(rs.getInt(5));
-                    
+            int paymentid = rs.getInt(1);
+            int methodid = rs.getInt(2);
+            double ammount = rs.getDouble(3);
+            String date = rs.getString(4);
+            Payment pay = new Payment(paymentid, methodid, ammount, date);
+        
             PaymentList.add(pay);
-            
         }
-        
-        try{
-        
-        
-        } 
-    
-    
-    
-    catch(Exception e){
-        System.out.println(e);
-
-    }
+        return PaymentList;
    }
     
-    */
+  
 }

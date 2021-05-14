@@ -4,9 +4,9 @@
  */
 package uts.isd.controller;
 
-import uts.isd.model.Payment;
+import uts.isd.model.PaymentMethod;
 
-import uts.isd.model.dao.PaymentManager;
+import uts.isd.model.dao.PaymentMethodManager;
 
 import java.io.IOException;
 
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
 
 
 
-public class PayController extends HttpServlet {
+public class UpdatePaymentMethod extends HttpServlet {
     
     @Override
 
@@ -36,22 +36,24 @@ public class PayController extends HttpServlet {
 
         // retrieve the current session
         HttpSession session = request.getSession();
-        response.setContentType("text/html");
-        
-             int paymentid = Integer.parseInt(request.getParameter("paymentid"));
+            //int methodid, int customerid, String paymenttype, int accountnumber, int ccv
              int methodid = Integer.parseInt(request.getParameter("methodid"));
-             double ammount= Double.parseDouble(request.getParameter("ammount"));
-             String date = request.getParameter("date");
+             int customerid = Integer.parseInt(request.getParameter("customerid"));
+             String paymenttype = (request.getParameter("paymenttype"));
+             int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
+             int ccv = Integer.parseInt(request.getParameter("ccv"));
+
              
              PaymentValidator validator = new PaymentValidator();
              //Payment Payment = null;
-             PaymentManager manager = (PaymentManager) session.getAttribute("manager");
+             PaymentMethodManager manager = (PaymentMethodManager) session.getAttribute("manager");
              validator.clear(session);
 
         try{
-            manager.createPayment(paymentid,methodid,ammount,date);
-            Payment payment = new Payment(paymentid,methodid,ammount,date);
-            session.setAttribute("payment", payment);
+           //paymentid, int methodid, double ammount, String date)
+            manager.createPaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
+            PaymentMethod paymentMethod = new PaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
+            //session.setAttribute("paymentMethod", paymentMethod);
             request.getRequestDispatcher("paycreate.jsp").include(request, response);
 
         }

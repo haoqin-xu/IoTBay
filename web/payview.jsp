@@ -17,25 +17,31 @@
         </div>
         <h1>Your saved payment details</h1>
         <%
-            String paymentmethod = request.getParameter("paymentmethod");
-            String accountnumber = request.getParameter("accountnumber");
-            String ccv = request.getParameter("ccv");
-         %>
+             String paymentmethod = request.getParameter("paymentmethod");
+             String accountnumber = request.getParameter("accountnumber");
+             String ccv = request.getParameter("ccv");
+             String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
+             String accountnumberErr = (String) session.getAttribute("accountnumberErr");
+             String ccvErr = (String) session.getAttribute("ccvErr");
+
+        %>
         </br>
         <form action="payupdate.jsp" method="post" method="get">
         <table id="paymentdetail">
             <tr>
                 <th>Payment Method</th>
-                <td><%= paymentmethod%>
+                <td><%=(paymentmethodErr !=null ? paymentmethodErr:paymentmethod)%>
+
                 </td>
             </tr>
                 <th>Account Number</th>
-                <td><%= accountnumber%>
+                <td><%=(accountnumberErr !=null ? accountnumberErr:accountnumber)%>
                </td>
             </tr>
             <tr>
                 <th>CCV Number</th>
-                <td><%= ccv%></td>
+                <td><%=(ccvErr !=null ? ccvErr:ccv)%>
+                </td>
             </tr>
             <tr>
                 <td></td>

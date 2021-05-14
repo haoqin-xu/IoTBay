@@ -4,71 +4,59 @@
  * and open the template in the editor.
  */
 package uts.isd.model;
-
 import java.io.Serializable;
 
+/**
+ *
+ * @author Briana Margetts
+ */   
 public class Payment implements Serializable{
-    private int customerID;
-    private String paymentmethod;
-    private String accountnumber;
-    private int ccv;
+    private int paymentid;
+    private int methodid;
     private double ammount;
     private String date;
-
-    public Payment(int customerID, String paymentmethod, String accountnumber, int ccv, double ammount, String date) {
-        this.customerID = customerID;
-        this.paymentmethod = paymentmethod;
-        this.accountnumber = accountnumber;
-        this.ccv = ccv;
+    
+        public Payment(){
+        
+        }
+        public Payment(int paymentid, int methodid, double ammount, String date) {
+        this.paymentid = paymentid;
+        this.methodid = methodid;
         this.ammount = ammount;
         this.date = date;
-    }
+        }
 
-    public int getCustomerID() {
-        return customerID;
-    }
+        public int getPaymentid() {
+            return paymentid;
+        }
 
-    public String getPaymentmethod() {
-        return paymentmethod;
-    }
+        public void setPaymentid(int paymentid) {
+            this.paymentid = paymentid;
+        }
 
-    public String getAccountnumber() {
-        return accountnumber;
-    }
+        public int getMethodid() {
+            return methodid;
+        }
 
-    public int getCcv() {
-        return ccv;
-    }
+        public void setMethodid(int methodid) {
+            this.methodid = methodid;
+        }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
+        public double getAmmount() {
+            return ammount;
+        }
 
-    public void setPaymentmethod(String paymentmethod) {
-        this.paymentmethod = paymentmethod;
-    }
+        public void setAmmount(double ammount) {
+            this.ammount = ammount;
+        }
 
-    public void setAccountnumber(String accountnumber) {
-        this.accountnumber = accountnumber;
-    }
+        public String getDate() {
+            return date;
+        }
 
-    public void setCcv(int ccv) {
-        this.ccv = ccv;
-    }
-
-    public double getAmmount() {
-        return ammount;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setAmmount(double ammount) {
-        this.ammount = ammount;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
+        public void setDate(String date) {
+            this.date = date;
+        }
 }
+    
+
