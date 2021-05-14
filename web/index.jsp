@@ -23,12 +23,15 @@
                     //set date for order:
                     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
                     //set anonymous customer
-                    Random rand = new Random();
-                    session.setAttribute("anonymouscustomer",0);
+                    
                     session.setAttribute("randompaymentid",0);
                     session.setAttribute("date", date);
                 %>
-                <% if (session.getAttribute("user") == null) { // if there are no users logged in %>
+                <% if (session.getAttribute("user") == null) { 
+                    // if there are no users logged in 
+                    session.setAttribute("userid",0);
+                    session.setAttribute("randompaymentid",0);
+                %>
                     <span>You are not logged in. <a href="login.jsp">Login</a> <a href="register.jsp">Register</a></span>
                 <% } else { // display user info if they are logged in
                     Customer user = (Customer) session.getAttribute("user");

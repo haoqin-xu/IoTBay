@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet {
         Customer customerUser = null;
         Staff staffUser = null;
         Admin adminUser = null;
-
+           
         if (!validator.validateEmail(email)) {
             //8-set incorrect email error to the session
             session.setAttribute("emailErr", "Error: Email format incorrect");
@@ -75,6 +75,7 @@ public class LoginController extends HttpServlet {
                         if (customerUser != null) { // a user was found
                             session.setAttribute("user", customerUser);
                             int userid = customerUser.getID();
+                            session.removeAttribute("userid"); 
                             session.setAttribute("userid", userid);
                             session.setAttribute("usertype", "customer"); // set the type, it will be used when later accessing the user obj from session, so we know what to cast it as
                             //13-save the logged in user object to the session

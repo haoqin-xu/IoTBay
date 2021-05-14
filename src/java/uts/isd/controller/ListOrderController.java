@@ -34,7 +34,7 @@ public class ListOrderController extends HttpServlet {
         
         OrderManager manager = (OrderManager) session.getAttribute("ordermanager");
        
-    
+        
         // retrieving anonymous user
         int customerid = Integer.parseInt(session.getAttribute("userid").toString());
         
