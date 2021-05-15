@@ -37,12 +37,13 @@ public class ListOrderController extends HttpServlet {
         Customer customerObj = (Customer) session.getAttribute("user");
         //get the id from the customer object and store into customerid
         int customerid = customerObj.getID();
-       
+        // initialise arraylist order to null
         ArrayList<Order> list = null;
         try {
-            
+            // use dao to access sql tables and store into list variable
             list = manager.listOrder(customerid);
             if(list!=null){
+                // if list is not null set attribute to use in jsp
                 session.setAttribute("orderlist", list);
             }
         } catch (SQLException ex) {

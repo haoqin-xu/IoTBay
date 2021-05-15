@@ -31,19 +31,24 @@ public class UpdateOrderController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
+        // retrieve current session
         HttpSession session = request.getSession();
-        
+        // initialise DAO connection for orderlinemanager and device manager
         OrderLineManager orderlinemanager = (OrderLineManager)session.getAttribute("orderlinemanager");;
         DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
+        //create validator to validate inputs
         OrderValidator validator = new OrderValidator();
         validator.clear(session);
+        // get the session for current values of orderid
         int orderid = Integer.parseInt(session.getAttribute("orderid").toString());
-        int count;
         int deviceid = Integer.parseInt(session.getAttribute("deviceid").toString());
-        int countp = Integer.parseInt(session.getAttribute("countp").toString());
+        int countp = Integer.parseInt(session.getAttribute("countp").toString()); //old value of count
+        //count variable is the new count to update
+        int count;
         try {
+            // if count is correct format the execute this block or catch by numberformatexception
             count = Integer.parseInt(request.getParameter("count"));
+            //update the device and orderline tables accordingly
             devicemanager.updateDeviceCountP(deviceid, countp);
             orderlinemanager.updateOrderLine(orderid,count);
             devicemanager.updateDeviceCount(deviceid, count);
