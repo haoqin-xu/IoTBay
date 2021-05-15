@@ -37,6 +37,7 @@ public class ListOrderController extends HttpServlet {
         Customer customerObj = (Customer) session.getAttribute("user");
         //get the id from the customer object and store into customerid
         int customerid = customerObj.getID();
+        
         // initialise arraylist order to null
         ArrayList<Order> list = null;
         try {

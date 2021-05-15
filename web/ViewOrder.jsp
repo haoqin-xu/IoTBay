@@ -19,9 +19,9 @@
         </div>
         <br>
         <form action ="ListOrderController" method ="POST">
-             <tr>
+            <tr>
                 <td><input type="submit" value="View order list"></td>
-             </tr>
+            </tr>
         <%
             
             ArrayList<Order> orderlist = (ArrayList<Order>)session.getAttribute("orderlist");
