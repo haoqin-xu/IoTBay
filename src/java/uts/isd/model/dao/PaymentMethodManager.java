@@ -24,9 +24,9 @@ public class PaymentMethodManager {
     
         ID is initialised from the SQL side. All other fields are filled in by the user or backend.
     */
-    public void createPaymentMethod(int methodid, int customerid, String paymenttype, int accountnumber, int ccv) throws SQLException {
-        String columns = "INSERT INTO iotdb.PAYMENTMETHOD(METHODID, CUSTOMERID, PAYMENTTYPE, ACCOUNTNUMBER, CCV)";
-        String values = "VALUES("+methodid+", "+customerid+", "+paymenttype+", "+accountnumber+","+ccv+")";
+    public void createPaymentMethod( int customerid, String paymenttype, int accountnumber, int ccv) throws SQLException {
+        String columns = "INSERT INTO iotdb.PAYMENTMETHOD( CUSTOMERID, PAYMENTTYPE, ACCOUNTNUMBER, CCV)";
+        String values = "VALUES( "+customerid+", "+paymenttype+", "+accountnumber+","+ccv+")";
         
         st.executeUpdate(columns+values);
     }
@@ -52,7 +52,7 @@ public class PaymentMethodManager {
                 int Ccv = rs.getInt(5);
 
                 
-                return new PaymentMethod(Methodid, Customerid, Paymenttype, Accountnumber, Ccv); // return admin user object to view (to be stored in session)
+                return new PaymentMethod(Customerid, Paymenttype, Accountnumber, Ccv); // return admin user object to view (to be stored in session)
             }
         }
         return null;

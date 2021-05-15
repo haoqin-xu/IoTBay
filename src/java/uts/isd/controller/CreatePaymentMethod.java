@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
+import uts.isd.model.*;
 
 
 
@@ -38,23 +39,27 @@ public class CreatePaymentMethod extends HttpServlet {
         // retrieve the current session
         HttpSession session = request.getSession();
              PaymentValidator validator = new PaymentValidator();
-             int methodid = Integer.parseInt(request.getParameter("methodid"));
-             int customerid = Integer.parseInt(request.getParameter("customerid"));
+             //int methodid = Integer.parseInt(request.getParameter("methodid"));
+              Customer customer = (Customer) session.getAttribute("user");
+              int customerid = customer.getID();
+             //int customerid = Integer.parseInt(request.getParameter("customerid"));
+             
              String paymenttype = (request.getParameter("paymenttype"));
              int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
              int ccv = Integer.parseInt(request.getParameter("ccv"));
-
              
-             PaymentMethod paymentMethod = null;
-             PaymentMethodManager manager = (PaymentMethodManager) session.getAttribute("manager");
+             
+             //PaymentMethod paymentMethod = null;
+             PaymentMethodManager paymentmethodmanager = (PaymentMethodManager) session.getAttribute("paymentmethodmanager");
              validator.clear(session);
+             
 
         try{
            //paymentid, int methodid, double ammount, String date)
-            manager.createPaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
-            //PaymentMethod paymentMethod = new PaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
+            paymentmethodmanager.createPaymentMethod( customerid, paymenttype, accountnumber, ccv);
+            //PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
             
-            session.setAttribute("paymentMethod", paymentMethod);
+            //session.setAttribute("paymentMethod", paymentMethod);
             request.getRequestDispatcher("paycreate.jsp").include(request, response);
 
         }

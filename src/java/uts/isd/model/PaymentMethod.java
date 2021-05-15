@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @author Briana Margetts
  */   
 public class PaymentMethod implements Serializable{
-    private int methodid;
     private int customerid;
     private String paymenttype;
     private int accountnumber;
@@ -22,22 +21,14 @@ public class PaymentMethod implements Serializable{
         
         }
         
-        public PaymentMethod(int methodid, int customerid, String paymenttype, int accountnumber, int ccv) {
-        this.methodid = methodid;
+        public PaymentMethod( int customerid, String paymenttype, int accountnumber, int ccv) {
         this.customerid = customerid;
         this.paymenttype = paymenttype;
         this.accountnumber = accountnumber;
         this.ccv = ccv;
         }
 
-        public int getMethodid() {
-            return methodid;
-        }
-
-        public void setMethodid(int methodid) {
-            this.methodid = methodid;
-        }
-
+        
         public int getCustomerid() {
             return customerid;
         }

@@ -51,8 +51,8 @@ public class UpdatePaymentMethod extends HttpServlet {
 
         try{
            //paymentid, int methodid, double ammount, String date)
-            manager.createPaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
-            PaymentMethod paymentMethod = new PaymentMethod(methodid, customerid, paymenttype, accountnumber, ccv);
+            manager.createPaymentMethod( customerid, paymenttype, accountnumber, ccv);
+            PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
             //session.setAttribute("paymentMethod", paymentMethod);
             request.getRequestDispatcher("paycreate.jsp").include(request, response);
 
