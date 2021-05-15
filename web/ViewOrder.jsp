@@ -15,7 +15,7 @@
     </head>
     <body>
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a></span>
+            <span>IoTBay <a href="index.jsp">Home</a><a href="CreateOrder.jsp">Create Order</a></span>
         </div>
         <br>
         <form action ="ListOrderController" method ="POST">

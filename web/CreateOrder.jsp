@@ -31,7 +31,7 @@
             
         %>
         <table id="Orderlist">
-            <h2>List of orders</h2>
+            <h2>List of Devices</h2>
             <tr>
                 <th>Device ID</th>
                 <th>Name</th>
