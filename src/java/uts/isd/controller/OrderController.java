@@ -44,26 +44,25 @@ public class OrderController extends HttpServlet {
         DeviceManager devicemanager = (DeviceManager) session.getAttribute("devicemanager");
         
          
-        Validator validator = new Validator();
+        OrderValidator validator = new OrderValidator();
+        validator.clear(session);
         
         
         Customer customerObj = (Customer) session.getAttribute("user");
-        // retrieving anonymous user
-        int customerid = customerObj.getID();
-       // int customerid = Integer.parseInt(request.getParameter("customerid"));
         
-       // retrieving anonymous payment
+        int customerid = customerObj.getID();
+       
         int paymentid = Integer.parseInt(session.getAttribute("randompaymentid").toString());
        
-        //int paymentid = Integer.parseInt(request.getParameter("paymentid"));
         
         
-        int deviceid = Integer.parseInt(request.getParameter("deviceid"));
         
+        int deviceid;
+        int count;
         int invoiceid = Integer.parseInt(session.getAttribute("invoiceid").toString());
         
         String date = session.getAttribute("date").toString();
-        int count = Integer.parseInt(request.getParameter("count"));
+        
         validator.clear(session);
         //5- retrieve the manager instance from session
        
@@ -71,18 +70,26 @@ public class OrderController extends HttpServlet {
         ps.print(customerid);
      
         try {
+            deviceid = Integer.parseInt(request.getParameter("deviceid"));
+            count = Integer.parseInt(request.getParameter("count"));
+            session.setAttribute("successful", "Order successful");
             devicemanager.updateDeviceCount(deviceid,count);
             manager.createOrder(customerid, paymentid, deviceid, invoiceid, date);
             orderlinemanager.addOrderline(deviceid,count);
             
-           
+            
            
          
             
-        } catch (SQLException ex) {
+        } catch(NumberFormatException exd){
+            //catch numberformat exception when user inputs string or blank
+            session.setAttribute("notint", "Error: format incorrect");
+            request.getRequestDispatcher("CreateOrder.jsp").include(request, response);
+        } 
+        catch (SQLException ex) {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("CreateOrder.jsp").include(request, response);
+        request.getRequestDispatcher("CreateOrder.jsp").forward(request, response);
         
         
         
