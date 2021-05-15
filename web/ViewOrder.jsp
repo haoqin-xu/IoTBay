@@ -15,13 +15,13 @@
     </head>
     <body>
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a></span>
+            <span>IoTBay <a href="index.jsp">Home</a><a href="CreateOrder.jsp">Create Order</a></span>
         </div>
         <br>
         <form action ="ListOrderController" method ="POST">
-             <tr>
+            <tr>
                 <td><input type="submit" value="View order list"></td>
-             </tr>
+            </tr>
         <%
             
             ArrayList<Order> orderlist = (ArrayList<Order>)session.getAttribute("orderlist");
