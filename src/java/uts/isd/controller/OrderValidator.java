@@ -78,7 +78,7 @@ public class OrderValidator extends HttpServlet {
     public void clear(HttpSession session) {
         session.setAttribute("outoflist", "");
         session.setAttribute("notint", "");
-      //  session.setAttribute("existErr", "");
+        session.setAttribute("successful", "");
     }
 
 }

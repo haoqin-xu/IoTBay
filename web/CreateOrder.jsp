@@ -40,6 +40,9 @@
                         Random rand = new Random();
                         int invoiceid = rand.nextInt(999);
                         session.setAttribute("invoiceid",invoiceid);
+                        String outoflist = (String) session.getAttribute("outoflist");
+                        String notint = (String) session.getAttribute("notint");
+                        String success = (String) session.getAttribute("successful");
                     %>
                     <table>
                         <tr>
@@ -58,6 +61,12 @@
                 <br>
                 <div>
                     <span><a href="ViewOrder.jsp">ViewOrder</a></span>
+                </div>
+                <br>
+                <div>
+                    <%=success!=null ? success : ""%>
+                    <%=outoflist!=null ? outoflist : ""%>
+                    <%=notint!=null ? notint : ""%>
                 </div>
     </body>
 </html>
