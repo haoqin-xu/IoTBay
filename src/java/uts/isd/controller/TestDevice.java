@@ -32,7 +32,7 @@ public class TestDevice {
     private void testCreate() throws SQLException {
         manager.createDevice(read("name"), read("manufacturer"), read("origin"), read("type"), read("instock"), Double.parseDouble(read("priceperunit")), Integer.parseInt(read("numberinstock")));
     }
-    
+    //Test Read working
     private void testRead() throws SQLException {
         Device device = manager.findDevice(read("Name"), read("Type"));
         System.out.println(device.getName() + " " + device.getManufacturer() + " " + device.getOrigin()+ " " + device.getType()+ " " + device.getInstock()+ " " + device.getPriceperunit()+ " " + device.getNumberinstock());

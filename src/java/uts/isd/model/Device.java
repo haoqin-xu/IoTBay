@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author 61452
  */
 public class Device implements Serializable{
+    private int deviceid;
     private String name;
     private String manufacturer;
     private String origin;
@@ -28,6 +29,24 @@ public class Device implements Serializable{
         this.instock = instock;
         this.priceperunit = priceperunit;
         this.numberinstock = numberinstock;
+    }
+    public Device(int ID,String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) {
+        this.deviceid = ID;
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.origin = origin;
+        this.type = type;
+        this.instock = instock;
+        this.priceperunit = priceperunit;
+        this.numberinstock = numberinstock;
+    }
+
+    public int getDeviceid() {
+        return deviceid;
+    }
+
+    public void setDeviceid(int deviceid) {
+        this.deviceid = deviceid;
     }
 
     public String getName() {
