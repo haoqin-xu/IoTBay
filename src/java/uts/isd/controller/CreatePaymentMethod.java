@@ -53,25 +53,17 @@ public class CreatePaymentMethod extends HttpServlet {
              PaymentMethodManager paymentmethodmanager = (PaymentMethodManager) session.getAttribute("paymentmethodmanager");
              validator.clear(session);
              
-
-        try{
-           //paymentid, int methodid, double ammount, String date)
-            paymentmethodmanager.createPaymentMethod( customerid, paymenttype, accountnumber, ccv);
             PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
             
-            //session.setAttribute("paymentMethod", paymentMethod);
-            request.getRequestDispatcher("paycreate.jsp").include(request, response);
-
+        try {
+            paymentmethodmanager.createPaymentMethod(customerid, paymenttype, accountnumber, ccv);
+        } catch (SQLException ex) {
+            Logger.getLogger(CreatePaymentMethod.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        catch (SQLException exception) 	    
-        {
-            Logger.getLogger(PayController.class.getName()).log(Level.SEVERE, null, exception);
-        }
-         request.getRequestDispatcher("payview.jsp").include(request, response);
+            request.getRequestDispatcher("payview.jsp").include(request, response);
+    }
+}
 
-    }
-    }
 
     
 
