@@ -72,6 +72,22 @@
         <servlet-name>ListDeviceController</servlet-name>
         <servlet-class>uts.isd.controller.ListDeviceController</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>PayController</servlet-name>
+        <servlet-class>uts.isd.controller.PayController</servlet-class>  
+    </servlet>
+       <servlet>
+        <servlet-name>PaymentValidator</servlet-name>
+        <servlet-class>uts.isd.controller.PaymentValidator</servlet-class>  
+    </servlet>
+       <servlet>
+        <servlet-name>UpdatePaymentMethod</servlet-name>
+        <servlet-class>uts.isd.controller.UpdatePaymentMethod</servlet-class>  
+    </servlet>
+       <servlet>
+        <servlet-name>CreatePaymentMethod</servlet-name>
+        <servlet-class>uts.isd.controller.CreatePaymentMethod</servlet-class>  
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -136,6 +152,22 @@
         <servlet-name>ListDeviceController</servlet-name>
         <url-pattern>/ListDeviceController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PayController</servlet-name>
+        <url-pattern>/PayController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentValidator</servlet-name>
+        <url-pattern>/PaymentValidator</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>UpdatePaymentMethod</servlet-name>
+        <url-pattern>/UpdatePaymentMethod</url-pattern>
+    </servlet-mapping>   
+    <servlet-mapping>
+    <servlet-name>CreatePaymentMethod</servlet-name>
+        <url-pattern>/CreatePaymentMethod</url-pattern>
+    </servlet-mapping> 
     <session-config>
         <session-timeout>
             30
