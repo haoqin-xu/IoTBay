@@ -4,6 +4,8 @@
     Author     : Alec
 --%>
 
+<%@page import="uts.isd.model.Device"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Random"%>
 <!DOCTYPE html>
@@ -19,20 +21,44 @@
 
         <br>
 
-                <h2>Iot device list</h2>
-
-                <table>
-                  <tr>
-                    <th>Device ID</th>
-                    <th>Name</th>
-                    <th>Number in Stock</th>
-                  </tr>
-                  <tr>
-                    <td>Placeholder ID</td>
-                    <td>Placeholder Name</td>
-                    <td>Placeholder Stock</td>
-                  </tr>
-                </table>
+                <form action ="ListDeviceController" method ="POST">
+             <tr>
+                <td><input type="submit" value="View order list"></td>
+             </tr>
+        <%
+            
+            ArrayList<Device> devicelist = (ArrayList<Device>)session.getAttribute("devicelist");
+            
+        %>
+        <table id="Orderlist">
+            <h2>List of orders</h2>
+            <tr>
+                <th>Device ID</th>
+                <th>Name</th>
+                <th>Manufacturer</th>
+                <th>Origin</th>
+                <th>Type</th>
+                <th>Instock</th>
+                <th>priceperunit</th>
+                <th>numberinstock</th>
+            </tr>
+            <%if(devicelist!=null){
+                for(Device element : devicelist){%>
+            <tr>
+                <th><%=element.getDeviceid()%></th>
+                <th><%=element.getName()%></th>
+                <th><%=element.getManufacturer()%></th>
+                <th><%=element.getOrigin()%></th>
+                <th><%=element.getType()%></th>
+                <th><%=element.getInstock()%></th>
+                <th><%=element.getPriceperunit()%></th>
+                <th><%=element.getNumberinstock()%></th>
+            </tr>
+            
+            <%}}%>
+            
+        </table>
+        </form>
 
                 <h2>Order</h2>
                 <form action="OrderController" method="POST">

@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import uts.isd.model.*;
 /**
  *
@@ -106,7 +107,25 @@ public class DeviceManager {
         }
         
     }  
-    
+    public ArrayList<Device> listDevice() throws SQLException{
+            String fetch = "SELECT * FROM IOTDB.DEVICE";
+            ResultSet rs = st.executeQuery(fetch);
+            ArrayList<Device> list = new ArrayList<Device>();
+            while(rs.next()){
+                int ID = rs.getInt(1);
+                String name = rs.getString(2);
+                String manu = rs.getString(3);
+                String origin = rs.getString(4);
+                String type = rs.getString(5);
+                String instock = rs.getString(6);
+                double priceperunit = rs.getInt(7);
+                int numberinstock = rs.getInt(8);
+                
+                Device device = new Device(ID,name, manu,origin,type, instock, priceperunit,numberinstock);
+                list.add(device);
+            }
+            return list;
+    }
     /*
         DELETE OPERATION: Delete DEVICE based on DEVICEID
     */
