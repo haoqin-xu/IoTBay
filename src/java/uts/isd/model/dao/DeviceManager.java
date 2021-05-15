@@ -88,6 +88,7 @@ public class DeviceManager {
     }
     public void updateDeleteOrder(int orderid) throws SQLException {       
         //code for ORDER MANAGEMENT
+        // select orders that are cancelled to add back the count of the old order
         String delete = "SELECT \"ORDER\".ORDERID, DEVICE.DEVICEID, ORDERLINEITEM.\"COUNT\"\n" +
         "FROM \"ORDER\", DEVICE, ORDERLINEITEM\n" +
         "WHERE \"ORDER\".DEVICEID = DEVICE.DEVICEID \n" +
@@ -108,6 +109,7 @@ public class DeviceManager {
         
     }  
     public ArrayList<Device> listDevice() throws SQLException{
+        // code of ordermanagement
             String fetch = "SELECT * FROM IOTDB.DEVICE";
             ResultSet rs = st.executeQuery(fetch);
             ArrayList<Device> list = new ArrayList<Device>();
