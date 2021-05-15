@@ -68,6 +68,10 @@
         <servlet-name>OrderValidator</servlet-name>
         <servlet-class>uts.isd.controller.OrderValidator</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListDeviceController</servlet-name>
+        <servlet-class>uts.isd.controller.ListDeviceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>OrderValidator</servlet-name>
         <url-pattern>/OrderValidator</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListDeviceController</servlet-name>
+        <url-pattern>/ListDeviceController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
