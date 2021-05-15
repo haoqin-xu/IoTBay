@@ -63,24 +63,7 @@ public class CreatePaymentMethod extends HttpServlet {
             request.getRequestDispatcher("payview.jsp").include(request, response);
     }
 }
-/*
-        try{
-           //paymentid, int methodid, double ammount, String date)
 
-            
-            //session.setAttribute("paymentMethod", paymentMethod);
-            request.getRequestDispatcher("paycreate.jsp").include(request, response);
-
-        }
-        
-        catch (SQLException exception) 	    
-        {
-            Logger.getLogger(PayController.class.getName()).log(Level.SEVERE, null, exception);
-        }
-         request.getRequestDispatcher("payview.jsp").include(request, response);
-
-    }*/
-    
 
     
 
