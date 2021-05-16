@@ -5,6 +5,8 @@
  */
 package uts.isd.model.dao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,7 +22,8 @@ import uts.isd.model.Order;
  */
 public class OrderManagerTest {
     
-    public OrderManagerTest() {
+    public OrderManagerTest(){
+        
     }
     
     @BeforeClass
@@ -45,13 +48,15 @@ public class OrderManagerTest {
     @Test
     public void testCreateOrder() throws Exception {
         System.out.println("createOrder");
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.openConnection();
+        OrderManager db = new OrderManager(conn);
         int CustomerID = 0;
         int PaymentID = 0;
         int DeviceID = 0;
         int InvoiceID = 0;
         String Date = "";
-        OrderManager instance = null;
-        instance.createOrder(CustomerID, PaymentID, DeviceID, InvoiceID, Date);
+        db.createOrder(CustomerID, PaymentID, DeviceID, InvoiceID, Date);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -62,11 +67,14 @@ public class OrderManagerTest {
     @Test
     public void testFindOrder() throws Exception {
         System.out.println("findOrder");
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.openConnection();
+        OrderManager db = new OrderManager(conn);
         int OrderID = 0;
         String Date = "";
-        OrderManager instance = null;
+        
         Order expResult = null;
-        Order result = instance.findOrder(OrderID, Date);
+        Order result = db.findOrder(OrderID, Date);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -78,10 +86,12 @@ public class OrderManagerTest {
     @Test
     public void testListOrder() throws Exception {
         System.out.println("listOrder");
-        int customerid = 0;
-        OrderManager instance = null;
-        ArrayList<Order> expResult = null;
-        ArrayList<Order> result = instance.listOrder(customerid);
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.openConnection();
+        OrderManager db = new OrderManager(conn);
+        int customerid = -1;
+        ArrayList<Order> expResult = new ArrayList<Order>();
+        ArrayList<Order> result = db.listOrder(customerid);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -93,14 +103,17 @@ public class OrderManagerTest {
     @Test
     public void testUpdateOrder() throws Exception {
         System.out.println("updateOrder");
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.openConnection();
+        OrderManager db = new OrderManager(conn);
         int OrderID = 0;
         int CustomerID = 0;
         int PaymentID = 0;
         int DeviceID = 0;
         int InvoiceID = 0;
         String Date = "";
-        OrderManager instance = null;
-        instance.updateOrder(OrderID, CustomerID, PaymentID, DeviceID, InvoiceID, Date);
+        
+        db.updateOrder(OrderID, CustomerID, PaymentID, DeviceID, InvoiceID, Date);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -111,9 +124,12 @@ public class OrderManagerTest {
     @Test
     public void testDeleteOrder() throws Exception {
         System.out.println("deleteOrder");
+        DBConnector connector = new DBConnector();
+        Connection conn = connector.openConnection();
+        OrderManager db = new OrderManager(conn);
         int OrderID = 0;
-        OrderManager instance = null;
-        instance.deleteOrder(OrderID);
+        
+        db.deleteOrder(OrderID);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
