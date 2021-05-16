@@ -17,7 +17,7 @@
         <title>IoTBay - Home Page</title>
     </head>
     <body>
-            <div class="topnav"><div class="htop">IoTBay</div><a href="login.jsp">Login</a> <a href="register.jsp">Register</a><a href="index.jsp">Home</a></div>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="login.jsp">Login</a> <a href="register.jsp">Register</a><a href="index.jsp">Home</a><a href="CreateOrder.jsp">Create Order</a><a href="ViewOrder.jsp">View Order</a></div>
             <br>
 
                 <%
