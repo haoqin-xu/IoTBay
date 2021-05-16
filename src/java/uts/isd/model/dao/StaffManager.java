@@ -59,7 +59,7 @@ public class StaffManager {
                 String dob = rs.getString(7);
                 String role = rs.getString(8);
                 
-                return new Staff(email, name, password, dob, phone, address, role); // return admin user object to view (to be stored in session)
+                return new Staff(ID, email, name, password, dob, phone, address, role); // return admin user object to view (to be stored in session)
             }
         }
         return null;

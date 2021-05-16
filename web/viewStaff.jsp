@@ -44,7 +44,6 @@
                             <input type="hidden" id="role" name="role" value="">
                             <input type="submit" value="View All Staff">
                         </form>
-
                     </td>
                 </tr>
 

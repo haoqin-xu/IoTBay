@@ -21,6 +21,7 @@
         
         <%
             Staff staff = (Staff) session.getAttribute("statoedit");
+            String id = request.getParameter("id");
             String email = request.getParameter("email");
             String name = request.getParameter("name");
             String password = request.getParameter("password");
@@ -28,13 +29,19 @@
             String phone = request.getParameter("phone");
             String address = request.getParameter("address");
             String role = request.getParameter("role");
+            
+            String editResult = (String) session.getAttribute("editResult");
         %>
         
-        <%
-            // check which page this is posted from, and display appropriate messages
-        %>
+        <!-- Navigation to go back to the staff list view -->
+        <form action="ViewStaffController" method="GET">
+                <input type="submit" value="Back To Staff List">
+        </form>
+        
+        <%= editResult != null ? editResult : "" %>
         
         <form action="EditStaffController" method="POST">
+            <input type="hidden" id="id" name="id" value="<%= (staff!=null)? staff.getID(): id%>">
             <table>
                 <tr>
                     <td>Email:</td>
@@ -68,11 +75,6 @@
                     <td><input type="submit" value="Apply Changes"></td>
                 </tr>
             </table>
-        </form>
-        
-        <!-- Navigation to go back to the staff list view -->
-        <form action="ViewStaffController" method="GET">
-                <input type="submit" value="Back To Staff List">
         </form>
         
     </body>
