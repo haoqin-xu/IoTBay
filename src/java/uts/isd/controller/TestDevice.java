@@ -30,20 +30,20 @@ public class TestDevice {
     }
     
     private void testCreate() throws SQLException {
-        manager.createDevice(read("name"), read("manufacturer"), read("origin"), read("type"), read("instock"), Double.parseDouble(read("priceperunit")), Integer.parseInt(read("numberinstock")));
+        manager.createDevice(read("Device name: "), read("Manufacturer: "), read("Origin: "), read("Type: "), read("Instock: "), Double.parseDouble(read("Price Per Unit: ")), Integer.parseInt(read("Number in Stock: ")));
     }
     //Test Read working
     private void testRead() throws SQLException {
-        Device device = manager.findDevice(read("Name"), read("Type"));
+        Device device = manager.findDevice(read("Item Name: "), read("Item Type: "));
         System.out.println(device.getName() + " " + device.getManufacturer() + " " + device.getOrigin()+ " " + device.getType()+ " " + device.getInstock()+ " " + device.getPriceperunit()+ " " + device.getNumberinstock());
     }
     
-    private void testUpdate() {
-        
+    private void testUpdate() throws SQLException {
+        manager.updateDevice(Integer.parseInt(read("Device ID: ")), read("Name: "), read("manufacturer"), read("origin"), read("type"), read("Instock: "), Double.parseDouble(read("Price Per Unit: ")), Integer.parseInt(read("Number in Stock: ")));
     }
     
-    private void testDelete() {
-        
+    private void testDelete() throws SQLException {
+        manager.deleteDevice(Integer.parseInt(read("Device ID: ")));
     }
     
     private String read(String prompt) {
@@ -59,8 +59,17 @@ public class TestDevice {
                 case 'r': testRead(); break;
                 case 'u': testUpdate(); break;
                 case 'd': testDelete();break;
-                //default: help(); break;
+                default: help(); break;
             }
         }
+    }
+    
+    private void help() {
+        System.out.println("Database Operations: \n"
+                + "c = Create Device \n"
+                + "r = Read Device by Name and Type \n"
+                + "u = Update Device by ID \n"
+                + "d = Delete Device by ID\n"
+                + "x = Exit\n");
     }
 }

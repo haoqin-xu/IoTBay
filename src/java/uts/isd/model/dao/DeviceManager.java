@@ -28,7 +28,7 @@ public class DeviceManager {
     */
     public void createDevice(String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) throws SQLException {
         String columns = "INSERT INTO iotdb.DEVICE(\"NAME\",MANUFACTURER,ORIGIN,\"TYPE\",INSTOCK,PRICEPERUNIT,STOCK_NUM)";
-        String values = "VALUES('"+name+"', "+manufacturer+", "+origin+", '"+type+"', "+instock+", "+priceperunit+", "+numberinstock+")";
+        String values = "VALUES('"+name+"', '"+manufacturer+"', '"+origin+"', '"+type+"', '"+instock+"', '"+priceperunit+"', '"+numberinstock+"')";
         
         st.executeUpdate(columns+values);
     }
@@ -67,8 +67,8 @@ public class DeviceManager {
     */    
     public void updateDevice(int deviceID, String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) throws SQLException {       
         //code for update-operation   
-        String update = "UPDATE iotdb.DEVICE SET \"NAME\"='"+name+"', MANUFACTURER="+manufacturer+", ORIGIN="+origin+", TYPE='"+type+"', INSTOCK="+instock+", PRICEPERUNIT='"+priceperunit+"', STOCK_NUM="+numberinstock+"";
-        String where = "where DEVICEID="+deviceID+"";
+        String update = "UPDATE iotdb.DEVICE SET \"NAME\"='"+name+"', MANUFACTURER='"+manufacturer+"', ORIGIN='"+origin+"', TYPE='"+type+"', INSTOCK='"+instock+"', PRICEPERUNIT='"+priceperunit+"', STOCK_NUM='"+numberinstock+"'";
+        String where = "WHERE DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
     }       
     
