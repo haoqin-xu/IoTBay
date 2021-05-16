@@ -8,12 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <link rel="stylesheet" href="CSS/mainstyle.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IoTBay - Payment read Page</title>
     </head>
     <body> 
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a></span>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="paycreate.jsp">Add Payment Method</a><a href="logout.jsp">Logout</a><a href="index.jsp">Home</a></div>
         </div>
         <h1>Your saved payment details</h1>
         <%
@@ -23,7 +24,7 @@
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
              String accountnumberErr = (String) session.getAttribute("accountnumberErr");
              String ccvErr = (String) session.getAttribute("ccvErr");
-
+             String deleteErr = (String) session.getAttribute("deleteErr");
         %>
         </br>
         <form action="payupdate.jsp" method="post" method="get">
@@ -48,6 +49,9 @@
                 <td><input type="submit" value="Update"></td>
             </tr>    
         </table>
+                
+        <h1>Delete your payment details</h1>
+        
         </form> 
         
         <form action="DeletePaymentMethod" method="POST"> 
@@ -55,7 +59,8 @@
             <td><input type="number" id="accountnumber" name="accountnumber"></td>
             <input type="submit" value="Delete">
         </form>
-        
+        <div> <%= deleteErr != null ? deleteErr : "" %>
+        </div>
         
         <br>
         

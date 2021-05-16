@@ -42,14 +42,17 @@ public class DeletePaymentMethod extends HttpServlet {
             HttpSession session = request.getSession();
              pmethodmanager =  (PaymentMethodManager) session.getAttribute("paymentmethodmanager");
              //Customer customer = (Customer) session.getAttribute("user");
-                          
+             session.setAttribute("deleteErr", "");
+            
              int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
              
         try {
             pmethodmanager.deletePaymentMethod(accountnumber);
-            request.getRequestDispatcher("payview.jsp").include(request, response);
+            session.setAttribute("deleteErr", "ACCOUNT NUMBER  "+accountnumber+"  DELETED SUCCESSFULLY");
+
 
         } catch (SQLException ex) {
+            session.setAttribute("deleteErr", "ERROR: ACCOUNT NUMBER NOT FOUND!");
             Logger.getLogger(CreatePaymentMethod.class.getName()).log(Level.SEVERE, null, ex);
         }      
             request.getRequestDispatcher("payview.jsp").include(request, response);

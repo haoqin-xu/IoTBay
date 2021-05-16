@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="CSS/mainstyle.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IoTBay - Payment Management Page</title>
     </head>
     <body>
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a></span>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="paycreate.jsp">Add Payment Method</a><a href="payview.jsp">View Payment Method</a><a href="logout.jsp">Logout</a><a href="index.jsp">Home</a></div>
         </div>
         <h1>Update your payment details</h1>
         <br>
