@@ -86,11 +86,8 @@
                         </tr>
                     </table>
                 </form>
-                <br>
-                <div>
-                    <span><a href="ViewOrder.jsp">ViewOrder</a></span>
-                </div>
-                <br>
+               
+               
                 <div>
                     <%=success!=null ? success : ""%>
                     <%=outoflist!=null ? outoflist : ""%>

@@ -39,7 +39,7 @@
                 %>
                     <span>You are logged in as ${user.name} &lt;${user.email}&gt; <a href="profile.jsp">Profile</a> <a href="logout.jsp">Logout</a></span>
                 <% } %>
-                <a href="CreateOrViewOrder.jsp">Create Or View Order</a>
+                
                 <a href="paycreate.jsp">Test 04 Payment</a>
             </div>
         </div>
