@@ -23,6 +23,7 @@
         <%
             ArrayList<Staff> resultArr = (ArrayList<Staff>) session.getAttribute("resultArr");
             String notFoundErr = (String) session.getAttribute("notFoundErr");
+            String deleteResult = (String) session.getAttribute("deleteResult");
         %>
         <div>
             <table>
@@ -89,6 +90,8 @@
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Role</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 <% for (Staff s : resultArr) { %>
                     <tr>
@@ -100,12 +103,39 @@
                         <td><%= s.getPhone()%></td>
                         <td><%= s.getAddress()%></td>
                         <td><%= s.getRole()%></td>
-                        <!-- There should also be links to edit the users or delete them here -->
+                        <!-- 
+                            This form POSTs the ID of the staff on this row of 
+                            the table into the edit servlet. The doPost
+                            function on the servlet handles the specified value
+                            and loads the staff object into the editing page
+                        -->
+                        <th>
+                            <form action="EditStaffController" method="POST">
+                                <input type="hidden" name="staemail" id="staemail" value="<%= s.getEmail()%>">
+                                <input type="hidden" name="stapassword" id="stapassword" value="<%= s.getPassword()%>">
+                                <input type="hidden" name="staid" id="staid" value="<%= s.getID()%>">
+                                <input type="submit" value="Edit">
+                            </form>
+                        </th>
+                        <!-- 
+                            This form POSTs the ID of the staff on this row of 
+                            the table into the delete servlet. The doPost
+                            function on the servlet handles the specified value
+                            and attempts to delete the user.
+                        -->
+                        <th>
+                            <form action="DeleteStaffController" method="POST">
+                                <input type="hidden" name="staid" id="staid" value="<%= s.getID()%>">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </th>
                     </tr>
                 <% } %>
                 </table>
             <% } %>
-            
+            <!-- the results of deleting a staff is shown here!-->
+            <br>
+            <%= deleteResult != null ? deleteResult : "" %>
         </div>
     </body>
 </html>

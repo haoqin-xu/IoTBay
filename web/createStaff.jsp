@@ -14,7 +14,7 @@
     
     <body>
         <div>
-            <span>IoTBay Admin <a href="adminView.jsp">Admin Home</a> <a href="logout.jsp">Logout</a></span>
+            <span>IoTBay Admin <a href="adminView.jsp">Home</a> <a href="logout.jsp">Logout</a></span>
         </div>
         <div>IotBay Admin - Create New Staff</div>
         

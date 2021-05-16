@@ -72,21 +72,29 @@
         <servlet-name>ListDeviceController</servlet-name>
         <servlet-class>uts.isd.controller.ListDeviceController</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>PayController</servlet-name>
-        <servlet-class>uts.isd.controller.PayController</servlet-class>  
+        <servlet-class>uts.isd.controller.PayController</servlet-class>
     </servlet>
-       <servlet>
+    <servlet>
         <servlet-name>PaymentValidator</servlet-name>
-        <servlet-class>uts.isd.controller.PaymentValidator</servlet-class>  
+        <servlet-class>uts.isd.controller.PaymentValidator</servlet-class>
     </servlet>
-       <servlet>
+    <servlet>
         <servlet-name>UpdatePaymentMethod</servlet-name>
-        <servlet-class>uts.isd.controller.UpdatePaymentMethod</servlet-class>  
+        <servlet-class>uts.isd.controller.UpdatePaymentMethod</servlet-class>
     </servlet>
-       <servlet>
+    <servlet>
         <servlet-name>CreatePaymentMethod</servlet-name>
-        <servlet-class>uts.isd.controller.CreatePaymentMethod</servlet-class>  
+        <servlet-class>uts.isd.controller.CreatePaymentMethod</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteStaffController</servlet-name>
+        <servlet-class>uts.isd.controller.DeleteStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditStaffController</servlet-name>
+        <servlet-class>uts.isd.controller.EditStaffController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -160,14 +168,22 @@
         <servlet-name>PaymentValidator</servlet-name>
         <url-pattern>/PaymentValidator</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>UpdatePaymentMethod</servlet-name>
         <url-pattern>/UpdatePaymentMethod</url-pattern>
-    </servlet-mapping>   
+    </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>CreatePaymentMethod</servlet-name>
+        <servlet-name>CreatePaymentMethod</servlet-name>
         <url-pattern>/CreatePaymentMethod</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteStaffController</servlet-name>
+        <url-pattern>/DeleteStaffController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditStaffController</servlet-name>
+        <url-pattern>/EditStaffController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

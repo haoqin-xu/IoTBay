@@ -41,6 +41,7 @@ public class ViewStaffController extends HttpServlet {
         // clear existing data/error messages stored in the session
         session.setAttribute("resultArr", null);
         session.setAttribute("notFoundErr", "");
+        session.setAttribute("deleteResult", "");
         
         // create array to store search results
         ArrayList<Staff> resultArr = new ArrayList<Staff>();
@@ -60,7 +61,7 @@ public class ViewStaffController extends HttpServlet {
         if (resultArr != null) { // if there are results
             session.setAttribute("resultArr", resultArr);
         } else { // if no results found, set an error message instead
-            session.setAttribute("notFoundErr", "No staff users with the specified details were found.");
+            session.setAttribute("notFoundErr", "No staff in the database.");
         }
         
         // redirect the user back to the viewStaff page, but now with results or errors stored in the session
@@ -79,6 +80,7 @@ public class ViewStaffController extends HttpServlet {
         // clear existing data/error messages stored in the session
         session.setAttribute("resultArr", null);
         session.setAttribute("notFoundErr", "");
+        session.setAttribute("deleteResult", "");
         
         // obtain search params from the POST request
         String name = request.getParameter("name");
