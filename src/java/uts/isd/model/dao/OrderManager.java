@@ -59,6 +59,7 @@ public class OrderManager {
         return null;
     }
     public ArrayList<Order> listOrder(int customerid) throws SQLException{
+        // Finds list of order by using the customer id
             String fetch = "SELECT * FROM IOTDB.\"ORDER\" WHERE CUSTOMERID="+customerid+"";
             ResultSet rs = st.executeQuery(fetch);
             ArrayList<Order> list = new ArrayList<Order>();
