@@ -58,7 +58,7 @@ public class OrderManagerTest {
         String Date = "";
         db.createOrder(CustomerID, PaymentID, DeviceID, InvoiceID, Date);
         // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -77,7 +77,7 @@ public class OrderManagerTest {
         Order result = db.findOrder(OrderID, Date);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -89,12 +89,12 @@ public class OrderManagerTest {
         DBConnector connector = new DBConnector();
         Connection conn = connector.openConnection();
         OrderManager db = new OrderManager(conn);
-        int customerid = 0;
-        ArrayList<Order> expResult = null;
+        int customerid = -1;
+        ArrayList<Order> expResult = new ArrayList<Order>();
         ArrayList<Order> result = db.listOrder(customerid);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -115,7 +115,7 @@ public class OrderManagerTest {
         
         db.updateOrder(OrderID, CustomerID, PaymentID, DeviceID, InvoiceID, Date);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -131,7 +131,7 @@ public class OrderManagerTest {
         
         db.deleteOrder(OrderID);
         // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
     
 }
