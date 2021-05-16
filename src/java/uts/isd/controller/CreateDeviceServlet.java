@@ -42,6 +42,7 @@ public class CreateDeviceServlet extends HttpServlet {
         
         try {
             manager.createDevice(deviceName, manufacturer, origin, type, inStock, pricePerUnit, stockNum);
+            request.getRequestDispatcher("createDevice.jsp").include(request, response); 
         } catch (SQLException ex) {
             Logger.getLogger(CreateDeviceServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
