@@ -13,12 +13,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="lab/css/index.css">
+        <link rel="stylesheet" href="CSS/mainstyle.css">
         <title>IoTBay - Home Page</title>
     </head>
     <body>
-        <div>IoTBay
-            <div>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="login.jsp">Login</a> <a href="register.jsp">Register</a><a href="index.jsp">Home</a></div>
+            <br>
+
                 <%
                     //set date for order:
                     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());

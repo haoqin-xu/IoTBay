@@ -96,6 +96,10 @@
         <servlet-name>EditStaffController</servlet-name>
         <servlet-class>uts.isd.controller.EditStaffController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePaymentMethod</servlet-name>
+        <servlet-class>uts.isd.controller.DeletePaymentMethod</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>EditStaffController</servlet-name>
         <url-pattern>/EditStaffController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePaymentMethod</servlet-name>
+        <url-pattern>/DeletePaymentMethod</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

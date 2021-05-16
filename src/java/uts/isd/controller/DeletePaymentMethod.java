@@ -1,4 +1,5 @@
-/**
+
+   /**
  *
  * @author Briana Margetts
  */
@@ -29,7 +30,7 @@ import uts.isd.model.*;
 
 
 
-public class CreatePaymentMethod extends HttpServlet {
+public class DeletePaymentMethod extends HttpServlet {
     private PaymentMethodManager pmethodmanager;
     
       
@@ -39,26 +40,21 @@ public class CreatePaymentMethod extends HttpServlet {
 
             // retrieve the current session
             HttpSession session = request.getSession();
-             PaymentValidator validator = new PaymentValidator();
              pmethodmanager =  (PaymentMethodManager) session.getAttribute("paymentmethodmanager");
-             Customer customer = (Customer) session.getAttribute("user");
-
-
-             int customerid = customer.getID();
-             String paymenttype = (request.getParameter("paymenttype"));
-             int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
-             int ccv = Integer.parseInt(request.getParameter("ccv"));
-             
-             
-             validator.clear(session);
-             
-           // PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
+             //Customer customer = (Customer) session.getAttribute("user");
+             session.setAttribute("deleteErr", "");
             
+             int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
+             
         try {
-            pmethodmanager.createPaymentMethod(customerid, paymenttype, accountnumber, ccv);
+            pmethodmanager.deletePaymentMethod(accountnumber);
+            session.setAttribute("deleteErr", "ACCOUNT NUMBER  "+accountnumber+"  DELETED SUCCESSFULLY");
+
+
         } catch (SQLException ex) {
+            session.setAttribute("deleteErr", "ERROR: ACCOUNT NUMBER NOT FOUND!");
             Logger.getLogger(CreatePaymentMethod.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }      
             request.getRequestDispatcher("payview.jsp").include(request, response);
     }
 }
@@ -66,4 +62,7 @@ public class CreatePaymentMethod extends HttpServlet {
 
     
 
+
+
+    
 
