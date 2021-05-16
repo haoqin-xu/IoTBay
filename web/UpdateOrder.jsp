@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <a href="../test/uts/isd/model/PaymentMethodTest.java"></a>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS/mainstyle.css">
         <title>JSP Page</title>
