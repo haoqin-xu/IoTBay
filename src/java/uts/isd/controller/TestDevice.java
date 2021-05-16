@@ -30,7 +30,7 @@ public class TestDevice {
     }
     
     private void testCreate() throws SQLException {
-        manager.createDevice(read("Device name: "), read("Manufacturer: "), read("Origin: "), read("Type: "), read("Instock: "), Double.parseDouble(read("Price Per Unit: ")), Integer.parseInt(read("Number in Stock: ")));
+        manager.createDevice(read("Device name: "), read("Manufacturer: "), read("Origin: "), read("Type: "), readBoolean("Instock: "), readDouble("Price Per Unit: "), readInteger("Number in Stock: "));
     }
     //Test Read working
     private void testRead() throws SQLException {
@@ -39,9 +39,9 @@ public class TestDevice {
     }
     
     private void testUpdate() throws SQLException {
-        manager.updateDevice(Integer.parseInt(read("Device ID: ")), read("Name: "), read("manufacturer"), read("origin"), read("type"), read("Instock: "), Double.parseDouble(read("Price Per Unit: ")), Integer.parseInt(read("Number in Stock: ")));
+        manager.updateDevice(Integer.parseInt(read("Device ID: ")), read("Name: "), read("manufacturer"), read("origin"), read("type"), readBoolean("Instock: "), readDouble("Price Per Unit: "), readInteger("Number in Stock: "));
     }
-    
+    //Test Delete working
     private void testDelete() throws SQLException {
         manager.deleteDevice(Integer.parseInt(read("Device ID: ")));
     }
@@ -51,14 +51,29 @@ public class TestDevice {
         return in.nextLine();
     }
     
+    private Boolean readBoolean(String prompt) {
+        System.out.print(prompt + ": ");
+        return in.nextBoolean();
+    }
+    
+    private Double readDouble(String prompt) {
+        System.out.print(prompt + ": ");
+        return in.nextDouble();
+    }
+    
+    private Integer readInteger(String prompt) {
+        System.out.print(prompt + ": ");
+        return in.nextInt();
+    }
+    
     private void menu() throws SQLException{
-        char c;
-        while((c=read("Command [c/r/u/d/x]").charAt(0)) != 'x'){
+        String c;
+        while((c=read("Command [c/r/u/d/x]").equals("x"))){
             switch(c){
-                case 'c': testCreate();break;
-                case 'r': testRead(); break;
-                case 'u': testUpdate(); break;
-                case 'd': testDelete();break;
+                case "c": testCreate();break;
+                case "r": testRead(); break;
+                case "u": testUpdate(); break;
+                case "d": testDelete();break;
                 default: help(); break;
             }
         }

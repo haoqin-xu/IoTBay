@@ -17,11 +17,11 @@ public class Device implements Serializable{
     private String manufacturer;
     private String origin;
     private String type;
-    private String instock;
+    private boolean instock;
     private double priceperunit;
     private int numberinstock;
 
-    public Device(String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) {
+    public Device(String name, String manufacturer, String origin, String type, boolean instock, double priceperunit, int numberinstock) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.origin = origin;
@@ -30,7 +30,7 @@ public class Device implements Serializable{
         this.priceperunit = priceperunit;
         this.numberinstock = numberinstock;
     }
-    public Device(int ID,String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) {
+    public Device(int ID,String name, String manufacturer, String origin, String type, boolean instock, double priceperunit, int numberinstock) {
         this.deviceid = ID;
         this.name = name;
         this.manufacturer = manufacturer;
@@ -61,7 +61,7 @@ public class Device implements Serializable{
         return origin;
     }
 
-    public String getInstock() {
+    public boolean getInstock() {
         return instock;
     }
 
@@ -81,7 +81,7 @@ public class Device implements Serializable{
         this.origin = origin;
     }
 
-    public void setInstock(String instock) {
+    public void setInstock(boolean instock) {
         this.instock = instock;
     }
 

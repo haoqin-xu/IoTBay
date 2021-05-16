@@ -26,9 +26,9 @@ public class DeviceManager {
     
         ID is initialised from the SQL side. All other fields are filled in by the user or backend.
     */
-    public void createDevice(String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) throws SQLException {
+    public void createDevice(String name, String manufacturer, String origin, String type, boolean instock, double priceperunit, int numberinstock) throws SQLException {
         String columns = "INSERT INTO iotdb.DEVICE(\"NAME\",MANUFACTURER,ORIGIN,\"TYPE\",INSTOCK,PRICEPERUNIT,STOCK_NUM)";
-        String values = "VALUES('"+name+"', '"+manufacturer+"', '"+origin+"', '"+type+"', '"+instock+"', '"+priceperunit+"', '"+numberinstock+"')";
+        String values = "VALUES('"+name+"', '"+manufacturer+"', '"+origin+"', '"+type+"', '"+instock+"', "+priceperunit+", "+numberinstock+")";
         
         st.executeUpdate(columns+values);
     }
@@ -52,7 +52,7 @@ public class DeviceManager {
             if (devicename.equals(Name) && devicetype.equals(Type)) {
                 String Manufacturer = rs.getString(3);
                 String Origin = rs.getString(4);
-                String Instock = rs.getString(6);
+                boolean Instock = rs.getBoolean(6);
                 double PricePerUnit = rs.getDouble(7);
                 int NumberInStock = rs.getInt(8);
                 
@@ -65,7 +65,7 @@ public class DeviceManager {
     /*
         UPDATE OPERATION: Update all fields of DEVICE based on ID
     */    
-    public void updateDevice(int deviceID, String name, String manufacturer, String origin, String type, String instock, double priceperunit, int numberinstock) throws SQLException {       
+    public void updateDevice(int deviceID, String name, String manufacturer, String origin, String type, boolean instock, double priceperunit, int numberinstock) throws SQLException {       
         //code for update-operation   
         String update = "UPDATE iotdb.DEVICE SET \"NAME\"='"+name+"', MANUFACTURER='"+manufacturer+"', ORIGIN='"+origin+"', TYPE='"+type+"', INSTOCK='"+instock+"', PRICEPERUNIT='"+priceperunit+"', STOCK_NUM='"+numberinstock+"'";
         String where = "WHERE DEVICEID="+deviceID+"";
@@ -119,7 +119,7 @@ public class DeviceManager {
                 String manu = rs.getString(3);
                 String origin = rs.getString(4);
                 String type = rs.getString(5);
-                String instock = rs.getString(6);
+                boolean instock = rs.getBoolean(6);
                 double priceperunit = rs.getInt(7);
                 int numberinstock = rs.getInt(8);
                 
