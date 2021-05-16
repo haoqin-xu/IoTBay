@@ -15,6 +15,7 @@
     </head>
     <body>
         <%
+            // did not include this because could not fix bug
             //getting error mesages
             /*
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");

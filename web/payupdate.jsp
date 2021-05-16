@@ -23,9 +23,6 @@
              String paymenttype = request.getParameter("paymenttype");
              String accountnumber = request.getParameter("accountnumber");
              String ccv = request.getParameter("ccv");
-             String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
-             String accountnumberErr = (String) session.getAttribute("accountnumberErr");
-             String ccvErr = (String) session.getAttribute("ccvErr");
 
         %>
         <form action="payview.jsp" method="post" method="get">
@@ -43,7 +40,7 @@
                 </tr>
                 <tr>
                     <td>Account Number:</td>
-                    <td><input type="text" id="accountnumber" name="accountnumber" value=<%=(accountnumberErr !=null ? accountnumberErr:accountnumber)%>></td>
+                    <td><input type="text" id="accountnumber" name="accountnumber" value=<%= accountnumber%>></td>
                 </tr>
                 <tr>
                     <td>CCV Number:</td>
