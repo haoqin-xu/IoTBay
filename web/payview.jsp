@@ -72,7 +72,7 @@
             <td><input type="number" id="accountnumber" name="accountnumber"></td>
             <input type="submit" value="Update">
         </form>
-        <div> <%= deleteErr != null ? deleteErr : ""%>
+        <div> 
         </div>
 
         <br>
