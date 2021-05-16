@@ -51,7 +51,6 @@ public class EditStaffController extends HttpServlet {
         // init staff object
         Staff staff = null;
         // obtain the ID and other fields of the staff to be edited
-        int staffToEditID = Integer.parseInt(request.getParameter("staid"));
         String email = request.getParameter("staemail");
         String password = request.getParameter("stapassword");
         
@@ -62,5 +61,7 @@ public class EditStaffController extends HttpServlet {
             Logger.getLogger(ViewStaffController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        // redirect the user back to the editStaff page, with the fetched user data
+        request.getRequestDispatcher("editStaff.jsp").include(request, response);
     }
 }

@@ -113,7 +113,6 @@
                             <form action="EditStaffController" method="POST">
                                 <input type="hidden" name="staemail" id="staemail" value="<%= s.getEmail()%>">
                                 <input type="hidden" name="stapassword" id="stapassword" value="<%= s.getPassword()%>">
-                                <input type="hidden" name="staid" id="staid" value="<%= s.getID()%>">
                                 <input type="submit" value="Edit">
                             </form>
                         </th>

@@ -21,50 +21,48 @@
         
         <%
             Staff staff = (Staff) session.getAttribute("statoedit");
-            if (staff != null) {
-                String email = request.getParameter("email");
-                String name = request.getParameter("name");
-                String password = request.getParameter("password");
-                String dob = request.getParameter("dob");
-                String phone = request.getParameter("phone");
-                String address = request.getParameter("address");
-                String role = request.getParameter("role");
-            }
+            String email = request.getParameter("email");
+            String name = request.getParameter("name");
+            String password = request.getParameter("password");
+            String dob = request.getParameter("dob");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            String role = request.getParameter("role");
         %>
         
         <%
             // check which page this is posted from, and display appropriate messages
         %>
         
-        <form action="account.jsp" method="POST">
+        <form action="EditStaffController" method="POST">
             <table>
                 <tr>
                     <td>Email:</td>
-                    <td><input type="text" id="email" name="email" value="<%= (email!=null)? email: user.getEmail()%>"></td>
+                    <td><input type="text" id="email" name="email" value="<%= (email!=null)? email: staff.getEmail()%>"></td>
                 </tr>
                 <tr>
                     <td>Name:</td>
-                    <td><input type="text" id="name" name="name" value="<%= name%>"></td>
+                    <td><input type="text" id="name" name="name" value="<%= (name!=null)? name: staff.getName()%>"></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="password" id="password" name="password" value="<%= password%>"></td>
+                    <td><input type="password" id="password" name="password" value="<%= (password!=null)? password: staff.getPassword()%>"></td>
                 </tr>
                 <tr>
                     <td>Date of Birth:</td>
-                    <td><input type="date" id="password" name="password" value="<%= dob%>"></td>
+                    <td><input type="date" id="dob" name="dob" value="<%= (dob!=null)? dob: staff.getDob()%>"></td>
                 </tr>
                 <tr>
                     <td>Phone:</td>
-                    <td><input type="tel" id="phone" name="phone" value="<%= phone%>"></td>
+                    <td><input type="tel" id="phone" name="phone" value="<%= (phone!=null)? phone: staff.getPhone()%>"></td>
                 </tr>
                 <tr>
                     <td>Address:</td>
-                    <td><input type="text" id="address" name="address"value="<%= address%>"></td>
+                    <td><input type="text" id="address" name="address"value="<%= (address!=null)? address: staff.getAddress()%>"></td>
                 </tr>
                 <tr>
                     <td>Role:</td>
-                    <td><input type="text" id="role" name="role"value="<%= role%>"></td>
+                    <td><input type="text" id="role" name="role"value="<%= (role!=null)? role: staff.getRole()%>"></td>
                 </tr>  
                 <tr>
                     <td><input type="submit" value="Apply Changes"></td>
