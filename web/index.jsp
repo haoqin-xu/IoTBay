@@ -17,7 +17,7 @@
         <title>IoTBay - Home Page</title>
     </head>
     <body>
-            <div class="topnav"><div class="htop">IoTBay</div><a href="login.jsp">Login</a> <a href="register.jsp">Register</a><a href="index.jsp">Home</a><a href="CreateOrder.jsp">Create Order</a><a href="ViewOrder.jsp">View Order</a></div>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="login.jsp">Login</a> <a href="register.jsp">Register</a><a href="index.jsp">Home</a><a href="paycreate.jsp">Save Payment Details</a><a href="CreateOrder.jsp">Create Order</a><a href="ViewOrder.jsp">View Order</a></div>
             <br>
 
                 <%
@@ -40,7 +40,6 @@
                     <span>You are logged in as ${user.name} &lt;${user.email}&gt; <a href="profile.jsp">Profile</a> <a href="logout.jsp">Logout</a></span>
                 <% } %>
                 
-                <a href="paycreate.jsp">Test 04 Payment</a>
             </div>
         </div>
         

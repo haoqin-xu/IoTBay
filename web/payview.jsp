@@ -50,14 +50,24 @@
             </tr>    
         </table>
                 
-        <h1>Delete your payment details</h1>
         
         </form> 
-        
+        <h1>Delete your payment details</h1>
+
         <form action="DeletePaymentMethod" method="POST"> 
             <td>Enter Account Number to be deleted:</td>
             <td><input type="number" id="accountnumber" name="accountnumber"></td>
             <input type="submit" value="Delete">
+        </form>
+        <div> <%= deleteErr != null ? deleteErr : "" %>
+        </div>
+        
+        <br>
+        <h1>Update your payment details</h1>
+            <form action="UpdatePaymentMethod" method="POST"> 
+            <td>Enter Account Number to be updated</td>
+            <td><input type="number" id="accountnumber" name="accountnumber"></td>
+            <input type="submit" value="Update">
         </form>
         <div> <%= deleteErr != null ? deleteErr : "" %>
         </div>
