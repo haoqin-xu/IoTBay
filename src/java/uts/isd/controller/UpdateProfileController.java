@@ -36,37 +36,54 @@ public class UpdateProfileController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // retrieve the current session
         HttpSession session = request.getSession();
-        CustomerManager manager = (CustomerManager) session.getAttribute("manager");
+        CustomerManager manager = (CustomerManager) session.getAttribute("CustomerManager");
         //int customerid, string email, string name, string password, string dob, string phone, string address, string role
-        int customerID = Integer.parseInt(request.getParameter("customerid"));
-        String email = request.getParameter("email");
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String dob = request.getParameter("dob");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        String role = request.getParameter("role");
         
         Validator validator = new Validator();
-        validator.clear(session);
+        Customer customer = null;
+        session.setAttribute("customer", null);
+        session.setAttribute("statoedit", null);
+        session.setAttribute("editResult", "");
+        String custEmail = request.getParameter("custemail");
+        String custPassword = request.getParameter("custpassword");
+        if (request.getParameter("custEmail") != null) { 
+            
+            try {
+                customer = manager.findUser(custEmail, custPassword);
+                session.setAttribute("statoedit", customer); 
+                session.setAttribute("editResult", "Editing customer user "+customer.getName()+" with ID "+customer.getID()+".");
+            } catch (SQLException ex) {
+                Logger.getLogger(UpdateProfileController.class.getName()).log(Level.SEVERE, null, ex);
+                session.setAttribute("editResult", "Error: Customer user not found");
+                request.getRequestDispatcher("index.jsp").include(request, response);
+            }
+        } else {   
+            int ID = Integer.parseInt(request.getParameter("id"));
+            String email = request.getParameter("email");
+            String name = request.getParameter("name");
+            String password = request.getParameter("password");
+            String dob = request.getParameter("dob");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            String role = request.getParameter("role");
         if (!validator.validateEmail(email)) {
-            //8-set incorrect email error to the session
             session.setAttribute("emailErr", "Error: Email format incorrect");
-            //9- redirect user back to the Profile.jsp
             request.getRequestDispatcher("profile.jsp").include(request, response);
 
         } else if (!validator.validatePassword(password)) {
-            //11-set incorrect password error to the session
             session.setAttribute("passErr", "Error: Password format incorrect");
-            //12- redirect user back to the Profile.jsp
             request.getRequestDispatcher("profile.jsp").include(request, response);
         }
-        try{
-            manager.updateUser(customerID, email, name, password, dob, phone, address, role);
+        else{
+            try{
+                manager.updateUser(ID, email, name, password, dob, phone, address, role);
+            }
+            catch(SQLException exception){
+                Logger.getLogger(UpdateProfileController.class.getName()).log(Level.SEVERE, null, exception);
+                session.setAttribute("editResult", "Error: Unable to update staff user details.");
+            }
         }
-        catch(SQLException exception){
-            Logger.getLogger(UpdateProfileController.class.getName()).log(Level.SEVERE, null, exception);
-        }
-        request.getRequestDispatcher("profile.jsp").include(request, response);
+    }
+    request.getRequestDispatcher("profile.jsp").include(request, response);
     }
 }

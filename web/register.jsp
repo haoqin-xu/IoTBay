@@ -18,17 +18,15 @@
             String emailErr = (String) session.getAttribute("emailErr");
             String passErr = (String) session.getAttribute("passErr");
             String existErr = (String) session.getAttribute("existErr");
+            String successMsg = (String) session.getAttribute("successMsg");
         %>
         <div>IoTBay - Registration</div>
-        <form action="welcome.jsp" method="POST">
+            <%= emailErr != null ? emailErr : "" %><br>
+            <%= passErr != null ? passErr : "" %><br>
+            <%= existErr != null ? existErr : "" %><br>
+            <%= successMsg != null ? successMsg : "" %>
+        <form action="RegisterController" method="POST">
             <table>
-                <tr>
-                    <div>
-                        <%= emailErr != null ? emailErr : "" %><br>
-                        <%= passErr != null ? passErr : "" %><br>
-                        <%= existErr != null ? existErr : "" %><br>
-                    </div>
-                </tr>
                 <tr>
                     <td>Email:</td>
                     <td><input type="email" id="email" name="email"></td>
@@ -55,9 +53,9 @@
                 </tr>    
                 <tr>
                     <td><input type="submit" value="Sign Up"></td>
+                    
                 </tr>
             </table>
-            
             
         </form>
     </body>

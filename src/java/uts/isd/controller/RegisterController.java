@@ -35,6 +35,11 @@ public class RegisterController extends HttpServlet {
 
         HttpSession session = request.getSession();
         Validator validator = new Validator();
+        
+        session.setAttribute("emailErr", "");
+        session.setAttribute("passErr", "");
+        session.setAttribute("successMsg", "");
+        
         String email = request.getParameter("email");
         String name = request.getParameter("name");
         String password = request.getParameter("password");
@@ -42,11 +47,9 @@ public class RegisterController extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String role = request.getParameter("role");
-        CustomerManager manager = (CustomerManager) session.getAttribute("manager");
+        CustomerManager manager = (CustomerManager) session.getAttribute("customermanager");
 
-        validator.clear(session); //clears previous error mesages
-
-        Customer user = null;
+        Customer customer = null;
 
         if (!validator.validateEmail(email)) {
             //8-set incorrect email error to the session
@@ -65,14 +68,15 @@ public class RegisterController extends HttpServlet {
         else {
             try {
                 //6- find user by email and password
-                user = manager.findUser(email, password);
-                if (user != null) {
+                customer = manager.findUser(email, password);
+                if (customer != null) {
                     session.setAttribute("existErr", "Error: User already exist");
                     request.getRequestDispatcher("register.jsp").include(request, response);
                 } else {
                     manager.addUser(email, name, password, dob, phone, address, role); 
-                    session.setAttribute("user", user);
-                    request.getRequestDispatcher("welcome.jsp").include(request, response);
+                    session.setAttribute("customer", customer);
+                    session.setAttribute("successMsg", "SUCCESS: Customer user "+name+" has been added to the database." );
+                    request.getRequestDispatcher("index.jsp").include(request, response);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
