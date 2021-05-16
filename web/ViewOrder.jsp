@@ -11,11 +11,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSS/mainstyle.css">
         <title>JSP Page</title>
     </head>
     <body>
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a><a href="CreateOrder.jsp">Create Order</a></span>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="CreateOrder.jsp">Create Order</a><a href="index.jsp">Home</a></div>
+            
         </div>
         <br>
         <form action ="ListOrderController" method ="POST">

@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSS/mainstyle.css">
         <title>IoTBay - Payment Management Page</title>
     </head>
     <body>
@@ -23,7 +24,7 @@
         */
         %>   
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a></span>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="logout.jsp">Logout</a><a href="index.jsp">Home</a></div>
         </div>
         <h1>Please enter your payment details</h1>
         <br>

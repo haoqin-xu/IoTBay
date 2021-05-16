@@ -30,7 +30,7 @@
                     <td>Type</td><td><input type="text" name="type"></td>
                 </tr>
                 <tr>
-                    <td>In Stock</td><td><input type="text" name="inStock"></td>
+                    <td>In Stock</td><td><input type="boolean" name="inStock"></td>
                 </tr>
                 <tr>
                     <td>Price per Unit</td><td><input type="number" name="pricePerUnit"</td>

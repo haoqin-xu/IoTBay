@@ -11,11 +11,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSS/mainstyle.css">
         <title>JSP Page</title>
     </head>
     <body>
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a><a href="ViewOrder.jsp">View Order</a></span>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="ViewOrder.jsp">View Order</a><a href="index.jsp">Home</a></div>
+            
         </div>
         <form action="ViewOrderController" method="POST">
             <%
@@ -51,7 +53,7 @@
             String notint = (String) session.getAttribute("notint");
                  %>
                  
-                    <h2>Update order:<%=detailedorder.getOrderID()%></h2>
+                    <h2>Update order:</h2>
                     <table>
                         
                         <tr>

@@ -12,11 +12,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSS/mainstyle.css">
         <title>Create order</title>
     </head>
     <body>
         <div>
-            <span>IoTBay <a href="index.jsp">Home</a></span>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="ViewOrder.jsp">View Order</a><a href="index.jsp">Home</a></div>
+            
         </div>
 
         <br>
@@ -84,11 +86,8 @@
                         </tr>
                     </table>
                 </form>
-                <br>
-                <div>
-                    <span><a href="ViewOrder.jsp">ViewOrder</a></span>
-                </div>
-                <br>
+               
+               
                 <div>
                     <%=success!=null ? success : ""%>
                     <%=outoflist!=null ? outoflist : ""%>

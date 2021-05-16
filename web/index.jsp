@@ -13,12 +13,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="lab/css/index.css">
+        <link rel="stylesheet" href="CSS/mainstyle.css">
         <title>IoTBay - Home Page</title>
     </head>
     <body>
-        <div>IoTBay
-            <div>
+            <div class="topnav"><div class="htop">IoTBay</div><a href="login.jsp">Login</a> <a href="register.jsp">Register</a><a href="index.jsp">Home</a><a href="CreateOrder.jsp">Create Order</a><a href="ViewOrder.jsp">View Order</a></div>
+            <br>
+
                 <%
                     //set date for order:
                     String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
@@ -38,7 +39,7 @@
                 %>
                     <span>You are logged in as ${user.name} &lt;${user.email}&gt; <a href="profile.jsp">Profile</a> <a href="logout.jsp">Logout</a></span>
                 <% } %>
-                <a href="CreateOrViewOrder.jsp">Create Or View Order</a>
+                
                 <a href="paycreate.jsp">Test 04 Payment</a>
             </div>
         </div>
