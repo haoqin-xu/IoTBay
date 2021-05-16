@@ -33,7 +33,7 @@ public class CreateDeviceServlet extends HttpServlet {
         String manufacturer = request.getParameter("manufacturer");
         String origin = request.getParameter("origin");
         String type = request.getParameter("type");
-        String inStock = request.getParameter("inStock");
+        boolean inStock = Boolean.parseBoolean(request.getParameter("inStock"));
         double pricePerUnit = Double.parseDouble(request.getParameter("pricePerUnit"));
         int stockNum = Integer.parseInt(request.getParameter("stockNum"));
         //Retrieve the manager instance from session
