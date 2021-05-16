@@ -19,7 +19,7 @@
         <h1>Update your payment details</h1>
         <br>
        <%
-             String paymentmethod = request.getParameter("paymentmethod");
+             String paymenttype = request.getParameter("paymenttype");
              String accountnumber = request.getParameter("accountnumber");
              String ccv = request.getParameter("ccv");
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
@@ -31,8 +31,8 @@
             <table>
                 <tr>
                     <td>Payment Method:</td>
-                    <td><select class="select" id="paymentmethod" name="paymentmethod">
-                            <option value="<%= paymentmethod%>"><%= paymentmethod%></option>
+                    <td><select class="select" id="paymenttype" name="paymenttype">
+                            <option value="<%= paymenttype%>"><%= paymenttype%></option>
                             <option value="Debit Card">Debit Card</option>
                             <option value="Credit Card">Credit Card</option>
                             <option value="Gift Card">Gift Card</option>

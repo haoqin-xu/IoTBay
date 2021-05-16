@@ -17,7 +17,7 @@
         </div>
         <h1>Your saved payment details</h1>
         <%
-             String paymentmethod = request.getParameter("paymentmethod");
+             String paymenttype = request.getParameter("paymenttype");
              String accountnumber = request.getParameter("accountnumber");
              String ccv = request.getParameter("ccv");
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
@@ -30,7 +30,7 @@
         <table id="paymentdetail">
             <tr>
                 <th>Payment Method</th>
-                <td><%=(paymentmethodErr !=null ? paymentmethodErr:paymentmethod)%>
+                <td><%=(paymentmethodErr !=null ? paymentmethodErr:paymenttype)%>
 
                 </td>
             </tr>

@@ -13,8 +13,10 @@ import java.sql.Statement;
  * @author Briana Margetts
  */
 public class PaymentMethodManager {
+
+
     private Statement st;
-    
+     
     public PaymentMethodManager(Connection conn) throws SQLException {
         st = conn.createStatement();
     }
@@ -26,7 +28,7 @@ public class PaymentMethodManager {
     */
     public void createPaymentMethod( int customerid, String paymenttype, int accountnumber, int ccv) throws SQLException {
         String columns = "INSERT INTO iotdb.PAYMENTMETHOD( CUSTOMERID, PAYMENTTYPE, ACCOUNTNUMBER, CCV)";
-        String values = "VALUES( "+customerid+", "+paymenttype+", "+accountnumber+","+ccv+")";
+        String values = "VALUES( "+customerid+", '"+paymenttype+"', "+accountnumber+","+ccv+")";
         
         st.executeUpdate(columns+values);
     }

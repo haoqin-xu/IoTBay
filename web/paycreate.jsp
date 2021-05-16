@@ -14,12 +14,14 @@
     </head>
     <body>
         <%
+            /*
             // PaymentMethod pay = (PaymentMethod) session.getAttribute("pay");
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
              String accountnumberErr = (String) session.getAttribute("accountnumberErr");
              String ccvErr = (String) session.getAttribute("ccvErr");
-             
-        %>
+             //int customerid, String paymenttype, int accountnumber, int ccv
+        */
+        %>   
         <div>
             <span>IoTBay <a href="index.jsp">Home</a></span>
         </div>
@@ -27,27 +29,29 @@
         <br>
         <form action="CreatePaymentMethod" method="post">
             <table>
+                <!--input type="hidden" id="customerid" value=""-->
                 <tr>
                     <td>Payment Method:</td>
-                     <%=(paymentmethodErr !=null ? paymentmethodErr:"")%>
-                    <td><select class="select" id="paymentmethod" name="paymentmethod">
-                            <option value="">select payment method</option>
-                            <option value="Debit Card">Debit Card</option>
-                            <option value="Credit Card">Credit Card</option>
-                            <option value="Gift Card">Gift Card</option>
-                            <option value="Prepaid Card">Pre-paid Card</option>
+                     <%/*=(paymentmethodErr !=null ? paymentmethodErr:"")*/%>
+                     <td><select class="select" id="paymenttype" name="paymenttype">
+                            <option id="paymenttype" name="paymenttype" value="">select payment method</option>
+                            <option id="paymenttype" name="paymenttype" value="Debit Card">Debit Card</option>
+                            <option id="paymenttype" name="paymenttype" value="Credit Card">Credit Card</option>
+                            <option id="paymenttype" name="paymenttype"value="Gift Card">Gift Card</option>
+                            <option id="paymenttype" name="paymenttype" value="Prepaid Card">Pre-paid Card</option>
                         </select>
                     </td>
+                     
                 </tr>
                 <tr>
                     <td>Account Number:</td>
-                     <%=(accountnumberErr !=null ? accountnumberErr:"")%>
-                    <td><input type="text" id="accountnumber" name="accountnumber"></td>
+                     <%/*=(accountnumberErr !=null ? accountnumberErr:"")*/%>
+                    <td><input type="number" id="accountnumber" name="accountnumber"></td>
                 </tr>
                 <tr>
                     <td>CCV Number:</td>
-                    <%=(ccvErr !=null ? ccvErr:"")%> 
-                    <td><input type="password" id="ccv" name="ccv"></td>
+                    <%/*=(ccvErr !=null ? ccvErr:"")*/%> 
+                    <td><input type="number" id="ccv" name="ccv"></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -55,6 +59,5 @@
                 </tr>
             </table>
         </form>
-            <jsp:include page="/ConnServlet" flush="true"/>
     </body>
 </html>

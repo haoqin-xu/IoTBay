@@ -31,32 +31,32 @@ import uts.isd.model.*;
 
 
 public class CreatePaymentMethod extends HttpServlet {
+    private PaymentMethodManager pmethodmanager;
     
+      
     @Override
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // retrieve the current session
-        HttpSession session = request.getSession();
+            // retrieve the current session
+            HttpSession session = request.getSession();
              PaymentValidator validator = new PaymentValidator();
-             //int methodid = Integer.parseInt(request.getParameter("methodid"));
-              Customer customer = (Customer) session.getAttribute("user");
-              int customerid = customer.getID();
-             //int customerid = Integer.parseInt(request.getParameter("customerid"));
-             
+             pmethodmanager =  (PaymentMethodManager) session.getAttribute("paymentmethodmanager");
+             Customer customer = (Customer) session.getAttribute("user");
+
+
+             int customerid = customer.getID();
              String paymenttype = (request.getParameter("paymenttype"));
              int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
              int ccv = Integer.parseInt(request.getParameter("ccv"));
              
              
-             //PaymentMethod paymentMethod = null;
-             PaymentMethodManager paymentmethodmanager = (PaymentMethodManager) session.getAttribute("paymentmethodmanager");
              validator.clear(session);
              
-            PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
+           // PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
             
         try {
-            paymentmethodmanager.createPaymentMethod(customerid, paymenttype, accountnumber, ccv);
+            pmethodmanager.createPaymentMethod(customerid, paymenttype, accountnumber, ccv);
         } catch (SQLException ex) {
             Logger.getLogger(CreatePaymentMethod.class.getName()).log(Level.SEVERE, null, ex);
         }
