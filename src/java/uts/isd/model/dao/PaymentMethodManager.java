@@ -74,9 +74,9 @@ public class PaymentMethodManager {
     /*
         DELETE OPERATION: Delete PAYMENT based on PAYMENTID
     */
-    public void deletePaymentMethod(int methodid) throws SQLException{       
+    public void deletePaymentMethod(int accountnumber) throws SQLException{       
        //code for delete-operation   
-       String delete = "DELETE FROM iotdb.PAYMENTMETHOD where PAYMENTID="+methodid+"";
+       String delete = "DELETE FROM iotdb.PAYMENTMETHOD where ACCOUNTNUMBER="+accountnumber+"";
        st.executeUpdate(delete);
     }
     

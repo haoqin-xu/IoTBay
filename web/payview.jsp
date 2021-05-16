@@ -45,11 +45,18 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Update">
-                <a href="index.jsp">Delete</a></td>
+                <td><input type="submit" value="Update"></td>
             </tr>    
         </table>
-        </form>    
+        </form> 
+        
+        <form action="DeletePaymentMethod" method="POST"> 
+            <td>Enter Account Number to be deleted:</td>
+            <td><input type="number" id="accountnumber" name="accountnumber"></td>
+            <input type="submit" value="Delete">
+        </form>
+        
+        
         <br>
         
         

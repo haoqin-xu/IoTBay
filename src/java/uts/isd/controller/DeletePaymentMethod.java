@@ -1,4 +1,5 @@
-/**
+
+   /**
  *
  * @author Briana Margetts
  */
@@ -29,7 +30,7 @@ import uts.isd.model.*;
 
 
 
-public class CreatePaymentMethod extends HttpServlet {
+public class DeletePaymentMethod extends HttpServlet {
     private PaymentMethodManager pmethodmanager;
     
       
@@ -39,26 +40,18 @@ public class CreatePaymentMethod extends HttpServlet {
 
             // retrieve the current session
             HttpSession session = request.getSession();
-             PaymentValidator validator = new PaymentValidator();
              pmethodmanager =  (PaymentMethodManager) session.getAttribute("paymentmethodmanager");
-             Customer customer = (Customer) session.getAttribute("user");
-
-
-             int customerid = customer.getID();
-             String paymenttype = (request.getParameter("paymenttype"));
+             //Customer customer = (Customer) session.getAttribute("user");
+                          
              int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
-             int ccv = Integer.parseInt(request.getParameter("ccv"));
              
-             
-             validator.clear(session);
-             
-           // PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
-            
         try {
-            pmethodmanager.createPaymentMethod(customerid, paymenttype, accountnumber, ccv);
+            pmethodmanager.deletePaymentMethod(accountnumber);
+            request.getRequestDispatcher("payview.jsp").include(request, response);
+
         } catch (SQLException ex) {
             Logger.getLogger(CreatePaymentMethod.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }      
             request.getRequestDispatcher("payview.jsp").include(request, response);
     }
 }
@@ -66,4 +59,7 @@ public class CreatePaymentMethod extends HttpServlet {
 
     
 
+
+
+    
 
