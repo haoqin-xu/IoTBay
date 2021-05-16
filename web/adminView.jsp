@@ -30,9 +30,5 @@
                 <input type="submit" value="Create New Staff">
             </form>
         </div>
-
-        <!-- init connservlet at admin home for testing purposes. 
-        This will be removed for release -->
-        <jsp:include page="/ConnServlet" flush="true" />
     </body>
 </html>
