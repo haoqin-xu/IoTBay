@@ -15,26 +15,26 @@
     </head>
     <body>
         <%
+            //getting error mesages
             /*
-            // PaymentMethod pay = (PaymentMethod) session.getAttribute("pay");
              String paymentmethodErr = (String) session.getAttribute("paymentmethodErr");
              String accountnumberErr = (String) session.getAttribute("accountnumberErr");
              String ccvErr = (String) session.getAttribute("ccvErr");
-             //int customerid, String paymenttype, int accountnumber, int ccv
-        */
+             */
         %>   
         <div>
             <div class="topnav"><div class="htop">IoTBay</div><a href="logout.jsp">Logout</a><a href="index.jsp">Home</a></div>
         </div>
         <h1>Please enter your payment details</h1>
         <br>
+        <!--form calls create payment method controller upon submit-->
         <form action="CreatePaymentMethod" method="post">
             <table>
-                <!--input type="hidden" id="customerid" value=""-->
                 <tr>
+                    <!--getting payment method, customer can only select from drop down box-->
                     <td>Payment Method:</td>
-                     <%/*=(paymentmethodErr !=null ? paymentmethodErr:"")*/%>
-                     <td><select class="select" id="paymenttype" name="paymenttype">
+                    <%/*=(paymentmethodErr !=null ? paymentmethodErr:"")*/%>
+                    <td><select class="select" id="paymenttype" name="paymenttype">
                             <option id="paymenttype" name="paymenttype" value="">select payment method</option>
                             <option id="paymenttype" name="paymenttype" value="Debit Card">Debit Card</option>
                             <option id="paymenttype" name="paymenttype" value="Credit Card">Credit Card</option>
@@ -42,17 +42,19 @@
                             <option id="paymenttype" name="paymenttype" value="Prepaid Card">Pre-paid Card</option>
                         </select>
                     </td>
-                     
                 </tr>
                 <tr>
+                    <!--getting account number from customer, must be integer-->
                     <td>Account Number:</td>
-                     <%/*=(accountnumberErr !=null ? accountnumberErr:"")*/%>
+                    <%/*=(accountnumberErr !=null ? accountnumberErr:"")*/%>
                     <td><input type="number" id="accountnumber" name="accountnumber"></td>
                 </tr>
                 <tr>
+                    <!--getting ccv number from customer, must be integer-->
                     <td>CCV Number:</td>
                     <%/*=(ccvErr !=null ? ccvErr:"")*/%> 
-                    <td><input type="number" id="ccv" name="ccv"></td>
+                    <!--type is set to password to satisfy security requirements-->
+                    <td><input type="password" id="ccv" name="ccv"></td>
                 </tr>
                 <tr>
                     <td></td>

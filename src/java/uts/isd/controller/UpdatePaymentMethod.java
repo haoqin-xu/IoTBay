@@ -4,8 +4,6 @@
  */
 package uts.isd.controller;
 
-import uts.isd.model.PaymentMethod;
-
 import uts.isd.model.dao.PaymentMethodManager;
 
 import java.io.IOException;
@@ -36,24 +34,18 @@ public class UpdatePaymentMethod extends HttpServlet {
 
         // retrieve the current session
         HttpSession session = request.getSession();
-            //int methodid, int customerid, String paymenttype, int accountnumber, int ccv
-             int methodid = Integer.parseInt(request.getParameter("methodid"));
+           
              int customerid = Integer.parseInt(request.getParameter("customerid"));
              String paymenttype = (request.getParameter("paymenttype"));
              int accountnumber = Integer.parseInt(request.getParameter("accountnumber"));
              int ccv = Integer.parseInt(request.getParameter("ccv"));
-
              
              PaymentValidator validator = new PaymentValidator();
-             //Payment Payment = null;
              PaymentMethodManager manager = (PaymentMethodManager) session.getAttribute("manager");
              validator.clear(session);
 
         try{
-           //paymentid, int methodid, double ammount, String date)
             manager.createPaymentMethod( customerid, paymenttype, accountnumber, ccv);
-            PaymentMethod paymentMethod = new PaymentMethod( customerid, paymenttype, accountnumber, ccv);
-            //session.setAttribute("paymentMethod", paymentMethod);
             request.getRequestDispatcher("paycreate.jsp").include(request, response);
 
         }
