@@ -74,6 +74,7 @@ public class DeviceManager {
     
     public void updateDeviceCount(int deviceID, int stocknum) throws SQLException {       
         //code for ORDER MANAGEMENT
+        // when order is submitted, subtract the device count
         String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = STOCK_NUM - "+stocknum+"";
         String where = "WHERE DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
@@ -81,6 +82,7 @@ public class DeviceManager {
     }
     public void updateDeviceCountP(int deviceID, int stocknum) throws SQLException {       
         //code for ORDER MANAGEMENT
+        // when order is updated, add the old count back into the device table
         String update = "UPDATE iotdb.DEVICE SET STOCK_NUM = STOCK_NUM + "+stocknum+"";
         String where = "WHERE DEVICEID="+deviceID+"";
         st.executeUpdate(update+where); 
